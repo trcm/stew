@@ -1,0 +1,312 @@
+<div>
+
+    <h2>Stewdents</h2>
+
+    <script type = "text/ng-template" id="stewdent-save.html">
+        <form name="form" role="form" novalidate
+              class="ng-scope ng-invalid ng-invalid-required ng-dirty"
+              ng-submit="ok()">
+
+            <div class="modal-header">
+                <button type="button" class="close"
+                        ng-click="cancel()">&times;</button>
+                <h4 class="modal-title" id="myStewdentLabel">Create or edit a Stewdent</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>ID</label>
+                    <input type="text" class="form-control" name="id"
+                           ng-model="stewdent.id" readonly>
+                </div>
+
+                
+                <div class="form-group">
+                    <label>first_name:</label>
+                    
+                    <input type="text" class="form-control" name="first_name"
+                           ng-model="stewdent.first_name" ng-required="true"
+                           ng-maxlength=100/>
+                    <span class="error" ng-show="form.first_name.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.first_name.$error.maxlength">Must be at most 100 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>last_name:</label>
+                    
+                    <input type="text" class="form-control" name="last_name"
+                           ng-model="stewdent.last_name" ng-required="true"
+                           ng-maxlength=100/>
+                    <span class="error" ng-show="form.last_name.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.last_name.$error.maxlength">Must be at most 100 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>gender:</label>
+                    
+                    <label class="radio"><input type="radio" name="gender" value="male"
+                           ng-model="stewdent.gender" ng-required="true"/> male </label>
+                    <label class="radio"><input type="radio" name="gender" value=" female"
+                           ng-model="stewdent.gender" ng-required="true"/>  female </label>
+                </div>
+                
+                <div class="form-group">
+                    <label>dob:</label>
+                    
+                    <input type="text" class="form-control" name="dob" ui-date="dobDateOptions" ui-date-format="yy-mm-dd" 
+                           ng-model="stewdent.dob" ng-required="true"/>
+                </div>
+                
+                <div class="form-group">
+                    <label>university:</label>
+                    
+                    <input type="text" class="form-control" name="university"
+                           ng-model="stewdent.university" ng-required="true"
+                           ng-maxlength=100/>
+                    <span class="error" ng-show="form.university.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.university.$error.maxlength">Must be at most 100 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>student_num:</label>
+                    
+                    <input type="text" class="form-control" name="student_num"
+                           ng-model="stewdent.student_num" ng-required="false"
+                           ng-minlength=0 ng-maxlength=50/>
+                    <span class="error" ng-show="form.student_num.$error.minlength">Must be at least 0 characters.</span>
+                    <span class="error" ng-show="form.student_num.$error.maxlength">Must be at most 50 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>degree:</label>
+                    
+                    <input type="text" class="form-control" name="degree"
+                           ng-model="stewdent.degree" ng-required="true"
+                           ng-maxlength=200/>
+                    <span class="error" ng-show="form.degree.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.degree.$error.maxlength">Must be at most 200 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>start_year:</label>
+                    
+                    <input type="text" class="form-control" name="start_year" ui-date="start_yearDateOptions" ui-date-format="yy-mm-dd" 
+                           ng-model="stewdent.start_year" ng-required="true"/>
+                </div>
+                
+                <div class="form-group">
+                    <label>end_year:</label>
+                    
+                    <input type="text" class="form-control" name="end_year" ui-date="end_yearDateOptions" ui-date-format="yy-mm-dd" 
+                           ng-model="stewdent.end_year" ng-required="true"/>
+                </div>
+                
+                <div class="form-group">
+                    <label>occupation:</label>
+                    
+                    <input type="text" class="form-control" name="occupation"
+                           ng-model="stewdent.occupation" ng-required="false"
+                           ng-minlength=0 ng-maxlength=100/>
+                    <span class="error" ng-show="form.occupation.$error.minlength">Must be at least 0 characters.</span>
+                    <span class="error" ng-show="form.occupation.$error.maxlength">Must be at most 100 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>phone_num:</label>
+                    
+                    <input type="text" class="form-control" name="phone_num"
+                           ng-model="stewdent.phone_num" ng-required="false"
+                           ng-maxlength=50/>
+                    <span class="error" ng-show="form.phone_num.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.phone_num.$error.maxlength">Must be at most 50 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>student_email:</label>
+                    
+                    <input type="text" class="form-control" name="student_email"
+                           ng-model="stewdent.student_email" ng-required="true"
+                           ng-maxlength=100/>
+                    <span class="error" ng-show="form.student_email.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.student_email.$error.maxlength">Must be at most 100 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>address:</label>
+                    
+                    <input type="text" class="form-control" name="address"
+                           ng-model="stewdent.address" ng-required="false"
+                           ng-maxlength=200/>
+                    <span class="error" ng-show="form.address.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.address.$error.maxlength">Must be at most 200 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>city:</label>
+                    
+                    <input type="text" class="form-control" name="city"
+                           ng-model="stewdent.city" ng-required="true"
+                           ng-maxlength=100/>
+                    <span class="error" ng-show="form.city.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.city.$error.maxlength">Must be at most 100 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>state:</label>
+                    
+                    <label class="radio"><input type="radio" name="state" value="QLD"
+                           ng-model="stewdent.state" ng-required="true"/> QLD </label>
+                    <label class="radio"><input type="radio" name="state" value="NSW"
+                           ng-model="stewdent.state" ng-required="true"/> NSW </label>
+                    <label class="radio"><input type="radio" name="state" value="VIC"
+                           ng-model="stewdent.state" ng-required="true"/> VIC </label>
+                    <label class="radio"><input type="radio" name="state" value="TAS"
+                           ng-model="stewdent.state" ng-required="true"/> TAS </label>
+                    <label class="radio"><input type="radio" name="state" value="SA"
+                           ng-model="stewdent.state" ng-required="true"/> SA </label>
+                    <label class="radio"><input type="radio" name="state" value="WA"
+                           ng-model="stewdent.state" ng-required="true"/> WA </label>
+                    <label class="radio"><input type="radio" name="state" value="NT"
+                           ng-model="stewdent.state" ng-required="true"/> NT </label>
+                    <label class="radio"><input type="radio" name="state" value="ACT"
+                           ng-model="stewdent.state" ng-required="true"/> ACT </label>
+                </div>
+                
+                <div class="form-group">
+                    <label>post_code:</label>
+                    
+                    <input type="text" class="form-control" name="post_code"
+                           ng-model="stewdent.post_code" ng-required="false"
+                           ng-maxlength=5/>
+                    <span class="error" ng-show="form.post_code.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.post_code.$error.maxlength">Must be at most 5 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>country:</label>
+                    
+                    <input type="text" class="form-control" name="country"
+                           ng-model="stewdent.country" ng-required="true"
+                           ng-maxlength=100/>
+                    <span class="error" ng-show="form.country.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.country.$error.maxlength">Must be at most 100 characters.</span>
+                </div>
+                
+		<div class="form-group">
+			<h3>Skills</h3>
+			<label for="computer_based">Computer Based</label>
+			<input class="form-control" name="computer_based" type="text" value=""
+				ng-model="skills.computer_based" ng-required="true"
+				/>
+		</div>
+
+		
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="cancel()">Cancel
+                </button>
+                <button type="submit" id="stewdentSubmit" ng-disabled="form.$invalid" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </script>
+
+    <button class="btn btn-primary btn-lg" id="createButton" ng-click="create()">
+            <span class="glyphicon glyphicon-flash"></span> Create a new Stewdent
+    </button>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                
+                <th>first_name</th>
+                
+                <th>last_name</th>
+                
+                <th>gender</th>
+                
+                <th>dob</th>
+                
+                <th>university</th>
+                
+                <th>student_num</th>
+                
+                <th>degree</th>
+                
+                <th>start_year</th>
+                
+                <th>end_year</th>
+                
+                <th>occupation</th>
+                
+                <th>phone_num</th>
+                
+                <th>student_email</th>
+                
+                <th>address</th>
+                
+                <th>city</th>
+                
+                <th>state</th>
+                
+                <th>post_code</th>
+                
+                <th>country</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="stewdent in stewdents">
+                <td>{{stewdent.id}}</td>
+                
+                <td>{{stewdent.first_name }}</td>
+                
+                <td>{{stewdent.last_name }}</td>
+                
+                <td>{{stewdent.gender }}</td>
+                
+                <td>{{stewdent.dob  | date:'yyyy-MM-dd'}}</td>
+                
+                <td>{{stewdent.university }}</td>
+                
+                <td>{{stewdent.student_num }}</td>
+                
+                <td>{{stewdent.degree }}</td>
+                
+                <td>{{stewdent.start_year  | date:'yyyy-MM-dd'}}</td>
+                
+                <td>{{stewdent.end_year  | date:'yyyy-MM-dd'}}</td>
+                
+                <td>{{stewdent.occupation }}</td>
+                
+                <td>{{stewdent.phone_num }}</td>
+                
+                <td>{{stewdent.student_email }}</td>
+                
+                <td>{{stewdent.address }}</td>
+                
+                <td>{{stewdent.city }}</td>
+                
+                <td>{{stewdent.state }}</td>
+                
+                <td>{{stewdent.post_code }}</td>
+                
+                <td>{{stewdent.country }}</td>
+                
+                <td>
+                    <button type="submit"
+                            ng-click="update(stewdent.id)"
+                            class="btn">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
+                    <button type="submit"
+                            ng-click="delete(stewdent.id)"
+                            class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

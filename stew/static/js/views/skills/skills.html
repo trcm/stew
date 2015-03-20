@@ -1,0 +1,163 @@
+<div>
+
+    <h2>Skills</h2>
+
+    <script type = "text/ng-template" id="skills-save.html">
+        <form name="form" role="form" novalidate
+              class="ng-scope ng-invalid ng-invalid-required ng-dirty"
+              ng-submit="ok()">
+
+            <div class="modal-header">
+                <button type="button" class="close"
+                        ng-click="cancel()">&times;</button>
+                <h4 class="modal-title" id="mySkillsLabel">Create or edit a Skills</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>ID</label>
+                    <input type="text" class="form-control" name="id"
+                           ng-model="skills.id" readonly>
+                </div>
+
+                
+                <div class="form-group">
+                    <label>computer_based:</label>
+                    
+                    <input type="text" class="form-control" name="computer_based"
+                           ng-model="skills.computer_based" ng-required="true"
+                           ng-maxlength=2000/>
+                    <span class="error" ng-show="form.computer_based.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.computer_based.$error.maxlength">Must be at most 2000 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>personal:</label>
+                    
+                    <input type="text" class="form-control" name="personal"
+                           ng-model="skills.personal" ng-required="false"
+                           ng-maxlength=2000/>
+                    <span class="error" ng-show="form.personal.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.personal.$error.maxlength">Must be at most 2000 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>languages_spoken:</label>
+                    
+                    <input type="text" class="form-control" name="languages_spoken"
+                           ng-model="skills.languages_spoken" ng-required="true"
+                           ng-maxlength=100/>
+                    <span class="error" ng-show="form.languages_spoken.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.languages_spoken.$error.maxlength">Must be at most 100 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>languages_coding:</label>
+                    
+                    <input type="text" class="form-control" name="languages_coding"
+                           ng-model="skills.languages_coding" ng-required="false"
+                           ng-maxlength=2000/>
+                    <span class="error" ng-show="form.languages_coding.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.languages_coding.$error.maxlength">Must be at most 2000 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>software_skills:</label>
+                    
+                    <input type="text" class="form-control" name="software_skills"
+                           ng-model="skills.software_skills" ng-required="true"
+                           ng-maxlength=1000/>
+                    <span class="error" ng-show="form.software_skills.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.software_skills.$error.maxlength">Must be at most 1000 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>smartphone:</label>
+                    
+                    <input type="text" class="form-control" name="smartphone"
+                           ng-model="skills.smartphone" ng-required="false"
+                           ng-maxlength=100/>
+                    <span class="error" ng-show="form.smartphone.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.smartphone.$error.maxlength">Must be at most 100 characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>tabel:</label>
+                    
+                    <input type="text" class="form-control" name="tabel"
+                           ng-model="skills.tabel" ng-required="false"
+                           ng-maxlength=100/>
+                    <span class="error" ng-show="form.tabel.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.tabel.$error.maxlength">Must be at most 100 characters.</span>
+                </div>
+                
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="cancel()">Cancel
+                </button>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </script>
+
+    <button class="btn btn-primary btn-lg" ng-click="create()">
+        <span class="glyphicon glyphicon-flash"></span> Create a new Skills
+    </button>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                
+                <th>computer_based</th>
+                
+                <th>personal</th>
+                
+                <th>languages_spoken</th>
+                
+                <th>languages_coding</th>
+                
+                <th>software_skills</th>
+                
+                <th>smartphone</th>
+                
+                <th>tabel</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="skills in skills">
+                <td>{{skills.id}}</td>
+                
+                <td>{{skills.computer_based }}</td>
+                
+                <td>{{skills.personal }}</td>
+                
+                <td>{{skills.languages_spoken }}</td>
+                
+                <td>{{skills.languages_coding }}</td>
+                
+                <td>{{skills.software_skills }}</td>
+                
+                <td>{{skills.smartphone }}</td>
+                
+                <td>{{skills.tabel }}</td>
+                
+                <td>
+                    <button type="submit"
+                            ng-click="update(skills.id)"
+                            class="btn">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
+                    <button type="submit"
+                            ng-click="delete(skills.id)"
+                            class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
