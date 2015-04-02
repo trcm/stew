@@ -10,9 +10,9 @@ angular.module('stew')
 				   // $scope.stewdents = "blah";
 				 }]);
 
-angular.module('stew')
-  .factory('Stewdent', ['$resource', function($resource) {
-    return $resource('stew/stewdent/', {}, {
-      'query': { method: 'GET'}
-    });
-  }]);
+// angular.module('stew')
+//   .factory('Stewdent', ['$resource', function($resource) {
+//     return $resource('stew/stewdent/', {}, {
+//       'query': { method: 'GET'}
+//     });
+//   }]);

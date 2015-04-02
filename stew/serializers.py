@@ -1,6 +1,7 @@
 # from django.forms import widgets
 from rest_framework import serializers
-from stew.models import Stewdent, Skill
+from stew.models import Stewdent, Skill, Work
+
 
 class StewdentSerializer(serializers.Serializer):
     STATES = (
@@ -13,6 +14,10 @@ class StewdentSerializer(serializers.Serializer):
         ('WA', 'WA'),
         ('NT', 'NT'),
     )
+    GENDERS = (
+        ('Male', 'Male'),
+        ('Female', 'Female')
+    )
 
     pk = serializers.IntegerField(read_only=True)
     first_name = serializers.CharField(max_length=100, required=True)
@@ -20,17 +25,18 @@ class StewdentSerializer(serializers.Serializer):
     dob = serializers.DateField(input_formats=['iso-8601'])
     # dob = serializers.DateTimeField(required=True)
     university = serializers.CharField(max_length=100, required=True)
-    student_num = serializers.CharField(max_length=50)
-    degree = serializers.CharField(max_length=50)
+    student_num = serializers.CharField(max_length=50, required=False)
+    degree = serializers.CharField(max_length=50, required=True)
     start_year = serializers.DateField(required=True)
     end_year = serializers.DateField(required=True)
-    occupation = serializers.CharField(max_length=100)
-    phone_num = serializers.CharField(max_length=50)
+    occupation = serializers.CharField(max_length=100, required=False)
+    phone_num = serializers.CharField(max_length=50, required=False)
     student_email = serializers.EmailField(required=True)
-    address = serializers.CharField(max_length=200, required=True)
+    address = serializers.CharField(max_length=200, required=False)
     city = serializers.CharField(max_length=100, required=True)
     state = serializers.ChoiceField(choices=STATES, required=True)
-    post_code = serializers.CharField(max_length=5)
+    gender = serializers.ChoiceField(choices=GENDERS, required=False)
+    post_code = serializers.CharField(max_length=5, required=False)
     country = serializers.CharField(max_length=100, required=True)
 
 # class StewdentSerializer(serializers.ModelSerializer):    
@@ -54,15 +60,17 @@ class StewdentSerializer(serializers.Serializer):
                   'post_code',
                   'country'
         )
-        
+
     def create(self, validated_data):
 
         return Stewdent.objects.create(**validated_data)
 
+
 class SkillSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Skill
-    
+
     # stewdent         = serializers.OneToOneField('Stewdent')
     # software_skills  = serializers.CharField(max_length=500, blank=False)
     # computer_based   = serializers.CharField(max_length=500, blank=False)
@@ -70,3 +78,30 @@ class SkillSerializer(serializers.ModelSerializer):
     # langagues_spoken = serializers.CharField(max_length=500, blank=False)
     # smartphone       = serializers.CharField(max_length=100)
     # tablet           = serializers.CharField(max_length=100)
+
+
+class WorkSerializer(serializers.ModelSerializer):
+
+    industry_one       = serializers.CharField(allow_blank=True, required=False)
+    industry_two       = serializers.CharField(allow_blank=True, required=False)
+    company_one        = serializers.CharField(allow_blank=True, required=False)
+    company_two        = serializers.CharField(allow_blank=True, required=False)
+    other_goals        = serializers.CharField(allow_blank=True, required=False)
+
+    exp_industry_one   = serializers.CharField(allow_blank=True, required=False)
+    exp_company_one    = serializers.CharField(allow_blank=True, required=False)
+    exp_duration_one   = serializers.CharField(allow_blank=True, required=False)
+    exp_learning_one   = serializers.CharField(allow_blank=True, required=False)
+
+    exp_industry_two   = serializers.CharField(allow_blank=True, required=False)
+    exp_company_two    = serializers.CharField(allow_blank=True, required=False)
+    exp_duration_two   = serializers.CharField(allow_blank=True, required=False)
+    exp_learning_two   = serializers.CharField(allow_blank=True, required=False)
+
+    exp_industry_three = serializers.CharField(allow_blank=True, required=False)
+    exp_company_three  = serializers.CharField(allow_blank=True, required=False)
+    exp_duration_three = serializers.CharField(allow_blank=True, required=False)
+    exp_learning_three = serializers.CharField(allow_blank=True, required=False)
+
+    class Meta:
+        model = Work

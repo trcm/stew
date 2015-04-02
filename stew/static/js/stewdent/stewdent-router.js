@@ -4,7 +4,7 @@ angular.module('stew')
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/stewdents', {
-        templateUrl: '/static/js/views/stewdent/stew.html',
+        templateUrl: '/static/js/views/stewdent/stewdents.html',
         controller: 'StewdentController',
         resolve:{
 	  resolvedSkill: ['$http', function($http) {

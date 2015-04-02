@@ -4,7 +4,9 @@ describe('angularjs homepage', function() {
 
     expect(browser.getTitle()).toEqual('Stew');
   });
+
   it('should create a stewdent object 1', function() {
+    console.log('start');
     browser.get('/#/stewdents');
     // element(by.id('createButton')).click();
     element(by.model('stewdent.first_name')).sendKeys('tom');
@@ -36,9 +38,15 @@ describe('angularjs homepage', function() {
     element(by.model('skills.languages_spoken')).sendKeys('languages');
     element(by.model('skills.smartphone')).sendKeys('smartphone');
     element(by.model('skills.tablet')).sendKeys('tablet');
-    
+
+    element(by.model('work.industry_one')).sendKeys('computer skillz');
+    element(by.model('work.industry_two')).sendKeys('coding');
+    element(by.model('work.company_one')).sendKeys('personal');
+    element(by.model('work.company_two')).sendKeys('languages');
+    element(by.model('work.other_goals')).sendKeys('languages');
     
     element(by.id('stewdentSubmit')).click();
+
   });
 
   it('should create a stewdent object', function() {
@@ -73,6 +81,12 @@ describe('angularjs homepage', function() {
     element(by.model('skills.languages_spoken')).sendKeys('languages');
     element(by.model('skills.smartphone')).sendKeys('smartphone');
     element(by.model('skills.tablet')).sendKeys('tablet');
+
+    element(by.model('work.industry_one')).sendKeys('computer skillz');
+    element(by.model('work.industry_two')).sendKeys('coding');
+    element(by.model('work.company_one')).sendKeys('personal');
+    element(by.model('work.company_two')).sendKeys('languages');
+    element(by.model('work.other_goals')).sendKeys('languages');
 
     element(by.id('stewdentSubmit')).click();
   });
@@ -110,7 +124,23 @@ describe('angularjs homepage', function() {
     element(by.model('skills.smartphone')).sendKeys('smartphone');
     element(by.model('skills.tablet')).sendKeys('tablet');
 
-    element(by.id('stewdentSubmit')).click();
+    element(by.model('work.industry_one')).sendKeys('computer skillz');
+    element(by.model('work.industry_two')).sendKeys('coding');
+    element(by.model('work.company_one')).sendKeys('personal');
+    element(by.model('work.company_two')).sendKeys('languages');
+    element(by.model('work.other_goals')).sendKeys('languages');
+
+    var clickable = false;
+    
+    element(by.id('stewdentSubmit')).click().then(
+      function() {
+	throw "Not clickable";
+	clickable = true;
+      }
+    );
+
+    expect(clickable);
+    
   });
   
 });

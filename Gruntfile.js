@@ -38,9 +38,9 @@ module.exports = function (grunt) {
     connect: {
       proxies: [
         {
-          context: '/stew',
+          context: '/',
           host: 'localhost',
-          port: 3000,
+          port: 8000,
           https: false,
           changeOrigin: false
         }

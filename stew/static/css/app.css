@@ -3,3 +3,8 @@ body {
   padding: 10px;
   background-color: #ECF0F1;
 }
+
+.form-required {
+	font-size: 110%; 
+	color: red;
+}
