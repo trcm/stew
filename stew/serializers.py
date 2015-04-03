@@ -1,7 +1,12 @@
 # from django.forms import widgets
 from rest_framework import serializers
 from stew.models import Stewdent, Skill, Work
+from django.contrib.auth.models import User
 
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
 
 class StewdentSerializer(serializers.Serializer):
     STATES = (
@@ -20,6 +25,7 @@ class StewdentSerializer(serializers.Serializer):
     )
 
     pk = serializers.IntegerField(read_only=True)
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     first_name = serializers.CharField(max_length=100, required=True)
     last_name = serializers.CharField(max_length=100, required=True)
     dob = serializers.DateField(input_formats=['iso-8601'])

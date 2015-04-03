@@ -1,6 +1,8 @@
+<ng-include src=" 'static/js/views/navbar.html' "></ng-include>
+
 <form name="form" role="form" novalidate
-        class="ng-scope ng-invalid ng-invalid-required ng-dirty"
-        ng-submit="create()">
+	class="ng-scope ng-invalid ng-invalid-required ng-dirty"
+	ng-submit="create()">
 	
 	<h1>Stewdents</h1>
 	
@@ -397,13 +399,13 @@
 	</div>
 	</div>
 	-->
-	<div class="form-group">
-		<label for="other_goals">Other Goals</label>
-		<textarea rows="10" columns="30" class="form-control" name="other_goals" type="text" value=""
-			ng-model="work.other_goals" ng-required="false">
+	<!-- <div class="form-group">
+	<label for="other_goals">Other Goals</label>
+	<textarea rows="10" columns="30" class="form-control" name="other_goals" type="text" value=""
+	ng-model="work.other_goals" ng-required="false">
 
-		</textarea>
-	</div>
+	</textarea>
+	</div> -->
 	
 	<div class="modal-footer">
 		<button type="button" class="btn btn-default" ng-click="cancel()">Cancel
@@ -414,7 +416,7 @@
 
 <div class="table-responsive">
 	<input ng-model="search" name="" type="text" value=""/>
-        <table class="table table-striped">
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>ID</th>
@@ -472,9 +474,15 @@
 				</td>
 			</tr>
 		</tbody>
-        </table>
+	</table>
 </div>
 
 <ul ng-repeat="zip in zipped">
 	<li>{{ zip[0].first_name }}</li>
 </ul>
+
+
+<script type="text/ng-template" id="thankyou-modal.html">
+	Thank you for signing up for the Stew.  We'll be in contact soon.
+	<button type="submit" ng-click="ok()">Close</button>
+</script>

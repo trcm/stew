@@ -3,8 +3,11 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from django.contrib import admin
 # from rest_framework.urlpatterns import for
 from stew import views
+from rest_framework.authtoken.views import obtain_auth_token
+
 
 urlpatterns = patterns('',
+                       url(r'^auth/', views.AuthView.as_view(), name='auth'),
                        url(r'^stewdent/$', views.StewdentList.as_view(), name='stewdent-list'),
                        url(r'^stewdent/(?P<pk>[0-9]+)$', views.StewdentDetail.as_view(), name='stewdent-detail'),
                        url(r'^skill/$', views.SkillList.as_view(), name='skill-list'),
@@ -15,4 +18,8 @@ urlpatterns = patterns('',
                        # url(r'.*$', views.home, name='index')
 )
 
+urlpatterns += [
+    url(r'^login/$', views.LoginView.as_view()),
+    url(r'^api-token-auth/$', obtain_auth_token)
+]
 urlpatterns = format_suffix_patterns(urlpatterns)

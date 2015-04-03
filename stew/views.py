@@ -1,12 +1,18 @@
 from rest_framework import generics
+
 from rest_framework.views import APIView
+from django.views.generic.base import TemplateView
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
+from rest_framework.authentication import SessionAuthentication, TokenAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 
+from stew.authentication import *
 from stew.models import Stewdent, Skill, Work
-from stew.serializers import StewdentSerializer, SkillSerializer, WorkSerializer
+from stew.serializers import StewdentSerializer, SkillSerializer, WorkSerializer, UserSerializer
 
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
@@ -14,6 +20,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.utils import IntegrityError
 from django.db import IntegrityError
 from django.core import serializers
+from django.contrib.auth.models import User
 
 import json
 
@@ -38,36 +45,63 @@ def getSkill(pk):
     except Stewdent.DoesNotExist:
         print "Error: Stewdent does not exist"
         return None
-    
+
     except Skill.DoesNotExist:
         print "Error"
         return None
 
+class LoginView(TemplateView):
+    template_name = 'login.html'
+
+class AuthView(APIView):
+    authentication_classes = (TokenAuthentication,)
+    serializer_class = UserSerializer
+
+    def post(self, request, *args, **kwargs):
+        print request.META.get( 'HTTP_AUTHORIZATION' )
+
+        return Response(self.serializer_class(request.user).data)
+
+    def get(self, request, format=None):
+        content = {
+            'user': unicode(request.user),  # `django.contrib.auth.User` instance.
+            'auth': unicode(request.auth),  # None
+        }
+        return Response(content)
+
 # @csrf_exempt
 class StewdentList(APIView):
-    # queryset = Stewdent.objects.all()
-    # serializer_class = StewdentSerializer
- 
+    # authentication_classes = (TokenAuthentication,)
+    # permission_classes = (IsAuthenticated,)
+
     def get(self, request, format=None):
+        print request.user
+        print request.META
         stewdents = Stewdent.objects.all()
         serializer = StewdentSerializer(stewdents, many=True)
-        # print serializer.data
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        # print request
-        # print '\n\n\n', request.data, '\n'
-        serializer = StewdentSerializer(data=request.data)
+
+        try:
+            u = User.objects.create(username=request.data['student_email'])
+        except Exception as e:
+            print e
+            raise Http404
+        ret = request.data
+        ret['user'] = u.id
+        print u.id
+
+        serializer = StewdentSerializer(data=ret)
+
         if serializer.is_valid(raise_exception=True):
             try:
                 serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+
             except Exception as e:
                 print 'generic'
                 print repr(e)
-                # print e[1]
-                # serializer.errors['email'] = 'You already have an account'
-                # print type(serializer.errors)
-                # print repr(serializer.errors)
                 error = {}
                 if "Duplicate entry" in e[1]:
                     error['email'] = "This email is already in use"
@@ -76,22 +110,18 @@ class StewdentList(APIView):
                 print 'e'
                 print e, type(e), repr(e)
                 # serializer.save()
+            print "ret"
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        print "b"
         print serializer.errors
         # print serializer.data
-        print "c"
         return JSONRenderer(serializer.errors)
     # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    
 # @csrf_exempt
 class StewdentDetail(APIView):
-    # def getStewdent(self, pk):
-    #     try:
-    #         return Stewdent.objects.get(pk=pk)
-    #     except Stewdent.DoesNotExist:
-    #         print "error yo"
-    #         return Response(status=400) 
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request, pk, format=None):
         stewdent = getStewdent(pk)
@@ -104,18 +134,25 @@ class StewdentDetail(APIView):
         return Response(ret)
         # return Response(serializer.data)
 
-    def put(self, request, pk, format=None): 
+    def put(self, request, pk, format=None):
+        print "detail"
         stewdent = getStewdent(pk)
         serializer = StewdentSerializer(stewdent, data=request.data)
         print serializer.data
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response(status=200)
+            # return Response(serializer.data)
         return Response(serializer.errors, status=400)
 
     def delete(self, request, pk, format=None):
+        print "delete"
         stewdent = getStewdent(pk)
+        skill = getSkill(pk)
+        user = stewdent.user
+        user.delete()
         stewdent.delete()
+        skill.delete()
         return Response(status=204)
 
 class SkillList(APIView):
@@ -124,9 +161,9 @@ class SkillList(APIView):
         skills = Skill.objects.all()
         serializer = SkillSerializer(skills, many=True)
         return Response(serializer.data)
-    
+
 class SkillDetail(APIView):
-        
+
     def get(self, request, pk, format=None):
         print "Skillget"
         skill = getSkill(pk)
@@ -136,7 +173,7 @@ class SkillDetail(APIView):
         serializer = SkillSerializer(skill)
         return Response(serializer.data)
 
-    
+
     def post(self, request, pk, format=None):
         """
         post creates a new instance of a skill object to be entered into the database
@@ -181,7 +218,7 @@ class WorkList(APIView):
         works = Work.objects.all()
         serializer = WorkSerializer(works, many=True)
         return Response(serializer.data)
-        
+
 
 class WorkDetail(APIView):
 

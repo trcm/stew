@@ -2,12 +2,13 @@
 
 angular.module('stew')
   .controller('StewdentController',
-	      ['$scope', '$http', '$modal', '$location', 'resolvedStewdent', 'resolvedSkill', 'Stewdent', 'StewdentCreate', 'lodash',
-	       function ($scope, $http, $modal, $location, resolvedStewdent, resolvedSkill, Stewdent, StewdentCreate, lodash) {
+	      ['$scope', '$http', '$modal', '$location', 'resolvedStewdent', 'resolvedSkill', 'Stewdent', 'token', 'StewdentCreate', 'lodash',
+	       function ($scope, $http, $modal, $location, resolvedStewdent, resolvedSkill, Stewdent, token, StewdentCreate, lodash) {
 
 		 // Grab stewdents and skills from database, just for testing. Will comment out in deployment
 		 $scope.stewdents = resolvedStewdent.data;
 		 $scope.skills_resolve = resolvedSkill.data;
+		 
 		 
 		 $scope.dobDateOptions = {
 		   dateFormat: 'dd/mm/yy',
@@ -21,14 +22,9 @@ angular.module('stew')
 		 $scope.create = function () {
 		   $http.post('/stewdent/', $scope.stewdent).
 		     success(function(data) {
-		       // console.log(data);
-		       // console.log(data.pk);
-		       // $scope.skills.push({StewdentId: data.id});
-		       console.log(data);
-		       console.log($scope.skills);
 		       $http.post('/skill/' + data.pk, $scope.skills).
 			 success(function(data) {
-			   console.log(data);
+			   // console.log(data);
 			   // $http.post('/work/' + data.stewdent, $scope.work).
 			   //   success(function(data) {
 			   //     console.log('afdafa');
@@ -39,6 +35,8 @@ angular.module('stew')
 			   //     console.log("error with work");
 			   //     console.log(data);
 			   //   });
+			   $scope.clear();
+			   $scope.open();
 			 })
 			 .error(function(data) {
 			   console.log(data);
@@ -115,43 +113,17 @@ angular.module('stew')
 
 		 $scope.open = function (id) {
 		   var stewdentSave = $modal.open({
-		     templateUrl: 'stewdent-save.html',
-		     controller: 'StewdentSaveController',
-		     resolve: {
-		       stewdent: function () {
-			 return $scope.stewdent;
-		       }
-		     }
-		   });
-
-		   stewdentSave.result.then(function (entity) {
-		     $scope.stewdent = entity;
-		     $scope.save(id);
+		     templateUrl: 'thankyou-modal.html',
+		     controller: 'ThankyouModalController'
 		   });
 		 };
+
+		 
+		 
 	       }])
-  .controller('StewdentSaveController', ['$scope', '$modalInstance', 'stewdent',
-					 function ($scope, $modalInstance, stewdent) {
-					   $scope.stewdent = stewdent;
-					   
-					   $scope.dobDateOptions = {
-					     dateFormat: 'dd-mm-yy',
-					     maxDate: -1
-					   };
-
-					   $scope.start_yearDateOptions = {
-					     dateFormat: 'dd-mm-yy'
-					   };
-
-					   $scope.end_yearDateOptions = {
-					     dateFormat: 'dd-mm-yy'
-					   };
-
-					   $scope.ok = function () {
-					     $modalInstance.close($scope.stewdent);
-					   };
-
-					   $scope.cancel = function () {
-					     $modalInstance.dismiss('cancel');
-					   };
-					 }]);
+  .controller('ThankyouModalController', ['$scope', '$modalInstance',
+					  function($scope, $modalInstance) {
+					    $scope.ok = function() {
+					      $modalInstance.close();
+					    };
+					  }]);

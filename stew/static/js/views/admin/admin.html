@@ -1,0 +1,50 @@
+<ng-include src=" 'static/js/views/navbar.html'"></ng-include>
+
+<div class="table-responsive">
+	<input ng-model="search" name="" type="text" value=""/>
+        <table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>first_name</th>
+				<th>last_name</th>
+				<th>dob</th>
+				<th>university</th>
+				<th>student_num</th>
+				<th>degree</th>
+				<th>phone_num</th>
+				<th>student_email</th>
+				<th>city</th>
+				<th>state</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="stewdent in stewdents | filter:search">
+				<td>{{stewdent.pk}}</td>
+				<td>{{stewdent.first_name }}</td>
+				<td>{{stewdent.last_name }}</td>
+				<td>{{stewdent.dob  | date:'dd-MM-yyyy'}}</td>
+				<td>{{stewdent.university }}</td>
+				<td>{{stewdent.student_num }}</td>
+				<td>{{stewdent.degree }}</td>
+				<td>{{stewdent.phone_num }}</td>
+				<td>{{stewdent.student_email }}</td>
+				<td>{{stewdent.city }}</td>
+				<td>{{stewdent.state }}</td>
+
+				<td>
+					<button type="submit"
+						ng-click="update(stewdent)"
+						class="btn">
+						<span class="glyphicon glyphicon-pencil"></span> Edit
+					</button>
+					<button type="submit"
+						ng-click="delete(stewdent)"
+						class="btn btn-danger">
+						<span class="glyphicon glyphicon-remove-circle"></span> Delete
+					</button>
+				</td>
+			</tr>
+		</tbody>
+        </table>
+</div>

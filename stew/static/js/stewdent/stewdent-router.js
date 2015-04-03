@@ -7,6 +7,10 @@ angular.module('stew')
         templateUrl: '/static/js/views/stewdent/stewdents.html',
         controller: 'StewdentController',
         resolve:{
+	  // autenticated: ['token', '$http', function(token, $http) {
+	  //   token.authenticated();
+	  //   $http.defaults.headers.common.Authorization = 'Token ' + token.get();
+	  // }],
 	  resolvedSkill: ['$http', function($http) {
 	    return $http.get('/skill/').success(function(data) {
 	      return data.data;
