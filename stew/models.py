@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 ## Model to represent a student
 class Stewdent(models.Model):
@@ -19,7 +19,8 @@ class Stewdent(models.Model):
         ('Male', 'Male'),
         ('Female', 'Female')
     )
-    
+
+    # user          = models.OneToOneField(User, null=True)
     created       = models.DateTimeField(auto_now=True)
     first_name    = models.CharField(max_length=100, blank=False)
     last_name     = models.CharField(max_length=100, blank=False)
@@ -39,10 +40,15 @@ class Stewdent(models.Model):
     post_code     = models.CharField(max_length=5)
     country       = models.CharField(max_length=100, blank=False)
     
+
+    def __unicode__(self):
+        return "%s %s" % (self.first_name, self.last_name)
     
     class Meta:
         ordering = ('created', )
 
+    
+        
 
 class Skill(models.Model):
 

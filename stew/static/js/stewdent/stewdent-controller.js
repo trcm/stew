@@ -29,16 +29,16 @@ angular.module('stew')
 		       $http.post('/skill/' + data.pk, $scope.skills).
 			 success(function(data) {
 			   console.log(data);
-			   $http.post('/work/' + data.stewdent, $scope.work).
-			     success(function(data) {
-			       console.log('afdafa');
-			       console.log(data);
-			       $location.path("/done");
-			     })
-			     .error(function(data) {
-			       console.log("error with work");
-			       console.log(data);
-			     });
+			   // $http.post('/work/' + data.stewdent, $scope.work).
+			   //   success(function(data) {
+			   //     console.log('afdafa');
+			   //     console.log(data);
+			   //     $location.path("/done");
+			   //   })
+			   //   .error(function(data) {
+			   //     console.log("error with work");
+			   //     console.log(data);
+			   //   });
 			 })
 			 .error(function(data) {
 			   console.log(data);

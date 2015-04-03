@@ -7,10 +7,10 @@ angular.module('stew',
 	       'ngLodash'])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'static/js/views/home/home.html', 
-        controller: 'HomeController'})
-      .otherwise({redirectTo: '/'});
+    // .when('/', {
+    //   templateUrl: 'static/js/views/stewdent/stewdents.html', 
+    //   controller: 'StewdentController'})
+      .otherwise({redirectTo: '/stewdents'});
   }])
   .config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';

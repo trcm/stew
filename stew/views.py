@@ -12,6 +12,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 from django.db.utils import IntegrityError
+from django.db import IntegrityError
 from django.core import serializers
 
 import json
@@ -25,7 +26,22 @@ def getStewdent(pk):
         return Stewdent.objects.get(pk=pk)
     except Stewdent.DoesNotExist:
         print "error yo"
-        return Response(status=400)
+        raise Http404
+
+def getSkill(pk):
+    print 'getting stewdent'
+    try:
+        stew = Stewdent.objects.get(id=pk)
+        print stew.first_name
+        return Skill.objects.get(stewdent_id=pk)
+
+    except Stewdent.DoesNotExist:
+        print "Error: Stewdent does not exist"
+        return None
+    
+    except Skill.DoesNotExist:
+        print "Error"
+        return None
 
 # @csrf_exempt
 class StewdentList(APIView):
@@ -42,10 +58,7 @@ class StewdentList(APIView):
         # print request
         # print '\n\n\n', request.data, '\n'
         serializer = StewdentSerializer(data=request.data)
-        print "a"
-        print "blah"
         if serializer.is_valid(raise_exception=True):
-            print 's'
             try:
                 serializer.save()
             except Exception as e:
@@ -82,14 +95,19 @@ class StewdentDetail(APIView):
 
     def get(self, request, pk, format=None):
         stewdent = getStewdent(pk)
-
+        skills = getSkill(pk)
         serializer = StewdentSerializer(stewdent)
+        serialSkill = SkillSerializer(skills)
+        ret = serializer.data
+        ret['skills'] = serialSkill.data
         print serializer.data
-        return Response(serializer.data)
+        return Response(ret)
+        # return Response(serializer.data)
 
     def put(self, request, pk, format=None): 
         stewdent = getStewdent(pk)
         serializer = StewdentSerializer(stewdent, data=request.data)
+        print serializer.data
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -108,21 +126,13 @@ class SkillList(APIView):
         return Response(serializer.data)
     
 class SkillDetail(APIView):
-
-    def getSkill(self, pk):
-        print 'getting stewdent'
-        try:
-            stew = Stewdent.objects.get(id=pk)
-            print stew.first_name
-            return Skill.objects.get(stewdent_id=pk)
-        except Skill.DoesNotExist:
-            print 'error'
-            return Response(status=400)
         
     def get(self, request, pk, format=None):
         print "Skillget"
-        skill = self.getSkill(pk)
-        print skill.id
+        skill = getSkill(pk)
+        if not skill:
+            print "404"
+            raise Http404
         serializer = SkillSerializer(skill)
         return Response(serializer.data)
 
@@ -140,26 +150,38 @@ pk (Integer): integer of the stewdent object this skill object will be associate
         print request.data
         try:
             stewdent = Stewdent.objects.get(id=pk)
-            request.data['stewdent'] = stewdent.id
-            serializer = SkillSerializer(data=request.data)
+            print stewdent.id
+            ret = request.data
+            ret['stewdent_id'] = stewdent.id
+            ret['stewdent'] = stewdent.id
+            print ret
+            serializer = SkillSerializer(data=ret)
+            print serializer
+            print "s"
             if serializer.is_valid():
                 serializer.save()
-                print serializer.data
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
                 print serializer.errors
+                print "fdsaf"
                 return Response(serializer.errors, status=400)
         except Stewdent.DoesNotExist:
             print "stewdent error"
-            return Response(status=400)
-        except Exception as e:
+            raise Http404
+            # return Response(status=400)
+        except IntegrityError as e:
             print "other"
-            print e.message
+            print e
             return Response(status=400)
 
 
 class WorkList(APIView):
-    pass
+
+    def get(self, request, format=None):
+        works = Work.objects.all()
+        serializer = WorkSerializer(works, many=True)
+        return Response(serializer.data)
+        
 
 class WorkDetail(APIView):
 

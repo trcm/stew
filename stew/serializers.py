@@ -70,7 +70,6 @@ class SkillSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Skill
-
     # stewdent         = serializers.OneToOneField('Stewdent')
     # software_skills  = serializers.CharField(max_length=500, blank=False)
     # computer_based   = serializers.CharField(max_length=500, blank=False)
@@ -105,3 +104,4 @@ class WorkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Work
+        depth = 1
