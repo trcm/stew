@@ -13,6 +13,7 @@ angular.module('stew')
 		 //     console.log(data);
 		 //   });
 		 $scope.stewdents = stewdents.data;
+		 $scope.stewdentsSfc = stewdents.data;
 		 $scope.skills = skills.data;
 
 		 $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
