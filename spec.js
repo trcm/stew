@@ -176,5 +176,20 @@ describe('angularjs homepage', function() {
     element(by.model('skills.languages_spoken')).sendKeys('languages');
     element(by.id('stewdentSubmit')).click();
   });
-  
+
+  it("should log in the admin user", function() {
+    browser.get('/#/admin');
+    element(by.model('username')).sendKeys('admin');
+    element(by.model('password')).sendKeys('admin');
+    
+    element(by.id('loginBtn')).click();
+
+    var url = browser.getCurrentUrl().then(function(data) {
+      console.log(data);
+      return data;
+    });
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/stewdents');
+    browser.get('/#/admin');
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/admin');
+  });
 });

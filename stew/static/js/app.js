@@ -5,6 +5,7 @@ angular.module('stew',
 		'LocalStorageModule',
 		'ui.bootstrap',
 		'ui.date',
+		'smart-table',
 		'ngLodash'])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider

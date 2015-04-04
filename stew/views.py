@@ -57,10 +57,10 @@ class AuthView(APIView):
     authentication_classes = (TokenAuthentication,)
     serializer_class = UserSerializer
 
-    def post(self, request, *args, **kwargs):
-        print request.META.get( 'HTTP_AUTHORIZATION' )
+    # def post(self, request, *args, **kwargs):
+    #     print request.META.get( 'HTTP_AUTHORIZATION' )
 
-        return Response(self.serializer_class(request.user).data)
+    #     return Response(self.serializer_class(request.user).data)
 
     def get(self, request, format=None):
         content = {
@@ -90,7 +90,8 @@ class StewdentList(APIView):
             u = User.objects.create(username=request.data['student_email'])
         except Exception as e:
             print e
-            raise Http404
+            prob = {'error' : 'An account for this email as already been created.'}
+            return Response(prob, status=status.HTTP_400_BAD_REQUEST)
         ret = request.data
         ret['user'] = u.id
         print u.id
@@ -114,9 +115,11 @@ class StewdentList(APIView):
                 print 'e'
                 print e, type(e), repr(e)
                 # serializer.save()
+                return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
             print "ret"
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         print serializer.errors
+        print 'errrr'
         # print serializer.data
         return JSONRenderer(serializer.errors)
     # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -195,16 +198,16 @@ pk (Integer): integer of the stewdent object this skill object will be associate
             ret = request.data
             ret['stewdent_id'] = stewdent.id
             ret['stewdent'] = stewdent.id
-            print ret
+            # print ret
             serializer = SkillSerializer(data=ret)
-            print serializer
-            print "s"
+            # print serializer
+            # print "s"
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
-                print serializer.errors
-                print "fdsaf"
+                # print serializer.errors
+                # print "fdsaf"
                 return Response(serializer.errors, status=400)
         except Stewdent.DoesNotExist:
             print "stewdent error"

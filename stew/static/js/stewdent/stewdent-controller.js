@@ -40,6 +40,7 @@ angular.module('stew')
 			   $scope.open();
 			 })
 			 .error(function(data) {
+			   alert("Oooops, something is broken.  We're still in beta, please contact stewhelp@gmail.com");
 			   console.log(data);
 			 });
 		     })
@@ -47,7 +48,8 @@ angular.module('stew')
 		       // this is the only time actual errors should be recieved
 		       // The error here should be an Integrity error, as thats the only error that should be
 		       // caused from model created.  Only if there is a duplicate email in the databse.
-		       console.log(data);
+		       alert(data.error);
+		       alert("Oooops, something is broken.  We're still in beta, please contact stewhelp@gmail.com");
 		       
 		       $scope.errors.push(data);
 		       alert(data);
