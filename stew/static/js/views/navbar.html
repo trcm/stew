@@ -11,20 +11,12 @@
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav">
-				<li>
-					<a href="/#/stewdents">Stewdents</a>
-				</li>
-				<li>
-					<a href="/#/skills">Skills</a>
-				</li>
-			</ul>
 			<ul class="nav navbar-nav navbar-right" ng-show="user">
 				<li><a href="/#/admin">Admin</a></li>
 				<li><a ng-click="logout()">Logout</a></li>
 			</ul>
 			<ul ng-hide="user" class="nav navbar-nav navbar-right">
-				<li><a href="">Login</a></li>
+				<li><a href="/#/login">Login</a></li>
 				<div>
 					<li><a href="">{{ user }}</a></li>
 				</div>

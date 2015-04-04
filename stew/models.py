@@ -47,7 +47,7 @@ class Stewdent(models.Model):
     address       = models.CharField(max_length=200, blank=True, null=True)
     city          = models.CharField(max_length=100, blank=False)
     state         = models.CharField(max_length=3, choices=STATES, blank=False)
-    post_code     = models.CharField(max_length=5)
+    post_code     = models.CharField(max_length=5, blank=True, null=True)
     country       = models.CharField(max_length=100, blank=False)
     
 

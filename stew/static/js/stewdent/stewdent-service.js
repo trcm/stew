@@ -2,7 +2,7 @@
 
 angular.module('stew')
   .factory('Stewdent', ['$resource', function ($resource) {
-    return $resource('stewdent/:id', {}, {
+    return $resource('/stewdent/:id', {}, {
       'query': { method: 'GET', isArray: true},
       'get': { method: 'GET'},
       'update': { method: 'PUT'},

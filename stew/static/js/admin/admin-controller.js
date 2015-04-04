@@ -2,12 +2,21 @@
 
 angular.module('stew')
   .controller('AdminController',
-	      ['$scope', '$http', '$location', 'lodash', 'Stewdent', 'stewdents', 'token',
-	       function($scope, $http, $location, loadsh, Stewdent, stewdents, token) {
+	      ['$scope', '$http', '$location', 'lodash', 'Stewdent', 'stewdents', 'skills', 'token',
+	       function($scope, $http, $location, lodash, Stewdent, stewdents, skills, token) {
 		 $scope.test = "test";
-		 $scope.stewdents = stewdents.data;
+		 // $scope.stewdents = stewdents.data;
 		 $scope.user = token.getUser();
 
+		 // $scope.stewdents = Stewdent.query()
+		 //   .$promise.then(function(data) {
+		 //     console.log(data);
+		 //   });
+		 $scope.stewdents = stewdents.data;
+		 $scope.skills = skills.data;
+
+		 $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
+		 console.log($scope.zipped);
 		 $scope.update = function (id) {
 		   $scope.stewdent = Stewdent.get({id: id});
 		   $scope.open(id);

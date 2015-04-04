@@ -69,14 +69,17 @@ class AuthView(APIView):
         }
         return Response(content)
 
+class AdminList(APIView):
+    authentication_classes = (TokenAuthentication, )
+    permission_classes = (IsAuthenticated, )
+    pass
+
 # @csrf_exempt
 class StewdentList(APIView):
     # authentication_classes = (TokenAuthentication,)
     # permission_classes = (IsAuthenticated,)
 
     def get(self, request, format=None):
-        print request.user
-        print request.META
         stewdents = Stewdent.objects.all()
         serializer = StewdentSerializer(stewdents, many=True)
         return Response(serializer.data)
@@ -105,6 +108,7 @@ class StewdentList(APIView):
                 error = {}
                 if "Duplicate entry" in e[1]:
                     error['email'] = "This email is already in use"
+
                 return Response(error, status=status.HTTP_400_BAD_REQUEST)
             except IntegrityError:
                 print 'e'

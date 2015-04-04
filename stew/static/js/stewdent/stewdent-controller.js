@@ -4,7 +4,8 @@ angular.module('stew')
   .controller('StewdentController',
 	      ['$scope', '$http', '$modal', '$location', 'resolvedStewdent', 'resolvedSkill', 'Stewdent', 'token', 'StewdentCreate', 'lodash',
 	       function ($scope, $http, $modal, $location, resolvedStewdent, resolvedSkill, Stewdent, token, StewdentCreate, lodash) {
-
+		 
+		 $scope.user = token.getUser();
 		 // Grab stewdents and skills from database, just for testing. Will comment out in deployment
 		 $scope.stewdents = resolvedStewdent.data;
 		 $scope.skills_resolve = resolvedSkill.data;
@@ -118,7 +119,11 @@ angular.module('stew')
 		   });
 		 };
 
-		 
+		 $scope.logout = function() {
+		   console.log("logout");
+		   token.logout();
+		   $location.path('/stewdents');
+		 };
 		 
 	       }])
   .controller('ThankyouModalController', ['$scope', '$modalInstance',

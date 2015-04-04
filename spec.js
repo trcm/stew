@@ -132,16 +132,49 @@ describe('angularjs homepage', function() {
     // element(by.model('work.other_goals')).sendKeys('languages');
 
     var clickable = false;
-    
-    element(by.id('stewdentSubmit')).click().then(
-      function() {
-	throw "Not clickable";
-	clickable = true;
-      }
-    );
+    var submit = element(by.id('stewdentSubmit'));
+    expect(submit.isEnabled()).toBe(false);
+    // this.shouldSeeDisabledFunds()
+    //   .then(function() {
+    //     element(by.id('stewdentSubmit')).first().click()
+    //       .then(
+    //         function() {
+    //           throw "Can click Funds element that should be disabled";
+    // 	      clickable = true;
+    //         },
+    //         function() {
+	      
+    // 	    }
+    //       )
+    //     ;
+    //   });
 
-    expect(clickable);
     
+  });
+
+  it("Should only need the required fields to create the objects", function() {
+    browser.get('/#/stewdents');
+    
+    element(by.model('stewdent.first_name')).sendKeys('tom');
+    element(by.model('stewdent.last_name')).sendKeys('tom');
+    element(by.model('stewdent.dob')).click();
+    element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
+    // element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[2]/td[3]/a[@class='ui-state-default']")).click();
+    element(by.model('stewdent.university')).sendKeys('university');
+    element(by.model('stewdent.degree')).sendKeys('degree');
+    element(by.model('stewdent.start_year')).click();
+    element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[2]/td[3]/a[@class='ui-state-default']")).click();
+    element(by.model('stewdent.end_year')).click();
+    element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[2]/td[3]/a[@class='ui-state-default']")).click();
+    element(by.model('stewdent.student_email')).sendKeys('test@required.com');
+    element(by.model('stewdent.city')).sendKeys('city');
+    element(by.model('stewdent.state')).click();
+    element(by.model('stewdent.country')).sendKeys('country');
+    
+    element(by.model('skills.computer_based')).sendKeys('computer skillz');
+    element(by.model('skills.software_skills')).sendKeys('languages');
+    element(by.model('skills.languages_spoken')).sendKeys('languages');
+    element(by.id('stewdentSubmit')).click();
   });
   
 });

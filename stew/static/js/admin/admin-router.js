@@ -16,6 +16,11 @@ mod.config(['$routeProvider', function($routeProvider) {
 	  return $http.get('/stewdent/').success(function(data) {
 	    return data.data;
 	  });
+	}],
+	skills: ['$http', function($http) {
+	  return $http.get('/skill/').success(function(data) {
+	    return data.data;
+	  });
 	}]
       }
     });
