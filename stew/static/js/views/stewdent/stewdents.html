@@ -418,75 +418,14 @@
 	</div>
 </form>
 
-<!-- <div class="table-responsive">
-<input ng-model="search" name="" type="text" value=""/>
-<table class="table table-striped">
-<thead>
-<tr>
-<th>ID</th>
-<th>first_name</th>
-<th>last_name</th>
-<th>gender</th>
-<th>dob</th>
-<th>university</th>
-<th>student_num</th>
-<th>degree</th>
-<th>start_year</th>
-<th>end_year</th>
-<th>occupation</th>
-<th>phone_num</th>
-<th>student_email</th>
-<th>address</th>
-<th>city</th>
-<th>state</th>
-<th>post_code</th>
-<th>country</th>
-</tr>
-</thead>
-<tbody>
-<tr ng-repeat="stewdent in stewdents | filter:search">
-<td>{{stewdent.pk}}</td>
-<td>{{stewdent.first_name }}</td>
-<td>{{stewdent.last_name }}</td>
-<td>{{stewdent.gender }}</td>
-<td>{{stewdent.dob  | date:'dd-MM-yyyy'}}</td>
-<td>{{stewdent.university }}</td>
-<td>{{stewdent.student_num }}</td>
-<td>{{stewdent.degree }}</td>
-<td>{{stewdent.start_year  | date:'yyyy-MM-dd'}}</td>
-<td>{{stewdent.end_year  | date:'yyyy-MM-dd'}}</td>
-<td>{{stewdent.occupation }}</td>
-<td>{{stewdent.phone_num }}</td>
-<td>{{stewdent.student_email }}</td>
-<td>{{stewdent.address }}</td>
-<td>{{stewdent.city }}</td>
-<td>{{stewdent.state }}</td>
-<td>{{stewdent.post_code }}</td>
-<td>{{stewdent.country }}</td>
-
-<td>
-<button type="submit"
-ng-click="update(stewdent.id)"
-class="btn">
-<span class="glyphicon glyphicon-pencil"></span> Edit
-</button>
-<button type="submit"
-ng-click="delete(stewdent.id)"
-class="btn btn-danger">
-<span class="glyphicon glyphicon-remove-circle"></span> Delete
-</button>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<ul ng-repeat="zip in zipped">
-<li>{{ zip[0].first_name }}</li>
-</ul> -->
 
 
 <script type="text/ng-template" id="thankyou-modal.html">
-	Thank you for signing up for the Stew.  We'll be in contact soon.
-	<button type="submit" ng-click="ok()">Close</button>
+	<div id="modalText">
+		<p>
+			Thank you for signing up for the Stew.  We'll be in contact soon.
+		</p>
+		<br/>
+		<button class="btn-primary" type="submit" ng-click="ok()">Close</button>
+	</div>
 </script>

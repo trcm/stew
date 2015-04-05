@@ -114,7 +114,7 @@ angular.module('stew')
 		   };
 		 };
 
-		 $scope.open = function (id) {
+		 $scope.open = function () {
 		   var stewdentSave = $modal.open({
 		     templateUrl: 'thankyou-modal.html',
 		     controller: 'ThankyouModalController'
