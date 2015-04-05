@@ -17,28 +17,26 @@ angular.module('stew')
 		 $scope.skills = skills.data;
 
 		 $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
-		 console.log($scope.zipped);
+		 // console.log($scope.zipped);
 		 $scope.update = function (id) {
 		   $scope.stewdent = Stewdent.get({id: id});
 		   $scope.open(id);
 		 };
 
-		 console.log(token.getUser());
-		 if (token.authenticated) {
-		   console.log('auth');
-		 }
+		 // console.log(token.getUser());
+		 // if (token.authenticated) {
+		 //   console.log('auth');
+		 // }
 		 
-		 // TBD
 		 $scope.delete = function (id) {
-		   console.log(id);
-		   Stewdent.delete({id: id.pk},
-		   		   function () {
-		   		     $scope.stewdents = Stewdent.query();
-		   		   });
+		   // console.log(id);
+		   Stewdent.delete({id: id.pk}, function() {
+		     $scope.stewdents = Stewdent.query();
+		   });
 		 };
 
 		 $scope.logout = function() {
-		   console.log("logout");
+		   // console.log("logout");
 		   token.logout();
 		   $location.path('/stewdents');
 		 };

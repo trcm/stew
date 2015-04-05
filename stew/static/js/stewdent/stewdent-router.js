@@ -11,17 +11,17 @@ angular.module('stew')
 	  //   token.authenticated();
 	  //   $http.defaults.headers.common.Authorization = 'Token ' + token.get();
 	  // }],
-	  resolvedSkill: ['$http', function($http) {
-	    return $http.get('/skill/').success(function(data) {
-	      return data.data;
-	    });
-	  }],
-          resolvedStewdent: ['Stewdent', '$http', function (Stewdent, $http) {
-	    return $http.get('/stewdent/').success(function(data) {
-	      return data.data;
-	    });
-            // return Stewdent.query();
-          }]
+	  // resolvedSkill: ['$http', function($http) {
+	  //   return $http.get('/skill/').success(function(data) {
+	  //     return data.data;
+	  //   });
+	  // }],
+          // resolvedStewdent: ['Stewdent', '$http', function (Stewdent, $http) {
+	  //   return $http.get('/stewdent/').success(function(data) {
+	  //     return data.data;
+	  //   });
+          //   // return Stewdent.query();
+          // }]
         }
       });
   }]);

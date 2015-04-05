@@ -78,7 +78,7 @@ angular.module('stew',
 	    console.log(data.user);
 	    console.log(token.getUser());
 	    console.log(token.get());
-	    $location.path('/stewdents');
+	    $location.path('/admin');
 	  });
 	  console.log(data);
       	}).

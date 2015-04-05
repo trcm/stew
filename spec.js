@@ -188,8 +188,6 @@ describe('angularjs homepage', function() {
       console.log(data);
       return data;
     });
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/stewdents');
-    browser.get('/#/admin');
     expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/admin');
   });
 });

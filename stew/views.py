@@ -75,14 +75,14 @@ class AdminList(APIView):
     pass
 
 # @csrf_exempt
-class StewdentList(APIView):
+class StewdentCreate(APIView):
     # authentication_classes = (TokenAuthentication,)
     # permission_classes = (IsAuthenticated,)
 
-    def get(self, request, format=None):
-        stewdents = Stewdent.objects.all()
-        serializer = StewdentSerializer(stewdents, many=True)
-        return Response(serializer.data)
+    # def get(self, request, format=None):
+    #     stewdents = Stewdent.objects.all()
+    #     serializer = StewdentSerializer(stewdents, many=True)
+    #     return Response(serializer.data)
 
     def post(self, request, format=None):
 
@@ -124,6 +124,15 @@ class StewdentList(APIView):
         return JSONRenderer(serializer.errors)
     # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class StewdentList(APIView):
+
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    
+    def get(self, request, format=None):
+        stewdents = Stewdent.objects.all()
+        serializer = StewdentSerializer(stewdents, many=True)
+        return Response(serializer.data)
     
 # @csrf_exempt
 class StewdentDetail(APIView):

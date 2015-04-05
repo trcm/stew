@@ -2,13 +2,13 @@
 
 angular.module('stew')
   .controller('StewdentController',
-	      ['$scope', '$http', '$modal', '$location', 'resolvedStewdent', 'resolvedSkill', 'Stewdent', 'token', 'StewdentCreate', 'lodash',
-	       function ($scope, $http, $modal, $location, resolvedStewdent, resolvedSkill, Stewdent, token, StewdentCreate, lodash) {
+	      ['$scope', '$http', '$modal', '$location', 'Stewdent', 'token', 'StewdentCreate', 'lodash',
+	       function ($scope, $http, $modal, $location, Stewdent, token, StewdentCreate, lodash) {
 		 
 		 $scope.user = token.getUser();
 		 // Grab stewdents and skills from database, just for testing. Will comment out in deployment
-		 $scope.stewdents = resolvedStewdent.data;
-		 $scope.skills_resolve = resolvedSkill.data;
+		 // $scope.stewdents = resolvedStewdent.data;
+		 // $scope.skills_resolve = resolvedSkill.data;
 		 
 		 
 		 $scope.dobDateOptions = {
@@ -21,7 +21,7 @@ angular.module('stew')
 		 $scope.states = ['QLD', 'NSW', 'VIC', 'TAS', 'SA', 'WA', 'NT', 'ACT'];
 		 
 		 $scope.create = function () {
-		   $http.post('/stewdent/', $scope.stewdent).
+		   $http.post('/newStew/', $scope.stewdent).
 		     success(function(data) {
 		       $http.post('/skill/' + data.pk, $scope.skills).
 			 success(function(data) {
@@ -124,7 +124,7 @@ angular.module('stew')
 		 $scope.logout = function() {
 		   console.log("logout");
 		   token.logout();
-		   $location.path('/stewdents');
+		   $location.path('/login');
 		 };
 		 
 	       }])
