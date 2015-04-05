@@ -126,10 +126,11 @@
 			<label>Student Email</label><span class="form-required">*</span>
 			<input type="email" class="form-control" name="student_email"
 				ng-model="stewdent.student_email" ng-required="true"
-				ng-maxlength=100/>
+				ng-maxlength=100 ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"/>
 			<span style="color:red" ng-show="form.student_email.$dirty && form.student_email.$invalid">
 				<span ng-show="form.student_email.$error.invalid">Email is invalid.</span>
 				<span class="error" ng-show="form.student_email.$error.required">Email is required.</span>
+				<span class="error" ng-show="form.student_email.$error.pattern">Email is invalid.</span>
 				<span class="error" ng-show="form.student_email.$error.email">This email format is invalid!</span>
 				<span class="error" ng-show="form.student_email.$error.minlength">Must be at least characters.</span>
 				<span class="error" ng-show="form.student_email.$error.maxlength">Must be at most 100 characters.</span>
