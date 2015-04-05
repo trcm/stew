@@ -15,7 +15,7 @@ angular.module('stew')
 		   dateFormat: 'dd/mm/yy',
 		   maxDate: -1
 		 };
-		 $scope.errors = {};
+		 $scope.errors = [];
 		 
 		 $scope.genders = ['Male', 'Female'];
 		 $scope.states = ['QLD', 'NSW', 'VIC', 'TAS', 'SA', 'WA', 'NT', 'ACT'];
@@ -48,12 +48,11 @@ angular.module('stew')
 		       // this is the only time actual errors should be recieved
 		       // The error here should be an Integrity error, as thats the only error that should be
 		       // caused from model created.  Only if there is a duplicate email in the databse.
-		       alert(data.error);
 		       alert("Oooops, something is broken.  We're still in beta, please contact stewhelp@gmail.com");
-		       
-		       $scope.errors.push(data);
-		       alert(data);
-		       alert($scope.errors);
+		       for (var key in data) {
+			 $scope.errors.push(data[key][0]);
+			 
+		       }
 		     });
 		 };
 

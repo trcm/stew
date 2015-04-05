@@ -85,7 +85,7 @@ class StewdentCreate(APIView):
     #     return Response(serializer.data)
 
     def post(self, request, format=None):
-
+        prob = {}
         try:
             u = User.objects.create(username=request.data['student_email'])
         except Exception as e:
@@ -97,31 +97,39 @@ class StewdentCreate(APIView):
         print u.id
 
         serializer = StewdentSerializer(data=ret)
-
-        if serializer.is_valid(raise_exception=True):
+        print "serial"
+        if serializer.is_valid():
+            print 'valid'
             try:
+                ret = request.data
+                ret['user'] = u.id
+                print u.id
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
 
             except Exception as e:
                 print 'generic'
-                print repr(e)
                 error = {}
                 if "Duplicate entry" in e[1]:
                     error['email'] = "This email is already in use"
-
+                print serializers.errors
                 return Response(error, status=status.HTTP_400_BAD_REQUEST)
             except IntegrityError:
                 print 'e'
                 print e, type(e), repr(e)
                 # serializer.save()
+                print serializers.errors
                 return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
             print "ret"
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        print serializer.errors
-        print 'errrr'
+        else:
+            print 'err'
+            print serializer.errors
+            prob = serializer.errors.copy()
+            u.delete()
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         # print serializer.data
-        return JSONRenderer(serializer.errors)
     # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class StewdentList(APIView):
