@@ -73,14 +73,14 @@ angular.module('stew',
 	  token.store(data.token);
 	  
 	  $http.get('/auth/').success(function(data) {
-	    console.log(data);
+	    // console.log(data);
 	    token.storeUser(data.user);
-	    console.log(data.user);
-	    console.log(token.getUser());
-	    console.log(token.get());
+	    // console.log(data.user);
+	    // console.log(token.getUser());
+	    // console.log(token.get());
 	    $location.path('/admin');
 	  });
-	  console.log(data);
+	  // console.log(data);
       	}).
 	catch(function(data){
       	  // on incorrect username and password
@@ -111,7 +111,7 @@ angular.module('stew',
     var token = undefined;
     return {
       store: function(tok) {
-	console.log(localStorageService.get('token'));
+	// console.log(localStorageService.get('token'));
 	localStorageService.cookie.set('token', tok);
 	token = tok;
       },
@@ -126,10 +126,10 @@ angular.module('stew',
       },
       authenticated: function() {
 	if (!(localStorageService.cookie.get('token'))) {
-	  console.log(localStorageService.cookie.get('token'));
+	  // console.log(localStorageService.cookie.get('token'));
 	  $location.path("/login");
 	}
-	console.log(localStorageService.cookie.get('token'));
+	// console.log(localStorageService.cookie.get('token'));
 	// if (token == undefined) {
 	//   $location.path("/login");
 	// }
