@@ -80,17 +80,26 @@
 	</div>
         
 	<div class="row">
+		<!-- <div class="form-group col-xs-6 col-sm-6 col-md-6">
+		<label>Date of Commencement</label><span class="form-required">*</span>
+		<input type="text" class="form-control" placeholder="YYYY" name="start_year" ui-date="uniYearDateOptions" ui-date-format="yyyy" 
+		ng-model="stewdent.start_year" ng-required="true"/>
+		</div> -->
+		
 		<div class="form-group col-xs-6 col-sm-6 col-md-6">
 			<label>Date of Commencement</label><span class="form-required">*</span>
-			<input type="text" class="form-control" placeholder="DD/MM/YYYY" name="start_year" ui-date="start_yearDateOptions" ui-date-format="yy-mm-dd" 
+			<input type="text" class="form-control" placeholder="YYYY" ng-pattern="/\b\d{4}\b/" name="start_year" 
 				ng-model="stewdent.start_year" ng-required="true"/>
+			<span class="error" ng-show="form.start_year.$error.pattern">Year is invalid.</span>
 		</div>
 		
 		<div class="form-group col-xs-6 col-sm-6 col-md-6">
 			<label>Expected date of graduation</label><span class="form-required">*</span>
-			<input type="text" class="form-control" placeholder="DD/MM/YYYY" name="end_year" ui-date="end_yearDateOptions" ui-date-format="yy-mm-dd" 
+			<!-- <input type="text" class="form-control" placeholder="DD/MM/YYYY" name="end_year" ui-date="end_yearDateOptions" ui-date-format="yy-mm-dd" 
+			ng-model="stewdent.end_year" ng-required="true"/> -->
+			<input type="text" class="form-control" placeholder="YYYY" ng-pattern="/\b\d{4}\b/" name="end_year" 
 				ng-model="stewdent.end_year" ng-required="true"/>
-
+			<span class="error" ng-show="form.end.$error.pattern">Year is invalid.</span>
 		</div>
 	</div>
         
@@ -406,8 +415,8 @@
 
 	<div class="form-group">
 		<label>
-			You agree this information is correct and that you are currently enrolled in an Australian University
 			<input class="form-control" ng-required="true" type="checkbox">  
+			You agree this information is correct and that you are currently enrolled in an Australian University
 		</label>
 	</div>
 	

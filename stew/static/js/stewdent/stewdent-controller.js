@@ -10,17 +10,23 @@ angular.module('stew')
 		 // $scope.stewdents = resolvedStewdent.data;
 		 // $scope.skills_resolve = resolvedSkill.data;
 		 
-		 
 		 $scope.dobDateOptions = {
 		   dateFormat: 'dd/mm/yy',
 		   maxDate: -1
 		 };
+
+		 $scope.uniYearDateOptions = {
+		   dateFormat: 'yyyy'
+		 };
+		 
 		 $scope.errors = [];
 		 
 		 $scope.genders = ['Male', 'Female', 'Not specified'];
 		 $scope.states = ['QLD', 'NSW', 'VIC', 'TAS', 'SA', 'WA', 'NT', 'ACT'];
 		 
 		 $scope.create = function () {
+		   console.log($scope.stewdent.start_year);
+		   console.log($scope.stewdent.end_year);
 		   $http.post('/newStew/', $scope.stewdent).
 		     success(function(data) {
 		       $http.post('/skill/' + data.pk, $scope.skills).

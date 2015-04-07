@@ -108,6 +108,8 @@ angular.module('stew',
     //       alert(data.data.username);
     //     });
     // };
+
+    
   }])
   .factory('token', ['$http','$location', 'localStorageService', function($http, $location, localStorageService) {
     var token = undefined;
