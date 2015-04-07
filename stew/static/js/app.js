@@ -63,6 +63,8 @@ angular.module('stew',
       return {username: $scope.username, password: $scope.password};
     };
 
+    $scope.errror = "";
+    
     $scope.loginBtnTxt = "Login";
     
     $scope.login = function(){
@@ -94,9 +96,12 @@ angular.module('stew',
       	}).
 	catch(function(data){
       	  // on incorrect username and password
-	  console.log(data);
-      	  alert(data.data.detail);
-      	  alert(data);
+	  usSpinnerService.stop('spinner-1');
+	  $scope.error = "Access Denied";
+	  $scope.loginBtnTxt = "Login";
+	  // console.log(data);
+      	  // alert(data.data.detail);
+      	  // alert(data);
 	});
     };
 
