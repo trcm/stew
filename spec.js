@@ -8,6 +8,7 @@ describe('angularjs homepage', function() {
   it('should create a stewdent object 1', function() {
     console.log('start');
     browser.get('/#/stewdents');
+    // browser.get('http://www.tommidson.com/#/stewdents');
     // element(by.id('createButton')).click();
     element(by.model('stewdent.first_name')).sendKeys('tom');
     element(by.model('stewdent.last_name')).sendKeys('stew');
@@ -46,6 +47,7 @@ describe('angularjs homepage', function() {
   });
 
   it('should create a stewdent object', function() {
+    // browser.get('http://www.tommidson.com/#/stewdents');
     browser.get('/#/stewdents');
     // element(by.id('createButton')).click();
     element(by.model('stewdent.first_name')).sendKeys('sam');
@@ -91,6 +93,7 @@ describe('angularjs homepage', function() {
 
   it("should cause the form to be invalid with an invalid email adress", function() {
     
+    // browser.get('http://www.tommidson.com/#/stewdents');
     browser.get('/#/stewdents');
     // element(by.id('createButton')).click();
     element(by.model('stewdent.first_name')).sendKeys('tom');
@@ -152,6 +155,7 @@ describe('angularjs homepage', function() {
   });
 
   it("Should only need the required fields to create the objects", function() {
+    // browser.get('http://www.tommidson.com/#/stewdents');
     browser.get('/#/stewdents');
     
     element(by.model('stewdent.first_name')).sendKeys('tom');

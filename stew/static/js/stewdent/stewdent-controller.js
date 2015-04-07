@@ -25,6 +25,7 @@ angular.module('stew')
 		 $scope.states = ['QLD', 'NSW', 'VIC', 'TAS', 'SA', 'WA', 'NT', 'ACT'];
 		 
 		 $scope.create = function () {
+		   $scope.errors = [];
 		   console.log($scope.stewdent.start_year);
 		   console.log($scope.stewdent.end_year);
 		   $http.post('/newStew/', $scope.stewdent).

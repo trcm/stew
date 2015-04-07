@@ -90,7 +90,9 @@
 			<label>Date of Commencement</label><span class="form-required">*</span>
 			<input type="text" class="form-control" placeholder="YYYY" ng-pattern="/\b\d{4}\b/" name="start_year" 
 				ng-model="stewdent.start_year" ng-required="true"/>
-			<span class="error" ng-show="form.start_year.$error.pattern">Year is invalid.</span>
+			<span style="color: red" ng-show="form.start_year.$dirty && form.start_year.$invalid">
+				<span class="error" ng-show="form.start_year.$error.pattern">Start year is invalid.</span>
+			</span>
 		</div>
 		
 		<div class="form-group col-xs-6 col-sm-6 col-md-6">
@@ -98,8 +100,11 @@
 			<!-- <input type="text" class="form-control" placeholder="DD/MM/YYYY" name="end_year" ui-date="end_yearDateOptions" ui-date-format="yy-mm-dd" 
 			ng-model="stewdent.end_year" ng-required="true"/> -->
 			<input type="text" class="form-control" placeholder="YYYY" ng-pattern="/\b\d{4}\b/" name="end_year" 
-				ng-model="stewdent.end_year" ng-required="true"/>
-			<span class="error" ng-show="form.end.$error.pattern">Year is invalid.</span>
+				ng-model="stewdent.end_year"  ng-required="true" invalid-year="{{ stewdent.start_year }}" />
+			<span style="color: red" ng-show="form.end_year.$invalid">
+				<span class="error" ng-show="form.end_year.$error.pattern">End year is invalid.</span>
+				<span class="error" ng-show="form.end_year.$error.invalidYear">Graduation year cannot be earlier than Commencement.</span>
+			</span>
 		</div>
 	</div>
         
@@ -414,10 +419,10 @@
 	</div> -->
 
 	<div class="form-group">
-		<label>
-			<input class="form-control" ng-required="true" type="checkbox">  
+		<label for="agree">
 			You agree this information is correct and that you are currently enrolled in an Australian University
 		</label>
+		<input name="agree" class="form-control" ng-required="true" type="checkbox">  
 	</div>
 	
 	<div>

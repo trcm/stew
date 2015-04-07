@@ -36,7 +36,7 @@ class Stewdent(models.Model):
     created       = models.DateTimeField(auto_now=True)
     first_name    = models.CharField(max_length=100, blank=False)
     last_name     = models.CharField(max_length=100, blank=False)
-    gender        = models.CharField(max_length=10, choices=GENDERS, null=True)
+    gender        = models.CharField(max_length=30, choices=GENDERS, null=True)
     dob           = models.DateField(blank=False)
     university    = models.CharField(max_length=100, blank=False)
     student_num   = models.CharField(max_length=50)

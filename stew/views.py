@@ -112,6 +112,7 @@ class StewdentCreate(APIView):
                 error = {}
                 if "Duplicate entry" in e[1]:
                     error['email'] = "This email is already in use"
+                print e
                 print serializers.errors
                 return Response(error, status=status.HTTP_400_BAD_REQUEST)
             except IntegrityError:

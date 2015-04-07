@@ -143,4 +143,26 @@ angular.module('stew',
 	localStorageService.cookie.clearAll();
       }
     };
-  }]);
+  }])
+  .directive('invalidYear', function() {
+    return {
+      require: 'ngModel',
+      link: function(scope, elm, attrs, ctrl) {
+	ctrl.$parsers.unshift(function(viewValue) {
+	  console.log(attrs.invalidYear);
+	  var val = parseInt(viewValue);
+          if (val > attrs.invalidYear) {
+	    console.log('valid');
+            ctrl.$setValidity('invalidYear', true);
+            return viewValue;
+          } else {
+            // it is invalid, return undefined (no model update)
+	    console.log("invalid");
+            ctrl.$setValidity('invalidYear', false);
+            return undefined;
+          }
+	});
+      }
+    };
+  }
+	    );
