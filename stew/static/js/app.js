@@ -6,6 +6,7 @@ angular.module('stew',
 		'ui.bootstrap',
 		'ui.date',
 		'smart-table',
+		'angularSpinner',
 		'ngLodash'])
   .config(['$resourceProvider', function($resourceProvider){
     $resourceProvider.stripTrailingSlashes = false;
@@ -48,7 +49,7 @@ angular.module('stew',
       })
     };
   }).
-  controller('authController', ['$scope', '$location', '$http', 'api', 'token', function($scope, $location, $http, api, token) {
+  controller('authController', ['$scope', '$location', '$http', 'api', 'token', 'usSpinnerService', function($scope, $location, $http, api, token, usSpinnerService) {
     // Angular does not detect auto-fill or auto-complete. If the browser
     // autofills "username", Angular will be unaware of this and think
     // the $scope.username is blank. To workaround this we use the
@@ -56,6 +57,7 @@ angular.module('stew',
     // $('#id_auth_form input').checkAndTriggerAutoFillEvent();
 
     $scope.user = token.getUser();
+    usSpinnerService.stop('spinner-1');
     
     $scope.getCredentials = function(){
       return {username: $scope.username, password: $scope.password};
@@ -65,6 +67,7 @@ angular.module('stew',
     
     $scope.login = function(){
       $scope.loginBtnTxt = "Logging in...";
+      usSpinnerService.spin('spinner-1');
       // $http.post('/api-token-auth/', $scope.getCredentials )
       // 	.success(function(data) {
       // 	  console.log(data);
