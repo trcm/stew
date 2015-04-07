@@ -17,7 +17,7 @@ angular.module('stew')
 		 };
 		 $scope.errors = [];
 		 
-		 $scope.genders = ['Male', 'Female'];
+		 $scope.genders = ['Male', 'Female', 'Not specified'];
 		 $scope.states = ['QLD', 'NSW', 'VIC', 'TAS', 'SA', 'WA', 'NT', 'ACT'];
 		 
 		 $scope.create = function () {

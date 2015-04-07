@@ -21,7 +21,8 @@ class StewdentSerializer(serializers.Serializer):
     )
     GENDERS = (
         ('Male', 'Male'),
-        ('Female', 'Female')
+        ('Female', 'Female'),
+        ('Not specified', 'Not specified')
     )
 
     pk = serializers.IntegerField(read_only=True)

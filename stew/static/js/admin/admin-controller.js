@@ -17,6 +17,7 @@ angular.module('stew')
 		 $scope.skills = skills.data;
 
 		 $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
+		 console.log($scope.zipped);
 		 // console.log($scope.zipped);
 		 $scope.update = function (id) {
 		   $scope.stewdent = Stewdent.get({id: id});

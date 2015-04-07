@@ -56,8 +56,10 @@ angular.module('stew',
       return {username: $scope.username, password: $scope.password};
     };
 
+    $scope.loginBtnTxt = "Login";
+    
     $scope.login = function(){
-
+      $scope.loginBtnTxt = "Logging in...";
       // $http.post('/api-token-auth/', $scope.getCredentials )
       // 	.success(function(data) {
       // 	  console.log(data);

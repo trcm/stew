@@ -6,14 +6,12 @@
 	ng-submit="create()">
 	
 	<div class="row">
-		<img id="formHeader" alt="" src="static/img/form_header.png"/>
+		<img id="formHeader" alt="" src="static/img/logoVFd.png"/>
 	</div>
 	
 	<h3>General Information</h3>
 
 	<div class="row">
-
-		
 		<div class="form-group col-xs-7 col-sm-7 col-md-7">
 			<label>Given Name/s</label><span class="form-required">*</span>
 		
@@ -36,27 +34,23 @@
 	</div>
         
 	<div class="row">
-		<div class="col-xs-3 col-sm-3 col-md-3">
+		<div class="form-group col-xs-3 col-sm-3 col-md-3">
 			<label for="gender">Gender</label>
 			<select class="form-control" ng-init="stewdent.gender = genders[0]" id="" name="gender" ng-model="stewdent.gender" ng-options="opt for opt in genders" required>
 			</select>
 			
 		</div>
 		
-		<div class="col-xs-3 col-sm-3 col-md-3">
+		<div class="form-group col-xs-3 col-sm-3 col-md-3">
 			<label for="dob">DOB</label><span class="form-required">*</span>
 			<input type="text" placeholder="DD/MM/YYYY" class="form-control" name="dob" ui-date="dobDateOptions" ui-date-format="yy-mm-dd" 
 				ng-model="stewdent.dob" ng-required="true" />
 		</div>
 	</div>
-
-	<!-- 	<h3>Study</h3> -->
 	
 	<div class="row">
-		
 		<div class="form-group col-xs-7 col-sm-7 col-md-7">
 			<label>University</label><span class="form-required">*</span>
-			
 			<input type="text" class="form-control" name="university"
 				ng-model="stewdent.university" ng-required="true"
 				ng-maxlength=100/>
@@ -64,24 +58,23 @@
 			<span class="error" ng-show="form.university.$error.maxlength">Must be at most 100 characters.</span>
 		</div>
 		
-		<div class="form-group col-xs-5 col-sm-5 col-md-5">
-			<label>Student Number</label>
-			
-			<input type="text" class="form-control" name="student_num"
-				ng-model="stewdent.student_num" ng-required="false"
-				ng-minlength=0 ng-maxlength=50/>
-			<span class="error" ng-show="form.student_num.$error.minlength">Must be at least 0 characters.</span>
-			<span class="error" ng-show="form.student_num.$error.maxlength">Must be at most 50 characters.</span>
-		</div>
+		<!-- <div class="form-group col-xs-5 col-sm-5 col-md-5">
+		<label>Student Number</label>
+		<input type="text" class="form-control" name="student_num"
+		ng-model="stewdent.student_num" ng-required="false"
+		ng-minlength=0 ng-maxlength=50/>
+		<span class="error" ng-show="form.student_num.$error.minlength">Must be at least 0 characters.</span>
+		<span class="error" ng-show="form.student_num.$error.maxlength">Must be at most 50 characters.</span>
+		</div> -->
 		
 	</div>
         
 	<div class="form-group">
-		<label>Degree (including Majors)</label><span class="form-required">*</span>
+		<label>Degree/s (including Majors)</label><span class="form-required">*</span>
 		
 		<input type="text" class="form-control" name="degree"
 			ng-model="stewdent.degree" ng-required="true"
-			ng-maxlength=200/>
+			ng-maxlength=200 placeholder="B Engineering (Mechanical)"/>
 		<span class="error" ng-show="form.degree.$error.minlength">Must be at least  characters.</span>
 		<span class="error" ng-show="form.degree.$error.maxlength">Must be at most 200 characters.</span>
 	</div>
@@ -103,14 +96,14 @@
         
 	<div class="row">
 
-		<div class="form-group col-xs-3 col-sm-3 col-md-3">
-			<label>Occupation</label>
-			<input type="text" class="form-control" name="occupation"
-				ng-model="stewdent.occupation" ng-required="false"
-				ng-minlength=0 ng-maxlength=100/>
-			<span class="error" ng-show="form.occupation.$error.minlength">Must be at least 0 characters.</span>
-			<span class="error" ng-show="form.occupation.$error.maxlength">Must be at most 100 characters.</span>
-		</div>
+		<!-- <div class="form-group col-xs-3 col-sm-3 col-md-3">
+		<label>Occupation</label>
+		<input type="text" class="form-control" name="occupation"
+		ng-model="stewdent.occupation" ng-required="false"
+		ng-minlength=0 ng-maxlength=100/>
+		<span class="error" ng-show="form.occupation.$error.minlength">Must be at least 0 characters.</span>
+		<span class="error" ng-show="form.occupation.$error.maxlength">Must be at most 100 characters.</span>
+		</div> -->
 		
 		<div class="form-group col-xs-3 col-sm-3 col-md-3">
 			<label>Phone Number</label>
@@ -123,7 +116,7 @@
 		</div>
 		
 		<div class="form-group col-xs-6 col-sm-6 col-md-6">
-			<label>Student Email</label><span class="form-required">*</span>
+			<label>Email</label><span class="form-required">*</span>
 			<input type="email" class="form-control" name="student_email"
 				ng-model="stewdent.student_email" ng-required="true"
 				ng-maxlength=100 ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"/>
@@ -139,16 +132,16 @@
 		
 	</div>
         
-	<div class="form-group">
-		<label>Street Adddress</label>
-		
-		<input type="text" class="form-control" name="address"
-			ng-model="stewdent.address" ng-required="false"
-			ng-maxlength=200/>
-		<span class="error" ng-show="form.address.$error.minlength">Must be at least  characters.</span>
-		<span class="error" ng-show="form.address.$error.maxlength">Must be at most 200 characters.</span>
+	<!-- <div class="form-group">
+	<label>Street Adddress</label>
+	
+	<input type="text" class="form-control" name="address"
+	ng-model="stewdent.address" ng-required="false"
+	ng-maxlength=200/>
+	<span class="error" ng-show="form.address.$error.minlength">Must be at least  characters.</span>
+	<span class="error" ng-show="form.address.$error.maxlength">Must be at most 200 characters.</span>
 	</div>
-
+	-->
 	<div class="row">
 		<div class="form-group col-xs-6 col-sm-6 col-md-6">
 			<label>City</label><span class="form-required">*</span>
@@ -182,9 +175,8 @@
 	</div>
 
 	<div class="row">
-		
 		<div class="form-group col-xs-4 col-sm-4 col-md-4">
-			<label>Country</label><span class="form-required">*</span>
+			<label>Country of Residence</label><span class="form-required">*</span>
 			
 			<input type="text" class="form-control" name="country"
 				ng-model="stewdent.country" ng-required="true"
@@ -192,10 +184,9 @@
 			<span class="error" ng-show="form.country.$error.minlength">Must be at least  characters.</span>
 			<span class="error" ng-show="form.country.$error.maxlength">Must be at most 100 characters.</span>
 		</div>
-		
 	</div>
         
-	<h1>Skills</h1>
+	<h3>Skills</h3>
 
 	<p>
 		This section is the most vital to help us to find exciting and career developing projects - Projects within the industries you are heading towards or just want to explore. Please list all the disciplines you feel skillful in below. We need to know about the skills you have developed through uni, self teaching, your job or any other aspect of your life. You don't need professional experience with these skills - that's what we want to help you find. Remember to be specific about each individual discipline.
@@ -413,6 +404,13 @@
 	</textarea>
 	</div> -->
 
+	<div class="form-group">
+		<label>
+			You agree this information is correct and that you are currently enrolled in an Australian University
+			<input class="form-control" ng-required="true" type="checkbox">  
+		</label>
+	</div>
+	
 	<div>
 		<ul ng-repeat="error in errors">
 			<li class="bg-danger"><p class="bg-danger">{{ error }}</p></li>

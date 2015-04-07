@@ -27,7 +27,9 @@ class Stewdent(models.Model):
 
     GENDERS = (
         ('Male', 'Male'),
-        ('Female', 'Female')
+        ('Female', 'Female'),
+        ('Not specified', 'Not specified')
+        
     )
 
     user          = models.OneToOneField(User, null=True)

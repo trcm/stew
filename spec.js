@@ -7,7 +7,7 @@ describe('angularjs homepage', function() {
 
   it('should create a stewdent object 1', function() {
     console.log('start');
-    browser.get('http://www.tommidson.com/#/stewdents');
+    browser.get('/#/stewdents');
     // element(by.id('createButton')).click();
     element(by.model('stewdent.first_name')).sendKeys('tom');
     element(by.model('stewdent.last_name')).sendKeys('stew');
