@@ -8,7 +8,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = patterns('',
                        url(r'^login/$', views.LoginView.as_view()),
-                       url(r'^api-token-auth/$', obtain_auth_token),
+                       url(r'^api-token-auth/', obtain_auth_token),
                        url(r'^auth/', views.AuthView.as_view(), name='auth'),
                        url(r'^newStew/$', views.StewdentCreate.as_view(), name='stewdent-create'),
                        url(r'^stewdent/$', views.StewdentList.as_view(), name='stewdent-list'),

@@ -52,6 +52,8 @@ angular.module('stew',
     // autofill-event polyfill [4][5]
     // $('#id_auth_form input').checkAndTriggerAutoFillEvent();
 
+    $scope.user = token.getUser();
+    
     $scope.getCredentials = function(){
       return {username: $scope.username, password: $scope.password};
     };
@@ -86,6 +88,7 @@ angular.module('stew',
       	}).
 	catch(function(data){
       	  // on incorrect username and password
+	  console.log(data);
       	  alert(data.data.detail);
       	  alert(data);
 	});
@@ -93,6 +96,7 @@ angular.module('stew',
 
     $scope.logout = function(){
       $scope.user = undefined;
+      token.logout();
       // api.auth.logout(function(){
       // 	$scope.user = undefined;
       // });
@@ -151,7 +155,7 @@ angular.module('stew',
 	ctrl.$parsers.unshift(function(viewValue) {
 	  console.log(attrs.invalidYear);
 	  var val = parseInt(viewValue);
-          if (val > attrs.invalidYear) {
+          if (val >= attrs.invalidYear) {
 	    console.log('valid');
             ctrl.$setValidity('invalidYear', true);
             return viewValue;

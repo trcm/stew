@@ -17,6 +17,7 @@
 
 		<script src="{{ STATIC_URL }}js/libs/jquery/dist/jquery.js"></script>
 		<script src="{{ STATIC_URL }}js/libs/jquery-ui/jquery-ui.js"></script>
+		<script src="{{ STATIC_URL }}js/libs/bootstrap/dist/js/bootstrap.js"></script>
 		<script src="{{ STATIC_URL }}js/libs/lodash/dist/lodash.js"></script>
 		<script src="{{ STATIC_URL }}js/libs/angular/angular.js"></script>
 		<script src="{{ STATIC_URL }}js/libs/angular-resource/angular-resource.js"></script>
