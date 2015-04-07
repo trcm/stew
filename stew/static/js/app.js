@@ -7,6 +7,9 @@ angular.module('stew',
 		'ui.date',
 		'smart-table',
 		'ngLodash'])
+  .config(['$resourceProvider', function($resourceProvider){
+    $resourceProvider.stripTrailingSlashes = false;
+  }])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/login', {
@@ -168,5 +171,4 @@ angular.module('stew',
 	});
       }
     };
-  }
-	    );
+  });
