@@ -6,7 +6,6 @@ describe('angularjs homepage', function() {
   });
 
   it('should create a stewdent object 1', function() {
-    console.log('start');
     browser.get('/#/stewdents');
     // browser.get('http://www.tommidson.com/#/stewdents');
     // element(by.id('createButton')).click();
@@ -145,7 +144,7 @@ describe('angularjs homepage', function() {
     // 	      clickable = true;
     //         },
     //         function() {
-	      
+    
     // 	    }
     //       )
     //     ;
@@ -181,6 +180,36 @@ describe('angularjs homepage', function() {
     element(by.model('skills.languages_spoken')).sendKeys('languages');
     element(by.id('stewdentSubmit')).click();
   });
+  
+  it("Should not accent a grad date before a date year", function() {
+    // browser.get('http://www.tommidson.com/#/stewdents');
+    browser.get('/#/stewdents');
+    
+    element(by.model('stewdent.first_name')).sendKeys('tom');
+    element(by.model('stewdent.last_name')).sendKeys('tom');
+    element(by.model('stewdent.dob')).click();
+    element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
+    // element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[2]/td[3]/a[@class='ui-state-default']")).click();
+    element(by.model('stewdent.university')).sendKeys('university');
+    element(by.model('stewdent.degree')).sendKeys('degree');
+    element(by.model('stewdent.start_year')).sendKeys("2015");
+    element(by.model('stewdent.end_year')).sendKeys("2013");
+    // element(by.model('stewdent.start_year')).click();
+    // element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[2]/td[3]/a[@class='ui-state-default']")).click();
+    // element(by.model('stewdent.end_year')).click();
+    // element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[2]/td[3]/a[@class='ui-state-default']")).click();
+    element(by.model('stewdent.student_email')).sendKeys('test@required.com');
+    element(by.model('stewdent.city')).sendKeys('city');
+    element(by.model('stewdent.state')).click();
+    element(by.model('stewdent.country')).sendKeys('country');
+    
+    element(by.model('skills.computer_based')).sendKeys('computer skillz');
+    element(by.model('skills.software_skills')).sendKeys('languages');
+    element(by.model('skills.languages_spoken')).sendKeys('languages');
+    var clickable = false;
+    var submit = element(by.id('stewdentSubmit'));
+    expect(submit.isEnabled()).toBe(false);
+  });
 
   it("should log in the admin user", function() {
     browser.get('/#/admin');
@@ -194,5 +223,24 @@ describe('angularjs homepage', function() {
       return data;
     });
     expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/admin');
+    element(by.id('logoutBtn')).click();
   });
+
+  // it("should delete all the users in the database made by testing", function() {
+  //   browser.get('/#/admin');
+  //   element(by.model('username')).sendKeys('admin');
+  //   element(by.model('password')).sendKeys('admin');
+    
+  //   element(by.id('loginBtn')).click();
+    
+  //   var users = element.all(by.id("deleteBtn"));
+  //   expect(users.count()).toEqual(3);
+
+  //   element.all(by.id("deleteBtn")).each(function(element) {
+  //     console.log('del');
+  //     element.click();
+  //   });
+    
+  // });
+  
 });

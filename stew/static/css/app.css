@@ -4,6 +4,14 @@ body {
 	/*   background-color: #ECF0F1; */
 }
 
+.navbar {
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	
+}
+
 .form-required {
 	font-size: 110%; 
 	color: red;
