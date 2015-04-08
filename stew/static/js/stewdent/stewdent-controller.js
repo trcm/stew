@@ -2,8 +2,8 @@
 
 angular.module('stew')
   .controller('StewdentController',
-	      ['$scope', '$http', '$modal', '$location', 'Stewdent', 'token', 'StewdentCreate', 'lodash',
-	       function ($scope, $http, $modal, $location, Stewdent, token, StewdentCreate, lodash) {
+	      ['$scope', '$http', '$modal', '$location', 'Stewdent', 'token', 'StewdentCreate', 'usSpinnerService', 'lodash',
+	       function ($scope, $http, $modal, $location, Stewdent, token, StewdentCreate, usSpinnerService, lodash) {
 		 
 		 $scope.user = token.getUser();
 		 // Grab stewdents and skills from database, just for testing. Will comment out in deployment
@@ -25,6 +25,7 @@ angular.module('stew')
 		 $scope.states = ['QLD', 'NSW', 'VIC', 'TAS', 'SA', 'WA', 'NT', 'ACT'];
 		 
 		 $scope.create = function () {
+		   usSpinnerService.spin('spinner-1');
 		   $scope.errors = [];
 		   console.log($scope.stewdent.start_year);
 		   console.log($scope.stewdent.end_year);
@@ -44,6 +45,7 @@ angular.module('stew')
 			   //     console.log(data);
 			   //   });
 			   $scope.clear();
+			   usSpinnerService.stop('spinner-1');
 			   $scope.open();
 			 })
 			 .error(function(data) {
