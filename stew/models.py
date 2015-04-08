@@ -40,7 +40,7 @@ class Stewdent(models.Model):
     dob           = models.DateField(blank=False)
     university    = models.CharField(max_length=100, blank=False)
     student_num   = models.CharField(max_length=50)
-    degree        = models.CharField(max_length=50)
+    degree        = models.CharField(max_length=500)
     # start_year    = models.DateField(blank=False)
     # end_year      = models.DateField(blank=False)
     start_year    = models.CharField(max_length=4, blank=False)
