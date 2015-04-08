@@ -31,7 +31,7 @@ class StewdentSerializer(serializers.Serializer):
     last_name     = serializers.CharField(max_length=100, required=True)
     dob           = serializers.DateField(input_formats=['iso-8601'])
     # dob         = serializers.DateTimeField(required=True)
-    university    = serializers.CharField(max_length=100, required=True)
+    university    = serializers.CharField(max_length=300, required=True)
     student_num   = serializers.CharField(max_length=50, required=False)
     degree        = serializers.CharField(max_length=500, required=True)
     # start_year  = serializers.DateField(required=True)
