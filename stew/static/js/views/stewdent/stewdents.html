@@ -136,7 +136,7 @@
 		<div class="form-group col-xs-6 col-sm-6 col-md-6">
 			<label>Email</label><span class="form-required">*</span>
 			<input type="email" class="form-control" name="student_email"
-				ng-model="stewdent.student_email" ng-required="true"
+				ng-model="stewdent.email" ng-required="true"
 				ng-maxlength=100 ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"/>
 			<span style="color:red" ng-show="form.student_email.$dirty && form.student_email.$invalid">
 				<span ng-show="form.student_email.$error.invalid">Email is invalid.</span>
@@ -232,7 +232,9 @@
 			<strong>Research/Analysis</strong> - Market Research, User testing, General Research, Database analysis, Data collection<br/>
 		</p>
 		
-		<textarea cols="30" class="form-control" id="" name="" rows="10" ng-model="skills.computer_based" ng-required="true"></textarea>
+		<textarea cols="30" class="form-control" id="" name="" rows="10" ng-model="skills.computer_based" ng-required="true"
+			ng-maxlength=3000 ></textarea>
+		<span class="error" ng-show="form.computer_based.$error.maxlength">Must be at most 100 characters.</span>
 	</div>
 
 	
@@ -245,8 +247,9 @@
 		</p>
 		
 		<textarea rows="10" columns="30" class="form-control" name="personal_skils" type="text" value=""
-			ng-model="skills.personal" ng-required="false"
+			ng-model="skills.personal" ng-required="false" ng-maxlength=3000
 			></textarea>
+		<span class="error" ng-show="form.personal_skils.$error.maxlength">Must be at most 3000 characters.</span>
 	</div>
 	
 	<div class="form-group">
@@ -262,8 +265,9 @@
 			Please list the software packages you have the most expertise in from most proficient to least. Don't worry if you don't cut code for Google or the best you've got is MS Office.
 		</p>
 		<textarea rows="10" columns="30" class="form-control" name="software_skills" type="text" value=""
-			ng-model="skills.software_skills" ng-required="false"
+			ng-model="skills.software_skills" ng-required="false" ng-maxlength=3000
 			/></textarea>
+		<span class="error" ng-show="form.software_skills.$error.maxlength">Must be at most 3000 characters.</span>
 	</div>
 
 	<div class="form-group">
@@ -273,23 +277,23 @@
 			/>
 	</div>
 	
-	<p> Please provide your smartphone model and tablet if you own one.</p>
+	<!-- <p> Please provide your smartphone model and tablet if you own one.</p>
 	<div class="row">	
-		<div class="form-group col-xs-6 col-sm-6 col-md-6">
-			<label for="smartphone">Smartphone</label>
-			<input class="form-control" name="smartphone" type="text" value=""
-				ng-model="skills.smartphone" ng-required="false"
-				/>
-		</div>
-
-		<div class="form-group col-cs-6 col-sm-6 col-md-6">
-			<label for="tablet">Tablet</label>
-			<input class="form-control" name="tablet" type="text" value=""
-				ng-model="skills.tablet" ng-required="false"
-				/>
-		</div>
-
+	<div class="form-group col-xs-6 col-sm-6 col-md-6">
+	<label for="smartphone">Smartphone</label>
+	<input class="form-control" name="smartphone" type="text" value=""
+	ng-model="skills.smartphone" ng-required="false"
+	/>
 	</div>
+
+	<div class="form-group col-cs-6 col-sm-6 col-md-6">
+	<label for="tablet">Tablet</label>
+	<input class="form-control" name="tablet" type="text" value=""
+	ng-model="skills.tablet" ng-required="false"
+	/>
+	</div>
+
+	</div> -->
 
 	
 	
