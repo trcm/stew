@@ -7,11 +7,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/#/stewdents">Home</a>
+			<a class="navbar-brand" href="http://www.thestew.com.au">Home</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div collapse="isCollapsed" class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
+				<li ng-show="user"><a href="/#/Form">Admin</a></li>
 				<li ng-show="user"><a href="/#/admin">Admin</a></li>
 				<li ng-show="user"><a id="logoutBtn" ng-click="logout()">Logout</a></li>
 				<li ng-hide="user"><a href="/#/login">Admin</a></li>
