@@ -68,6 +68,8 @@ angular.module('stew')
 		   });
 
 		   stewEdit.result.then(function(data) {
+		     // makes sure that the stewdent serialier isn't
+		     // trying to serialize anything it shouldn't
 		     delete data[0].skills;
 		     delete data[0].tablet;
 		     delete data[0].smartphone;
