@@ -87,7 +87,7 @@ class StewdentCreate(APIView):
     def post(self, request, format=None):
         prob = {}
         try:
-            u = User.objects.create(username=request.data['student_email'])
+            u = User.objects.create(username=request.data['email'])
         except Exception as e:
             print e
             prob = {'error' : 'An account for this email as already been created.'}
@@ -160,15 +160,18 @@ class StewdentDetail(APIView):
         # return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        print "detail"
-        stewdent = getStewdent(pk)
-        serializer = StewdentSerializer(stewdent, data=request.data)
-        print serializer.data
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=200)
-            # return Response(serializer.data)
-        return Response(serializer.errors, status=400)
+        print request.data
+        try:
+            stewdent = getStewdent(pk)
+            serializer = StewdentSerializer(stewdent, data=request.data)
+            print serializer.initial_data
+            if serializer.is_valid():
+                serializer.save()
+                return Response(status=200)
+            print serializer.errors
+            return Response(serializer.errors, status=400)
+        except Exception as e:
+            print e
 
     def delete(self, request, pk, format=None):
         print "delete"
@@ -235,6 +238,20 @@ pk (Integer): integer of the stewdent object this skill object will be associate
             print "other"
             print e
             return Response(status=400)
+
+    def put(self, request, pk, format=None):
+        print request.data
+        try:
+            skill = getSkill(pk)
+            serializer = SkillSerializer(skill, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(status=200)
+                # return Response(serializer.data)
+            print serializer.errors
+            return Response(serializer.errors, status=400)
+        except Exception as e:
+            print e
 
 
 class WorkList(APIView):

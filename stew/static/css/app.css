@@ -12,6 +12,8 @@ body {
 	
 }
 
+
+
 .form-required {
 	font-size: 110%; 
 	color: red;
@@ -25,4 +27,28 @@ body {
 #modalText {
 	margin: 20px 20px 20px 20px;
 	padding: 10px 10px 10px 10px;
+}
+
+/* admin */
+#infoList {
+	padding-top:20px;
+	list-style: none;
+}
+
+#infoModal {
+	margin: 20px 20px 20px 20px;
+}
+
+.rowName{
+	font-weight: bold;
+}
+
+#adminModalClose {
+	margin-left:auto;
+	margin-right: auto;
+	width: 100px;
+}
+
+#editModalBody {
+	padding: 20px;
 }

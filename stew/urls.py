@@ -20,5 +20,4 @@ urlpatterns = patterns('',
                        url(r'^$', views.home, name='index'),
                        # url(r'.*$', views.home, name='index')
 )
-
 urlpatterns = format_suffix_patterns(urlpatterns)

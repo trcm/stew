@@ -10,7 +10,7 @@ angular.module('stew')
     });
   }])
   .factory('Skill', ['$resource', function($resource) {
-    return $resource('/skills/:id', {}, {
+    return $resource('/skill/:id', {}, {
       'query' : {method: 'GET', isArray:true},
       'get' : {method: 'GET'}
     });

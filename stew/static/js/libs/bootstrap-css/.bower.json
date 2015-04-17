@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-css",
-  "version": "3.0.0",
+  "version": "3.2.0",
   "keywords": [
     "twitter",
     "bootstrap",
@@ -27,14 +27,14 @@
     }
   ],
   "readme": "Bootstrap 3 CSS Library",
-  "_id": "bootstrap-css@3.0.0",
-  "_release": "3.0.0",
+  "_id": "bootstrap-css@3.1.1",
+  "_release": "3.2.0",
   "_resolution": {
     "type": "version",
-    "tag": "3.0.0",
-    "commit": "5ef81f33a9e4e5b107b7af526da498c16c89e558"
+    "tag": "3.2.0",
+    "commit": "cd2cdde369cf18b67b46dff73984670422da4e41"
   },
   "_source": "git://github.com/jozefizso/bower-bootstrap-css.git",
-  "_target": "~3.0.0",
+  "_target": "*",
   "_originalSource": "bootstrap-css"
 }
