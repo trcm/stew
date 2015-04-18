@@ -17,10 +17,11 @@
 		
 			<input type="text" class="form-control" name="first_name"
 				ng-model="stewdent.first_name" ng-required="true"
-				ng-maxlength=100
+				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
 				/>
 			<span class="error" ng-show="form.first_name.$error.minlength">Must be at least 0 characters.</span>
 			<span class="error" ng-show="form.first_name.$error.maxlength">Must be at most 100 characters.</span>
+			<span class="error" ng-show="form.first_name.$error.pattern">Must only contain alphanumeric characters.</span>
 		</div>
 		
 		<div class="form-group col-xs-5 col-sm-5 col-md-5">
@@ -28,10 +29,11 @@
 			
 			<input type="text" class="form-control" name="last_name"
 				ng-model="stewdent.last_name" ng-required="true"
-				ng-maxlength=100
+				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
 				/>
 			<span class="error" ng-show="form.last_name.$error.minlength">Must be at least 0 characters.</span>
 			<span class="error" ng-show="form.last_name.$error.maxlength">Must be at most 100 characters.</span>
+			<span class="error" ng-show="form.last_name.$error.pattern">Must only contain alphanumeric characters.</span>
 		</div>
 	</div>
         
@@ -55,10 +57,11 @@
 			<label>University</label><span class="form-required">*</span>
 			<input type="text" class="form-control" name="university"
 				ng-model="stewdent.university" ng-required="true"
-				ng-maxlength=300
+				ng-maxlength=300 ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
 				/>
 			<span class="error" ng-show="form.university.$error.minlength">Must be at least  characters.</span>
 			<span class="error" ng-show="form.university.$error.maxlength">Must be at most 300 characters.</span>
+			<span class="error" ng-show="form.university.$error.pattern">Must only contain alphanumeric characters.</span>
 		</div>
 		
 		<!-- <div class="form-group col-xs-5 col-sm-5 col-md-5">
@@ -76,10 +79,11 @@
 		<label>Degree/s (including Majors)</label><span class="form-required">*</span>
 		
 		<input type="text" class="form-control" name="degree"
-			ng-model="stewdent.degree" ng-required="true"
+			ng-model="stewdent.degree" ng-required="true" ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
 			ng-maxlength=500 placeholder="B Engineering (Mechanical)"/>
 		<span class="error" ng-show="form.degree.$error.minlength">Must be at least  characters.</span>
 		<span class="error" ng-show="form.degree.$error.maxlength">Must be at most 500 characters.</span>
+		<span class="error" ng-show="form.degree.$error.pattern">Must only contain alphanumeric characters.</span>
 	</div>
         
 	<div class="row">
@@ -127,10 +131,11 @@
 			
 			<input type="text" class="form-control" name="phone_num"
 				ng-model="stewdent.phone_num" ng-required="false"
-				ng-maxlength=50
+				ng-maxlength=50 ng-pattern="/^[0-9]*$/"
 				/>
 			<span class="error" ng-show="form.phone_num.$error.minlength">Must be at least  characters.</span>
 			<span class="error" ng-show="form.phone_num.$error.maxlength">Must be at most 50 characters.</span>
+			<span class="error" ng-show="form.phone_num.$error.pattern">Must only contain number characters.</span>
 		</div>
 		
 		<div class="form-group col-xs-6 col-sm-6 col-md-6">
@@ -166,10 +171,11 @@
 			
 			<input type="text" class="form-control" name="city"
 				ng-model="stewdent.city" ng-required="true"
-				ng-maxlength=100
+				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
 				/>
 			<span class="error" ng-show="form.city.$error.minlength">Must be at least  characters.</span>
 			<span class="error" ng-show="form.city.$error.maxlength">Must be at most 100 characters.</span>
+			<span class="error" ng-show="form.city.$error.pattern">Must only contain alphanumeric characters.</span>
 		</div>
 		
 		<div class="form-group col-sm-3 col-xs-3 col-md-3">
@@ -186,10 +192,11 @@
 			
 			<input type="text" class="form-control" name="post_code"
 				ng-model="stewdent.post_code" ng-required="false"
-				ng-maxlength=5
+				ng-maxlength=5 ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
 				/>
 			<span class="error" ng-show="form.post_code.$error.minlength">Must be at least  characters.</span>
 			<span class="error" ng-show="form.post_code.$error.maxlength">Must be at most 5 characters.</span>
+			<span class="error" ng-show="form.post_code.$error.pattern">Must only contain alphanumeric characters.</span>
 		</div>
 		
 	</div>
@@ -200,10 +207,11 @@
 			
 			<input type="text" class="form-control" name="country"
 				ng-model="stewdent.country" ng-required="true"
-				ng-maxlength=100
+				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
 				/>
 			<span class="error" ng-show="form.country.$error.minlength">Must be at least  characters.</span>
 			<span class="error" ng-show="form.country.$error.maxlength">Must be at most 100 characters.</span>
+			<span class="error" ng-show="form.country.$error.pattern">Must only contain alphanumeric characters.</span>
 		</div>
 	</div>
         
@@ -232,9 +240,10 @@
 			<strong>Research/Analysis</strong> - Market Research, User testing, General Research, Database analysis, Data collection<br/>
 		</p>
 		
-		<textarea cols="30" class="form-control" id="" name="" rows="10" ng-model="skills.computer_based" ng-required="true"
-			ng-maxlength=3000 ></textarea>
-		<span class="error" ng-show="form.computer_based.$error.maxlength">Must be at most 100 characters.</span>
+		<textarea cols="30" class="form-control" id="" rows="10" name="computer_based" ng-model="skills.computer_based" ng-required="true"
+			ng-maxlength=3000 ng-pattern="/^[a-zA-Z0-9.,(){}]*$/" ></textarea>
+		<span class="error alert alert-danger" ng-show="form.computer_based.$error.maxlength">Must be at most 3000 characters.</span>
+		<span class="error" ng-show="form.computer_based.$error.pattern">Must only contain alphanumeric characters.</span>
 	</div>
 
 	
@@ -247,16 +256,18 @@
 		</p>
 		
 		<textarea rows="10" columns="30" class="form-control" name="personal_skils" type="text" value=""
-			ng-model="skills.personal" ng-required="false" ng-maxlength=3000
+			ng-model="skills.personal" ng-required="false" ng-maxlength=3000  ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
 			></textarea>
 		<span class="error" ng-show="form.personal_skils.$error.maxlength">Must be at most 3000 characters.</span>
+		<span class="error" ng-show="form.personal_skils.$error.pattern">Must only contain alphanumeric characters.</span>
 	</div>
 	
 	<div class="form-group">
 		<label for="spoken_languages">Spoken Languages</label><span class="form-required">*</span>
-		<input class="form-control" name="spoken_languages" type="text" value=""
-			ng-model="skills.languages_spoken" ng-required="true"
+		<input class="form-control" name="spoken_languages" type="text" value="" ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
+			ng-model="skills.languages_spoken" ng-required="true" maxlength=300
 			/>
+		<span class="error" ng-show="form.spoken_languages.$error.maxlength">Must be at most 300 characters.</span>
 	</div>
 
 	<div class="form-group">
@@ -265,16 +276,19 @@
 			Please list the software packages you have the most expertise in from most proficient to least. Don't worry if you don't cut code for Google or the best you've got is MS Office.
 		</p>
 		<textarea rows="10" columns="30" class="form-control" name="software_skills" type="text" value=""
-			ng-model="skills.software_skills" ng-required="false" ng-maxlength=3000
+			ng-model="skills.software_skills" ng-required="false" ng-maxlength=3000 ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
 			/></textarea>
 		<span class="error" ng-show="form.software_skills.$error.maxlength">Must be at most 3000 characters.</span>
+		<span class="error" ng-show="form.software_skills.$error.pattern">Must only contain alphanumeric characters.</span>
 	</div>
 
 	<div class="form-group">
 		<label for="programming_languages">Programming Languages</label>
 		<input class="form-control" name="programming_languages" type="text" value=""
-			ng-model="skills.languages_coding" ng-required="false"
+			ng-model="skills.languages_coding" ng-required="false" ng-maxlength=3000 ng-pattern="/^[a-zA-Z0-9.,(){}]*$/"
 			/>
+		<span class="error" ng-show="form.programming_languages.$error.maxlength">Must be at most 3000 characters.</span>
+		<span class="error" ng-show="form.programming_languages.$error.pattern">Must only contain alphanumeric characters.</span>
 	</div>
 	
 	<!-- <p> Please provide your smartphone model and tablet if you own one.</p>
@@ -435,7 +449,7 @@
 					You agree this information is correct and that you are currently enrolled in an Australian university
 				</span>
 			</label>
-			<input class="checkbox style-2 pull-right" type="checkbox" ng-required="True" required name="agree"value="">
+			<input class="checkbox style-2 pull-right" type="checkbox" ng-model="agreeCheck" ng-required="true" required name="agree" value="">
 		</div>
 	</div>
 	

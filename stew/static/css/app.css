@@ -9,10 +9,12 @@ body {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	
 }
 
-
+.error {
+	margin-top: 3px;
+	color: red;
+}
 
 .form-required {
 	font-size: 110%; 

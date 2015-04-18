@@ -4,7 +4,7 @@ angular.module('stew')
 		$scope.user = token.getUser();
 		
 		$scope.logout = function() {
-		  // console.log("logout");
+		  console.log("logout");
 		  token.logout();
 		  $location.path('/stewdents');
 		};
