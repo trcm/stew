@@ -52,6 +52,8 @@ angular.module('stew')
 		   var skillEdit = lodash.find($scope.skills, function(s) {
 		     return s.stewdent == id;
 		   });
+		   console.log(stewdentEdit);
+		   console.log(skillEdit);
 
 		   var stewEdit = $modal.open({
 		     templateUrl: 'static/js/views/admin/stewdentEdit-modal.html',

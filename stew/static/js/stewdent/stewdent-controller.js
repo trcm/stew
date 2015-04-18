@@ -25,10 +25,13 @@ angular.module('stew')
 		 $scope.states = ['QLD', 'NSW', 'VIC', 'TAS', 'SA', 'WA', 'NT', 'ACT'];
 		 
 		 $scope.create = function () {
+
+		   // combine skill inputs into one input
+		   
 		   usSpinnerService.spin('spinner-1');
 		   $scope.errors = [];
-		   console.log($scope.stewdent.start_year);
-		   console.log($scope.stewdent.end_year);
+
+		   
 		   $http.post('/newStew/', $scope.stewdent).
 		     success(function(data) {
 		       $http.post('/skill/' + data.pk, $scope.skills).
@@ -46,6 +49,7 @@ angular.module('stew')
 		       // this is the only time actual errors should be recieved
 		       // The error here should be an Integrity error, as thats the only error that should be
 		       // caused from model created.  Only if there is a duplicate email in the databse.
+		       usSpinnerService.stop('spinner-1');
 		       alert("Oooops, something is broken.  We're still in beta, please contact stewhelp@gmail.com");
 		       for (var key in data) {
 			 $scope.errors.push(data[key][0]);
@@ -123,6 +127,24 @@ angular.module('stew')
 		   token.logout();
 		   $location.path('/login');
 		 };
+
+		 $scope.toolTipOne = "<p>" +
+		   " This includes any computer based skills (from home) you feel may be useful professionally.<br/>" +
+		   "Examples include but aren't limited to:" +
+		   "</p>" +
+		   "<p>" +
+		   "<strong>Design</strong> - Graphic design, Photoshop editing, Web & App UI design, 2D & 3D modelling, Infographics, Drafting <br />" +
+		   "<strong>Programming/Tech</strong> - Wordpress, Website dev, Mobile Apps, Software dev, Database dev <br/>" +
+		   "<strong>Online Marketing</strong> - Analytics, Social Media, SEO, Traffic generation, Blog mentions, Web PR <br/> " +
+		   "<strong>Writing/Translation</strong> - Creative writing, Speeches, Reports, Translation, Web content, Proofing/Editing<br/>" +
+		   "<strong>Video/Animation</strong> - Video Ads, Video editing, Production, Animation<br/>" +
+		   "<strong>Music/Audio</strong> - Audio Editing, Mastering, Songwriting, Jingles<br/>" +
+		   "<strong>Financial</strong> - Tax Returns, Accounting<br/>" +
+		   "<strong>Research/Analysis</strong> - Market Research, User testing, General Research, Database analysis, Data collection<br/>" +
+		   "</p>";
+		 $scope.toolTipTwo = "<p>Please also provide any releveant software you feel competent with, for each skill category.</p>" +
+		   "Eg. <p><strong>Creative Design</strong> - Adobe Photoshop, Illustrator</p>" +
+		   "<p><strong>Tech Design</strong> - Autocad, Revit</p>";
 		 
 	       }])
   .controller('ThankyouModalController', ['$scope', '$modalInstance',
