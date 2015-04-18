@@ -19,17 +19,12 @@ angular.module('stew')
 		 $scope.combined = [];
 		 
 		 $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
-		 console.log($scope.zipped);
+
 		 lodash.forEach($scope.zipped, function(i) {
 		   $scope.combined.push(lodash.merge(i[0], i[1]));
 		 });
-		 console.log($scope.combined);
 		 
 		 $scope.combinedSf = $scope.combined;
-		 // console.log(token.getUser());
-		 // if (token.authenticated) {
-		 //   console.log('auth');
-		 // }
 		 
 		 $scope.delete = function (id) {
 		   console.log(id.pk);

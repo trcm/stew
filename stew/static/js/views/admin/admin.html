@@ -8,20 +8,20 @@
 			<tr>
 				<th>View</th>
 				<th st-sort="pk">ID</th>
-				<th st-sort="First_name">first_name</th>
-				<th st-sort="Last_name">last_name</th>
-				<th st-sort="DOB">dob</th>
-				<th st-sort="University">university</th>
-				<th st-sort="Degree">degree</th>
-				<th st-sort="Email">student_email</th>
-				<th st-sort="City">city</th>
-				<th st-sort="State">state</th>
+				<th st-sort="first_name">First Name</th>
+				<th st-sort="last_name">Last Name</th>
+				<th st-sort="dob">DOB</th>
+				<th st-sort="university">University</th>
+				<th st-sort="degree">Degree</th>
+				<th st-sort="email">Email</th>
+				<th st-sort="city">City</th>
+				<th st-sort="state">State</th>
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="row in stewdents">
+			<tr ng-repeat="row in combined">
 				<td>
 					<button id="viewBtn" type="button" ng-click="view(row)" class="btn btn-sm btn-primary viewUser">
 						<i class="glyphicon glyphicon-zoom-in">
