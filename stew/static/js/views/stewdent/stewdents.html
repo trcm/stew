@@ -79,7 +79,7 @@
 		
 		<input type="text" class="form-control" name="degree"
 			ng-model="stewdent.degree" ng-required="true" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/"
-			ng-maxlength=500 placeholder="B Engineering (Mechanical)"/>
+			ng-maxlength=500 placeholder="eg. B Engineering (Mechanical)"/>
 		<span class="error" ng-show="form.degree.$error.minlength">Must be at least  characters.</span>
 		<span class="error" ng-show="form.degree.$error.maxlength">Must be at most 500 characters.</span>
 		<span class="error" ng-show="form.degree.$error.pattern">Must only contain alphanumeric characters.</span>
@@ -92,8 +92,8 @@
 		ng-model="stewdent.start_year" ng-required="true"/>
 		</div> -->
 		
-		<div class="form-group col-xs-6 col-sm-6 col-md-6">
-			<label>Date of Commencement</label><span class="form-required">*</span>
+		<div class="form-group col-xs-3 col-sm-3 col-md-3">
+			<label>Year of Commencement</label><span class="form-required">*</span>
 			<input type="text" class="form-control" placeholder="YYYY" ng-pattern="/\b\d{4}\b/" name="start_year" 
 				ng-model="stewdent.start_year" ng-required="true" ng-maxlength=4 />
 			<span style="color: red" ng-show="form.start_year.$dirty && form.start_year.$invalid">
@@ -102,8 +102,8 @@
 			</span>
 		</div>
 		
-		<div class="form-group col-xs-6 col-sm-6 col-md-6">
-			<label>Expected date of graduation</label><span class="form-required">*</span>
+		<div class="form-group col-xs-3 col-sm-3 col-md-3">
+			<label>Expected year of graduation</label><span class="form-required">*</span>
 			<!-- <input type="text" class="form-control" placeholder="DD/MM/YYYY" name="end_year" ui-date="end_yearDateOptions" ui-date-format="yy-mm-dd" 
 			ng-model="stewdent.end_year" ng-required="true"/> -->
 			<input type="text" class="form-control" placeholder="YYYY" ng-pattern="/\b\d{4}\b/" name="end_year" 
@@ -468,11 +468,8 @@
 
 	<div class="form-group col-md-8">
 		<div class="checkbox">
-			<label for="agree">
-				<!-- <span>
-				You agree this information is correct and that you are currently enrolled in an Australian university
-				</span> -->
-				<input  class="checkbox style-2 pull-right" type="checkbox" ng-model="agreeCheck" ng-required="true" content-one required name="agree" value="" />
+			<label for="agreeId">
+				<input  id="agreeId" class="checkbox style-2 pull-right" type="checkbox" ng-model="agreeCheck" ng-required="true" content-one required name="agree" value="" />
 				You agree this information is correct and that you are currently enrolled in an Australian university
 			</label>
 		</div>
@@ -500,6 +497,6 @@
 			Thank you for signing up for the Stew.  We'll be in contact soon.
 		</p>
 		<br/>
-		<button class="btn-primary" type="submit" ng-click="ok()">Close</button>
+		<button class="btn btn-primary" type="submit" ng-click="ok()">Close</button>
 	</div>
 </script>
