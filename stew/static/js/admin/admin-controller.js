@@ -18,45 +18,28 @@ angular.module('stew')
 		 $scope.skills = skills.data;
 		 
 		 $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
-		 // lodash.forEach($scope.zipped, function(i) {
-		 //   $scope.combined.push(lodash.merge(i[0], i[1]));
-
-		 // });
-		 // $scope.combinedSf = $scope.combined;
-		 
-		 // console.log($scope.combined);
+		 console.log($scope.zipped);
 		 
 		 $scope.delete = function (id) {
 		   console.log(id.pk);
-
-		   $http.delete("/stewdent/" + id.pk)
-		     .success(function(data) {
-		       console.log(data);
+		   Stewdent.delete({id: id.pk}).$promise
+		     .then(function(data) {
 		       $scope.stewdents = Stewdent.query();
-		       console.log($scope.stewdents);
+		       $scope.skills = Skill.query();
 		     });
-		   
-		   // Stewdent.delete({id: id.pk}).$promise
-		   //   .then(function(data) {
-		   //     $scope.stewdents = Stewdent.query();
-		   //     $scope.skills = Skill.query();
-		   //   });
 		 };
 
 		 $scope.edit = function(stewdent) {
 		   var id = stewdent.pk;
-		   console.log(stewdent);
-		   console.log(id);
 		   var stewdentEdit = lodash.find($scope.stewdents, function(s) {
 		     // console.log(s);
 		     return s.stewdent == id;
 		   });
-		   console.log($scope.skills);
 		   var skillEdit = lodash.find($scope.skills, function(s) {
 		     // console.log(s);
 		     return s.stewdent == id;
 		   });
-		   console.log(skillEdit);
+		   
 		   var stewEdit = $modal.open({
 		     templateUrl: 'static/js/views/admin/stewdentEdit-modal.html',
 		     controller: 'StewdentEditController',
