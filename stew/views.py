@@ -76,13 +76,16 @@ class AdminList(APIView):
 
 # @csrf_exempt
 class StewdentCreate(APIView):
-    # authentication_classes = (TokenAuthentication,)
-    # permission_classes = (IsAuthenticated,)
 
-    # def get(self, request, format=None):
-    #     stewdents = Stewdent.objects.all()
-    #     serializer = StewdentSerializer(stewdents, many=True)
-    #     return Response(serializer.data)
+    def get(self, format=None):
+        stewdents = Stewdent.objects.all()
+        serializerDent = StewdentSerializer(stewdents, many=True)
+        skills = Skill.objects.all()
+        serializerSkill = SkillSerializer(skills, many=True)
+
+        ret = zip(serializerDent.data, serializerSkill.data)
+        print ret
+        return Response(ret)
 
     def post(self, request, format=None):
         prob = {}
@@ -180,7 +183,18 @@ class StewdentDetail(APIView):
         user.delete()
         stewdent.delete()
         skill.delete()
-        return Response(status=204)
+
+        # grab all the stewdents and data and return them
+
+        ret = []
+        dents = Stewdent.objects.all()
+        skills = Skill.objects.all()
+        dentSerialize = StewdentSerializer(dents, many=True)
+        skillSerialize = SkillSerializer(skills, many=True)
+
+        ret = dentSerialize.data + skillSerialize.data
+        print ret
+        return Response(ret, status=204)
 
 class SkillList(APIView):
     authentication_classes = (TokenAuthentication,)
