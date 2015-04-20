@@ -2,10 +2,9 @@
 
 angular.module('stew')
   .controller('AdminController',
-	      ['$scope', '$http', '$location', '$modal', 'lodash', 'Stewdent', 'Skill', 'Combined', 'stewdents', 'skills', 'token',
-	       function($scope, $http, $location, $modal, lodash, Stewdent, Skill, Combined, stewdents, skills, token) {
+	      ['$scope', '$http', '$location','$q', '$modal', 'lodash', 'Stewdent', 'Skill', 'Combined', 'stewdents', 'skills', 'token',
+	       function($scope, $http, $location, $q, $modal, lodash, Stewdent, Skill, Combined, stewdents, skills, token) {
 		 $scope.test = "test";
-		 // $scope.stewdents = stewdents.data;
 		 $scope.user = token.getUser();
 
 		 $scope.stewdents = [];
@@ -18,14 +17,69 @@ angular.module('stew')
 		 $scope.skills = skills.data;
 		 
 		 $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
-		 console.log($scope.zipped);
+
+		 $scope.combined = [];
+		 lodash.forEach($scope.zipped, function(i) {
+		   $scope.combined.push(lodash.merge(i[0], i[1]));
+		 });
+
+
+		 var updateCombined = function() {
+		   $scope.combined = [];
+		   $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
+		   lodash.forEach($scope.zipped, function(i) {
+		     $scope.combined.push(lodash.merge(i[0], i[1]));
+		   });
+		 };
+
+		 $scope.update = function() {
+		   $scope.stewdents = Stewdent.query(); 
+		   $scope.skills = Skill.query();
+		   $scope.combined = [];
+		   for (var i = 0; i < $scope.stewdents.length; i++) {
+		     $scope.combined.push(lodash.merge($scope.stewdents[i], $scope.skills[i]));
+		   }
+		   $scope.combinedSf = $scope.combined;
+		   
+		 };
 		 
 		 $scope.delete = function (id) {
-		   console.log(id.pk);
 		   Stewdent.delete({id: id.pk}).$promise
 		     .then(function(data) {
-		       $scope.stewdents = Stewdent.query();
-		       $scope.skills = Skill.query();
+		       console.log(data);
+		       $scope.stewdents = data[0];
+		       $scope.skills = data[1];
+		       
+		       $scope.combined = [];
+
+		       var s = [];
+		       var s2 = [];
+		       lodash.forEach(data[0], function(n) {
+			 s.push(n);
+		       });
+		       lodash.forEach(data[1], function(n) {
+			 s2.push(n);
+		       });
+		       console.log(s);
+		       console.log(s2);
+
+		       lodash.forEach(lodash.zip(s, s2), function(n) {
+			 $scope.combined.push(lodash.merge(n[0], n[1]));
+		       });
+		       console.log($scope.combined);
+		       $scope.combinedSf = $scope.combined;
+		       // console.log($scope.stewdents);
+		       // console.log($scope.skills);
+		       // console.log($scope.combined);
+		       // $q.all([
+		       // 	 Stewdent.query(),
+		       // 	 Skill.query()
+		       // ]).then(function(data) {
+		       // 	 console.log(data);
+		       // 	 // $scope.stewdents = data[0];
+		       // 	 // $scope.skills = data[1];
+		       // });
+		       // updateCombined();
 		     });
 		 };
 

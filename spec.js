@@ -26,6 +26,68 @@ describe('angularjs homepage', function() {
     element(by.id('stewdentSubmit')).click();
   });
   
+  it("Should only need the required fields to create the objects", function() {
+    browser.get('/#/stewdents');
+    element(by.model('stewdent.first_name')).sendKeys('tom');
+    element(by.model('stewdent.last_name')).sendKeys('tom');
+    element(by.model('stewdent.dob')).click();
+    element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
+    element(by.model('stewdent.university')).sendKeys('university');
+    element(by.model('stewdent.degree')).sendKeys('degree');
+    element(by.model('stewdent.start_year')).sendKeys("2013");
+    element(by.model('stewdent.end_year')).sendKeys("2015");
+    element(by.model('stewdent.email')).sendKeys('test1@required.com');
+    element(by.model('stewdent.city')).sendKeys('city');
+    element(by.model('stewdent.state')).click();
+    element(by.model('stewdent.country')).sendKeys('country');
+    
+    element(by.model('skills.languages_spoken')).sendKeys("English");
+    
+    element(by.model('agreeCheck')).click();
+    element(by.id('stewdentSubmit')).click();
+  });
+  
+  it("Should only need the required fields to create the objects", function() {
+    browser.get('/#/stewdents');
+    element(by.model('stewdent.first_name')).sendKeys('tom');
+    element(by.model('stewdent.last_name')).sendKeys('tom');
+    element(by.model('stewdent.dob')).click();
+    element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
+    element(by.model('stewdent.university')).sendKeys('university');
+    element(by.model('stewdent.degree')).sendKeys('degree');
+    element(by.model('stewdent.start_year')).sendKeys("2013");
+    element(by.model('stewdent.end_year')).sendKeys("2015");
+    element(by.model('stewdent.email')).sendKeys('test2@required.com');
+    element(by.model('stewdent.city')).sendKeys('city');
+    element(by.model('stewdent.state')).click();
+    element(by.model('stewdent.country')).sendKeys('country');
+    
+    element(by.model('skills.languages_spoken')).sendKeys("English");
+    
+    element(by.model('agreeCheck')).click();
+    element(by.id('stewdentSubmit')).click();
+  });
+
+  it("Should only need the required fields to create the objects", function() {
+    browser.get('/#/stewdents');
+    element(by.model('stewdent.first_name')).sendKeys('tom');
+    element(by.model('stewdent.last_name')).sendKeys('tom');
+    element(by.model('stewdent.dob')).click();
+    element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
+    element(by.model('stewdent.university')).sendKeys('university');
+    element(by.model('stewdent.degree')).sendKeys('degree');
+    element(by.model('stewdent.start_year')).sendKeys("2013");
+    element(by.model('stewdent.end_year')).sendKeys("2015");
+    element(by.model('stewdent.email')).sendKeys('test3@required.com');
+    element(by.model('stewdent.city')).sendKeys('city');
+    element(by.model('stewdent.state')).click();
+    element(by.model('stewdent.country')).sendKeys('country');
+    
+    element(by.model('skills.languages_spoken')).sendKeys("English");
+    
+    element(by.model('agreeCheck')).click();
+    element(by.id('stewdentSubmit')).click();
+  });
 
   it('should create a stewdent with one skill field', function() {
     browser.get('/#/stewdents');

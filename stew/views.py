@@ -174,7 +174,17 @@ class StewdentDetail(APIView):
         stewdent.delete()
         skill.delete()
 
-        return Response(status=204)
+        try:
+            dents = Stewdent.objects.all()
+            serial = StewdentSerializer(dents, many=True)
+            skills = Skill.objects.all()
+            skillSerial = SkillSerializer(skills, many=True)
+            ret = [serial.data, skillSerial.data]
+            return Response(ret)
+        except Exception as e:
+            print e
+        
+        return Response(serial.data)
 
 class SkillList(APIView):
     authentication_classes = (TokenAuthentication,)

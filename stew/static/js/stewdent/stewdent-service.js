@@ -6,7 +6,7 @@ angular.module('stew')
       'query': { method: 'GET', isArray: true},
       'get': { method: 'GET'},
       'update': { method: 'PUT'},
-      'delete': { method: 'DELETE'}
+      'delete': { method: 'DELETE', isArray: true}
     });
   }])
   .factory('Skill', ['$resource', function($resource) {
