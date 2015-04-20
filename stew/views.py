@@ -134,7 +134,6 @@ class StewdentCreate(APIView):
     # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class StewdentList(APIView):
-
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
     
@@ -184,11 +183,16 @@ class StewdentDetail(APIView):
         return Response(status=204)
 
 class SkillList(APIView):
-
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    
     def get(self, requet, format=None):
-        skills = Skill.objects.all()
-        serializer = SkillSerializer(skills, many=True)
-        return Response(serializer.data)
+        try:
+            skills = Skill.objects.all()
+            serializer = SkillSerializer(skills, many=True)
+            return Response(serializer.data)
+        except Exception as e:
+            print e
 
 class SkillDetail(APIView):
 
@@ -212,17 +216,14 @@ pk (Integer): integer of the stewdent object this skill object will be associate
         Returns:
         returns
             """
-        print request.data
+        print 'skill post'
         try:
             stewdent = Stewdent.objects.get(id=pk)
-            print stewdent.id
             ret = request.data
+            print ret
             ret['stewdent_id'] = stewdent.id
             ret['stewdent'] = stewdent.id
-            # print ret
             serializer = SkillSerializer(data=ret)
-            # print serializer
-            # print "s"
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)

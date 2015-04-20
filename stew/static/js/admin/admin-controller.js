@@ -19,17 +19,12 @@ angular.module('stew')
 		 $scope.combined = [];
 		 
 		 $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
-		 console.log($scope.zipped);
+
 		 lodash.forEach($scope.zipped, function(i) {
 		   $scope.combined.push(lodash.merge(i[0], i[1]));
 		 });
-		 console.log($scope.combined);
 		 
 		 $scope.combinedSf = $scope.combined;
-		 // console.log(token.getUser());
-		 // if (token.authenticated) {
-		 //   console.log('auth');
-		 // }
 		 
 		 $scope.delete = function (id) {
 		   console.log(id.pk);
@@ -52,6 +47,8 @@ angular.module('stew')
 		   var skillEdit = lodash.find($scope.skills, function(s) {
 		     return s.stewdent == id;
 		   });
+		   console.log(stewdentEdit);
+		   console.log(skillEdit);
 
 		   var stewEdit = $modal.open({
 		     templateUrl: 'static/js/views/admin/stewdentEdit-modal.html',

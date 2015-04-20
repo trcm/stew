@@ -1,6 +1,5 @@
 <ng-include src=" 'static/js/views/navbar.html' "></ng-include>
 
-
 <form name="form" role="form" novalidate
 	class="ng-scope ng-invalid ng-invalid-required ng-dirty"
 	ng-submit="create()">
@@ -17,7 +16,7 @@
 		
 			<input type="text" class="form-control" name="first_name"
 				ng-model="stewdent.first_name" ng-required="true"
-				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){} ]*$/"
+				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/"
 				/>
 			<span class="error" ng-show="form.first_name.$error.minlength">Must be at least 0 characters.</span>
 			<span class="error" ng-show="form.first_name.$error.maxlength">Must be at most 100 characters.</span>
@@ -29,7 +28,7 @@
 			
 			<input type="text" class="form-control" name="last_name"
 				ng-model="stewdent.last_name" ng-required="true"
-				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){} ]*$/"
+				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/"
 				/>
 			<span class="error" ng-show="form.last_name.$error.minlength">Must be at least 0 characters.</span>
 			<span class="error" ng-show="form.last_name.$error.maxlength">Must be at most 100 characters.</span>
@@ -57,7 +56,7 @@
 			<label>University</label><span class="form-required">*</span>
 			<input type="text" class="form-control" name="university"
 				ng-model="stewdent.university" ng-required="true"
-				ng-maxlength=300 ng-pattern="/^[a-zA-Z0-9.,(){} ]*$/"
+				ng-maxlength=300 ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/"
 				/>
 			<span class="error" ng-show="form.university.$error.minlength">Must be at least  characters.</span>
 			<span class="error" ng-show="form.university.$error.maxlength">Must be at most 300 characters.</span>
@@ -79,7 +78,7 @@
 		<label>Degree/s (including Majors)</label><span class="form-required">*</span>
 		
 		<input type="text" class="form-control" name="degree"
-			ng-model="stewdent.degree" ng-required="true" ng-pattern="/^[a-zA-Z0-9.,(){} ]*$/"
+			ng-model="stewdent.degree" ng-required="true" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/"
 			ng-maxlength=500 placeholder="B Engineering (Mechanical)"/>
 		<span class="error" ng-show="form.degree.$error.minlength">Must be at least  characters.</span>
 		<span class="error" ng-show="form.degree.$error.maxlength">Must be at most 500 characters.</span>
@@ -96,9 +95,10 @@
 		<div class="form-group col-xs-6 col-sm-6 col-md-6">
 			<label>Date of Commencement</label><span class="form-required">*</span>
 			<input type="text" class="form-control" placeholder="YYYY" ng-pattern="/\b\d{4}\b/" name="start_year" 
-				ng-model="stewdent.start_year" ng-required="true"/>
+				ng-model="stewdent.start_year" ng-required="true" ng-maxlength=4 />
 			<span style="color: red" ng-show="form.start_year.$dirty && form.start_year.$invalid">
 				<span class="error" ng-show="form.start_year.$error.pattern">Start year is invalid.</span>
+				<span class="error" ng-show="form.start_year.$error.maxlength">Must be at most 4 characters.</span>
 			</span>
 		</div>
 		
@@ -107,9 +107,10 @@
 			<!-- <input type="text" class="form-control" placeholder="DD/MM/YYYY" name="end_year" ui-date="end_yearDateOptions" ui-date-format="yy-mm-dd" 
 			ng-model="stewdent.end_year" ng-required="true"/> -->
 			<input type="text" class="form-control" placeholder="YYYY" ng-pattern="/\b\d{4}\b/" name="end_year" 
-				ng-model="stewdent.end_year"  ng-required="true" invalid-year="{{ stewdent.start_year }}" />
+				ng-model="stewdent.end_year"  ng-maxlength=4 ng-required="true" invalid-year="{{ stewdent.start_year }}" />
 			<span style="color: red" ng-show="form.end_year.$invalid">
 				<span class="error" ng-show="form.end_year.$error.pattern">End year is invalid.</span>
+				<span class="error" ng-show="form.end_year.$error.maxlength">Must be at most 4 characters.</span>
 				<span class="error" ng-show="form.end_year.$error.invalidYear">Graduation year cannot be earlier than Commencement.</span>
 			</span>
 		</div>
@@ -171,7 +172,7 @@
 			
 			<input type="text" class="form-control" name="city"
 				ng-model="stewdent.city" ng-required="true"
-				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){} ]*$/"
+				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/"
 				/>
 			<span class="error" ng-show="form.city.$error.minlength">Must be at least  characters.</span>
 			<span class="error" ng-show="form.city.$error.maxlength">Must be at most 100 characters.</span>
@@ -192,7 +193,7 @@
 			
 			<input type="text" class="form-control" name="post_code"
 				ng-model="stewdent.post_code" ng-required="false"
-				ng-maxlength=5 ng-pattern="/^[a-zA-Z0-9.,(){} ]*$/"
+				ng-maxlength=5 ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/"
 				/>
 			<span class="error" ng-show="form.post_code.$error.minlength">Must be at least  characters.</span>
 			<span class="error" ng-show="form.post_code.$error.maxlength">Must be at most 5 characters.</span>
@@ -207,7 +208,7 @@
 			
 			<input type="text" class="form-control" name="country"
 				ng-model="stewdent.country" ng-required="true"
-				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){} ]*$/"
+				ng-maxlength=100 ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/"
 				/>
 			<span class="error" ng-show="form.country.$error.minlength">Must be at least  characters.</span>
 			<span class="error" ng-show="form.country.$error.maxlength">Must be at most 100 characters.</span>
@@ -218,238 +219,262 @@
 	<h3>Skills</h3>
 
 	<p>
-		This section is the most vital to help us to find exciting and career developing projects - Projects within the industries you are heading towards or just want to explore. Please list all the disciplines you feel skillful in below. We need to know about the skills you have developed through uni, self teaching, your job or any other aspect of your life. You don't need professional experience with these skills - that's what we want to help you find. Remember to be specific about each individual discipline.
-		
+		The information you provide in this section will help us find projects that are best suited to you. We need to know about the skills you have developed through uni, self-teaching, your job or any other aspect of your life. You don’t need professional experience with these skills – that’s what we’re here to help you find. Tick each category you feel skilful in and enter the details/relevant software in the two boxes beside.		
 	</p>
 	
-	<div class="form-group">
-		<label for="computer_based">Computer Skills</label><span class="form-required">*</span>
-
-		<p>
-			This includes any computer based skills (from home) you feel may be useful professionally.
-			Examples include but aren't limited to:
-		</p>
-		<p>
-			<strong>Design</strong> - Graphic design, Photoshop editing, Web & App UI design, 2D & 3D modelling, Infographics, Drafting <br />
-			<strong>Programming/Tech</strong> - Wordpress, Website dev, Mobile Apps, Software dev, Database dev <br/>
-			<strong>Online Marketing</strong> - Analytics, Social Media, SEO, Traffic generation, Blog mentions, Web PR <br/> 
-			<strong>Writing/Translation</strong> - Creative writing, Speeches, Reports, Translation, Web content, Proofing/Editing<br/>
-			<strong>Video/Animation</strong> - Video Ads, Video editing, Production, Animation<br/>
-			<strong>Music/Audio</strong> - Audio Editing, Mastering, Songwriting, Jingles<br/>
-			<strong>Financial</strong> - Tax Returns, Accounting<br/>
-			<strong>Research/Analysis</strong> - Market Research, User testing, General Research, Database analysis, Data collection<br/>
-		</p>
-		
-		<textarea cols="30" class="form-control" id="" rows="10" name="computer_based" ng-model="skills.computer_based" ng-required="true"
-			ng-maxlength=3000 ng-pattern="/^[a-zA-Z0-9.,(){}; ]*$/" ></textarea>
-		<span class="error alert alert-danger" ng-show="form.computer_based.$error.maxlength">Must be at most 3000 characters.</span>
-		<span class="error" ng-show="form.computer_based.$error.pattern">Must only contain alphanumeric characters.</span>
-	</div>
-
 	
-	<div class="form-group">
-		<label for="personal_skills">Personal Skills</label>
-
-		<p>
-			This includes any other skills you can't implement from your computer from home. <br/>
-			Examples include: Advertising, Sales, Event management, Face-to-face marketing, Tutoring, User testing
-		</p>
-		
-		<textarea rows="10" columns="30" class="form-control" name="personal_skils" type="text" value=""
-			ng-model="skills.personal" ng-required="false" ng-maxlength=3000  ng-pattern="/^[a-zA-Z0-9.,(){}; ]*$/"
-			></textarea>
-		<span class="error" ng-show="form.personal_skils.$error.maxlength">Must be at most 3000 characters.</span>
-		<span class="error" ng-show="form.personal_skils.$error.pattern">Must only contain alphanumeric characters.</span>
+	<div class="form-group container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<input ng-model="creativeCheck" name="" type="checkbox" value=""/>
+					<label for="">Creative Design</label>
+				</div>
+			</div>
+			<div class="col-xl-10 col-xm-10 col-md-10">
+				<div class="row">
+					<div class="col-md-1 center glyphicon glyphicon-question-sign" tooltip-html-unsafe="{{ toolTipOne }}" tooltip-placement="right"></div>
+					<input ng-disabled="!creativeCheck" ng-model="skills.creativeDesignSkill" name="creativeDesignSkill" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" ng-maxlength=1000 class="col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.creativeDesignSkill.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.creativeDesignSkill.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+				<div class="row">
+					<div class="col-md-1 glyphicon glyphicon-question-sign" tooltip-html-unsafe="{{ toolTipTwo }}" tooltip-placement="right"></div>
+					<input ng-disabled="!creativeCheck" ng-model="skills.creativeDesignSoft" name="creativeDesignSoft" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" ng-maxlength=1000 class="col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.creativeDesignSoft.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.creativeDesignSoft.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<input ng-model="techCheck" name="" type="checkbox" value=""/>
+					<label for="">Tech Design</label>
+				</div>
+			</div>
+			<div class="col-xl-10 col-xm-10 col-md-10">
+				<div class="row">
+					<input ng-disabled="!techCheck" ng-model="skills.techDesignSkill" ng-maxlength=1000  name="techDesignSkill" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.techDesignSkill.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.techDesignSkill.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+				<div class="row">
+					<input ng-disabled="!techCheck" ng-model="skills.techDesignSoft" ng-maxlength=1000  name="techDesignSoft" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.techDesignSoft.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.techDesignSoft.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<input ng-model="progCheck" name="" type="checkbox" value=""/>
+					<label for="">Programming/IT</label>
+				</div>
+			</div>
+			<div class="col-xl-10 col-xm-10 col-md-10">
+				<div class="row">
+					<input ng-disabled="!progCheck" ng-model="skills.itSkill" ng-maxlength=1000  name="itSkill" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.itSkill.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.itSkill.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+				<div class="row">
+					<input ng-disabled="!progCheck" ng-model="skills.itSoft" ng-maxlength=1000  name="itSoft" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.itSoft.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.itSoft.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<input ng-model="marketCheck" name="" type="checkbox" value=""/>
+					<label for="">Online Marketing</label>
+				</div>
+			</div>
+			<div class="col-xl-10 col-xm-10 col-md-10">
+				<div class="row">
+					<input ng-disabled="!marketCheck" ng-model="skills.marketSkill" ng-maxlength=1000 name="marketSkill" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.marketSkill.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.marketSkill.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+				<div class="row">
+					<input ng-disabled="!marketCheck" ng-model="skills.marketSoft" ng-maxlength=1000 name="marketSoft" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.marketSoft.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.marketSoft.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<input ng-model="writeCheck" name="" type="checkbox" value=""/>
+					<label for="">Writing </label>
+				</div>
+			</div>
+			<div class="col-xl-10 col-xm-10 col-md-10">
+				<div class="row">
+					<input ng-disabled="!writeCheck" ng-model="skills.writingSkill" ng-maxlength=1000 name="writingSkill" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.writingSkill.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.writingSkill.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+				<div class="row">
+					<input ng-disabled="!writeCheck" ng-model="skills.writingSoft" ng-maxlength=1000 name="writingSoft" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.writingSoft.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.writingSoft.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<input ng-model="mediaCheck" name="" type="checkbox" value=""/>
+					<label for="">Video/Music</label>
+				</div>
+			</div>
+			<div class="col-xl-10 col-xm-10 col-md-10">
+				<div class="row">
+					<input ng-disabled="!mediaCheck" ng-model="skills.mediaSkill" ng-maxlength=1000 name="mediaSkill" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.mediaSkill.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.mediaSkill.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+				<div class="row">
+					<input ng-disabled="!mediaCheck" ng-model="skills.mediaSoft" ng-maxlength=1000 name="mediaSoft" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.mediaSoft.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.mediaSoft.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<input ng-model="financeCheck" name="" type="checkbox" value=""/>
+					<label for="">Financial</label>
+				</div>
+			</div>
+			<div class="col-xl-10 col-xm-10 col-md-10">
+				<div class="row">
+					<input ng-disabled="!financeCheck" ng-model="skills.financeSkill" ng-maxlength=1000 name="financeSkill" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.financeSkill.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.financeSkill.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+				<div class="row">
+					<input ng-disabled="!financeCheck" ng-model="skills.financeSoft" ng-maxlength=1000 name="financeSoft" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.financeSoft.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.financeSoft.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<input ng-model="researchCheck" name="" type="checkbox" value=""/>
+					<label for="">Research/Analysis</label>
+				</div>
+			</div>
+			<div class="col-xl-10 col-xm-10 col-md-10">
+				<div class="row">
+					<input ng-disabled="!researchCheck" ng-model="skills.researchSkill" ng-maxlength=1000 name="researchSkill" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.researchSkill.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.researchSkill.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+				<div class="row">
+					<input ng-disabled="!researchCheck" ng-model="skills.researchSoft" ng-maxlength=1000 name="researchSoft" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.researchSoft.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.researchSoft.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<input ng-model="personCheck" name="" type="checkbox" value=""/>
+					<label for="">In Person</label>
+				</div>
+			</div>
+			<div class="col-xl-10 col-xm-10 col-md-10">
+				<div class="row">
+					<input ng-disabled="!personCheck" ng-model="skills.personalSkill" ng-maxlength=1000 name="personalSkill" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.personalSkill.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.personalSkill.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+				<div class="row">
+					<input ng-disabled="!personCheck" ng-model="skills.personalSoft" ng-maxlength=1000 name="personalSoft" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.personalSoft.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.personalSoft.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-group container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row">
+					<input ng-model="otherCheck" name="" type="checkbox" value=""/>
+					<label for="">Other</label>
+				</div>
+			</div>
+			<div class="col-xl-10 col-xm-10 col-md-10">
+				<div class="row">
+					<input ng-disabled="!otherCheck" ng-model="skills.otherSkill" ng-maxlength=1000 name="otherSkill" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.otherSkill.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.otherSkill.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+				<div class="row">
+					<input ng-disabled="!otherCheck" ng-model="skills.otherSoft" ng-maxlength=1000 name="otherSoft" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/" class="col-md-offset-1 col-xl-offset-1 col-sm-offset-1 col-xl-11 col-sm-11 col-md-11" name="" type="text" value=""/>
+					<span class="error" ng-show="form.otherSoft.$error.maxlength">Must be at most 1000 characters.</span>
+					<span class="error" ng-show="form.otherSoft.$error.pattern">Must only contain alphanumeric characters.</span>
+				</div>
+			</div>
+		</div>
 	</div>
 	
 	<div class="form-group">
 		<label for="spoken_languages">Spoken Languages</label><span class="form-required">*</span>
-		<input class="form-control" name="spoken_languages" type="text" value="" ng-pattern="/^[a-zA-Z0-9.,(){}; ]*$/"
+		<input class="form-control" name="spoken_languages" type="text" value="" ng-pattern="/^[a-zA-Z0-9.,(){};\- ]*$/"
 			ng-model="skills.languages_spoken" ng-required="true" maxlength=300
 			/>
 		<span class="error" ng-show="form.spoken_languages.$error.maxlength">Must be at most 300 characters.</span>
-	</div>
-
-	<div class="form-group">
-		<label for="software_skills">Software Skills</label><span class="form-required">*</span>
-		<p>
-			Please list the software packages you have the most expertise in from most proficient to least. Don't worry if you don't cut code for Google or the best you've got is MS Office.
-		</p>
-		<textarea rows="10" columns="30" class="form-control" name="software_skills" type="text" value=""
-			ng-model="skills.software_skills" ng-required="false" ng-maxlength=3000 ng-pattern="/^[a-zA-Z0-9.,(){}; ]*$/"
-			/></textarea>
-		<span class="error" ng-show="form.software_skills.$error.maxlength">Must be at most 3000 characters.</span>
-		<span class="error" ng-show="form.software_skills.$error.pattern">Must only contain alphanumeric characters.</span>
+		<span class="error" ng-show="form.spoken_languages.$error.pattern">Must only contain alphanumeric characters.</span>
 	</div>
 
 	<div class="form-group">
 		<label for="programming_languages">Programming Languages</label>
 		<input class="form-control" name="programming_languages" type="text" value=""
-			ng-model="skills.languages_coding" ng-required="false" ng-maxlength=3000 ng-pattern="/^[a-zA-Z0-9.,(){}; ]*$/"
+			ng-model="skills.languages_coding" ng-required="false" ng-maxlength=3000 ng-pattern="/^[a-zA-Z0-9.,(){};\- ]*$/"
 			/>
 		<span class="error" ng-show="form.programming_languages.$error.maxlength">Must be at most 3000 characters.</span>
 		<span class="error" ng-show="form.programming_languages.$error.pattern">Must only contain alphanumeric characters.</span>
 	</div>
 	
-	<!-- <p> Please provide your smartphone model and tablet if you own one.</p>
-	<div class="row">	
-	<div class="form-group col-xs-6 col-sm-6 col-md-6">
-	<label for="smartphone">Smartphone</label>
-	<input class="form-control" name="smartphone" type="text" value=""
-	ng-model="skills.smartphone" ng-required="false"
-	/>
-	</div>
-
-	<div class="form-group col-cs-6 col-sm-6 col-md-6">
-	<label for="tablet">Tablet</label>
-	<input class="form-control" name="tablet" type="text" value=""
-	ng-model="skills.tablet" ng-required="false"
-	/>
-	</div>
-
-	</div> -->
-
-	
-	
-	<!-- <h3>Work & Goals</h3>
-	
-	<h4>Professional experience</h4>
-
-	<p>
-	Please list the top three professional experience you have gained.  Don't stress if you don't have
-	any serious experience yet.  We're here to help you build a diverse portfolio before graduation.
-	</p>
-	
-	<div class="row form-group">
-	<div class="col-xs-4 col-sm-4 col-md-4">
-	<label for="exp_industry_one">Industry</label>
-	<input ng-model="work.exp_industry_one" name="exp_industy_one" type="text" value=""/>
-	</div>
-
-	<div class="col-xs-4 col-sm-4 col-md-4">
-	<label for="exp_company_one">Company</label>
-	<input ng-model="work.exp_company_one" name="exp_company_one" type="text" value=""/>
-	</div>
-	
-	<div class="col-xs-4 col-sm-4 col-md-4">
-	<label for="exp_duration_one">Duration</label>
-	<input ng-model="work.exp_duration_one" name="exp_duration_one" type="text" value=""/>
-	</div>
-	
-	</div>
-
-	<div class="form-group">
-	<label for="exp_learning_one">What did you learn</label>
-	<textarea class="form-control" ng-model="work.exp_learning_one" cols="30" id="" name="exp_learning_one" rows="10"></textarea>
-	</div>
-	
-	<div class="row form-group">
-	<div class="col-xs-4 col-sm-4 col-md-4">
-	<label for="exp_industry_two">Industry</label>
-	<input ng-model="work.exp_industry_two" name="exp_industy_two" type="text" value=""/>
-	</div>
-
-	<div class="col-xs-4 col-sm-4 col-md-4">
-	<label for="exp_company_two">Company</label>
-	<input ng-model="work.exp_company_two" name="exp_company_two" type="text" value=""/>
-	</div>
-	
-	<div class="col-xs-4 col-sm-4 col-md-4">
-	<label for="exp_duration_two">Duration</label>
-	<input ng-model="work.exp_duration_two" name="exp_duration_two" type="text" value=""/>
-	</div>
-	
-	</div>
-
-	<div class="form-group">
-	<label for="exp_learning_two">What did you learn</label>
-	<textarea class="form-control" ng-model="work.exp_learning_two" cols="30" id="" name="exp_learning_two" rows="10"></textarea>
-	</div>
-	
-	<div class="row form-group">
-	<div class="col-xs-4 col-sm-4 col-md-4">
-	<label for="exp_industry_three">Industry</label>
-	<input ng-model="work.exp_industry_three" name="exp_industy_three" type="text" value=""/>
-	</div>
-
-	<div class="col-xs-4 col-sm-4 col-md-4">
-	<label for="exp_company_three">Company</label>
-	<input ng-model="work.exp_company_three" name="exp_company_three" type="text" value=""/>
-	</div>
-	
-	<div class="col-xs-4 col-sm-4 col-md-4">
-	<label for="exp_duration_three">Duration</label>
-	<input ng-model="work.exp_duration_three" name="exp_duration_three" type="text" value=""/>
-	</div>
-	
-	</div>
-
-	<div class="form-group">
-	<label for="exp_learning_three">What did you learn</label>
-	<textarea class="form-control" ng-model="work.exp_learning_three" cols="30" id="" name="exp_learning_three" rows="10"></textarea>
-	</div>
-
-	<h4>Goals</h4>
-
-	<p>
-	We want to know what your graduation goals are so we can target projects within those industries and for those companies.
-	If you have other aspriations we'd love to know those too.  If you don't know exactly what you want to do after uni, just leave it blank.
-	We're here to help you find your true career direction.
-	</p>
-	
-	<div class="row">
-
-	<div class="col-xs-6 col-sm-6 col-md-6">
-	<div class="form-group">
-	<label for="industry_one">Industry 1</label>
-	<input class="form-control" name="industry_one" type="text" value=""
-	ng-model="work.industry_one" ng-required="false"
-	/>
-	</div>
-	
-	<div class="form-group">
-	<label for="industry_two">Industry 2</label>
-	<input class="form-control" name="industry_two" type="text" value=""
-	ng-model="work.industry_two" ng-required="false"
-	/>
-	</div>
-	</div>
-	
-	
-	<div class="col-xs-6 col-sm-6 col-md-6">
-	
-	<div class="form-group">
-	<label for="company_one">Company 1</label>
-	<input class="form-control" name="company_one" type="text" value=""
-	ng-model="work.company_one" ng-required="false"
-	/>
-	</div>
-	
-	<div class="form-group">
-	<label for="company_two">Company 2</label>
-	<input class="form-control" name="company_two" type="text" value=""
-	ng-model="work.company_two" ng-required="false"
-	/>
-	</div>
-	</div>
-	</div>
-	-->
-	<!-- <div class="form-group">
-	<label for="other_goals">Other Goals</label>
-	<textarea rows="10" columns="30" class="form-control" name="other_goals" type="text" value=""
-	ng-model="work.other_goals" ng-required="false">
-
-	</textarea>
-	</div> -->
 
 	<div class="form-group col-md-8">
 		<div class="checkbox">
 			<label for="agree">
-				<span>
-					You agree this information is correct and that you are currently enrolled in an Australian university
-				</span>
+				<!-- <span>
+				You agree this information is correct and that you are currently enrolled in an Australian university
+				</span> -->
+				<input  class="checkbox style-2 pull-right" type="checkbox" ng-model="agreeCheck" ng-required="true" content-one required name="agree" value="" />
+				You agree this information is correct and that you are currently enrolled in an Australian university
 			</label>
-			<input class="checkbox style-2 pull-right" type="checkbox" ng-model="agreeCheck" ng-required="true" required name="agree" value="">
 		</div>
 	</div>
 	

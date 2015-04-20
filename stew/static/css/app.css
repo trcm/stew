@@ -16,6 +16,10 @@ body {
 	color: red;
 }
 
+div.tooltip-inner {
+	width: 300px;	
+}
+
 .form-required {
 	font-size: 110%; 
 	color: red;

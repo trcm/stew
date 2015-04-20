@@ -29,7 +29,7 @@ class Stewdent(models.Model):
         ('Male', 'Male'),
         ('Female', 'Female'),
         ('Not specified', 'Not specified')
-        
+
     )
 
     user          = models.OneToOneField(User, null=True)
@@ -53,27 +53,51 @@ class Stewdent(models.Model):
     state         = models.CharField(max_length=3, choices=STATES, blank=False)
     post_code     = models.CharField(max_length=5, blank=True, null=True)
     country       = models.CharField(max_length=100, blank=False)
-    
+
 
     def __unicode__(self):
         return "%s %s" % (self.first_name, self.last_name)
-    
+
     class Meta:
         ordering = ('created', )
 
-    
-        
+
+
 
 class Skill(models.Model):
 
-    stewdent         = models.OneToOneField('stewdent')
-    software_skills  = models.CharField(max_length=3000, blank=False)
-    computer_based   = models.CharField(max_length=3000, blank=False)
-    personal         = models.CharField(max_length=3000, blank=True, null=True)
-    languages_coding = models.CharField(max_length=3000, blank=True, null=True)
-    languages_spoken = models.CharField(max_length=300, blank=False)
-    smartphone       = models.CharField(max_length=100, blank=True, null=True)
-    tablet           = models.CharField(max_length=100, blank=True, null=True)
+    # stewdent         = models.OneToOneField('stewdent')
+    # software_skills  = models.CharField(max_length=3000, blank=False)
+    # computer_based   = models.CharField(max_length=3000, blank=False)
+    # personal         = models.CharField(max_length=3000, blank=True, null=True)
+    # languages_coding = models.CharField(max_length=3000, blank=True, null=True)
+    # languages_spoken = models.CharField(max_length=300, blank=False)
+    # smartphone       = models.CharField(max_length=100, blank=True, null=True)
+    # tablet           = models.CharField(max_length=100, blank=True, null=True)
+
+    stewdent            = models.OneToOneField('stewdent')
+    creativeDesignSkill = models.TextField(max_length=1000, blank=True, null=True)
+    creativeDesignSoft  = models.TextField(max_length=1000, blank=True, null=True)
+    techDesignSkill     = models.TextField(max_length=1000, blank=True, null=True)
+    techDesignSoft      = models.TextField(max_length=1000, blank=True, null=True)
+    itSkill             = models.TextField(max_length=1000, blank=True, null=True)
+    itSoft              = models.TextField(max_length=1000, blank=True, null=True)
+    marketSkill         = models.TextField(max_length=1000, blank=True, null=True)
+    marketSoft          = models.TextField(max_length=1000, blank=True, null=True)
+    writingSkill        = models.TextField(max_length=1000, blank=True, null=True)
+    writingSoft         = models.TextField(max_length=1000, blank=True, null=True)
+    mediaSkill          = models.TextField(max_length=1000, blank=True, null=True)
+    mediaSoft           = models.TextField(max_length=1000, blank=True, null=True)
+    financeSkill        = models.TextField(max_length=1000, blank=True, null=True)
+    financeSoft         = models.TextField(max_length=1000, blank=True, null=True)
+    researchSkill       = models.TextField(max_length=1000, blank=True, null=True)
+    researchSoft        = models.TextField(max_length=1000, blank=True, null=True)
+    personalSkill       = models.TextField(max_length=1000, blank=True, null=True)
+    personalSoft        = models.TextField(max_length=1000, blank=True, null=True)
+    otherSkill          = models.TextField(max_length=1000, blank=True, null=True)
+    otherSoft           = models.TextField(max_length=1000, blank=True, null=True)
+    languages_coding    = models.TextField(max_length=1000, blank=True, null=True)
+    languages_spoken    = models.TextField(max_length=1000, blank=True, null=True)
 
     class Meta:
         ordering = ('stewdent', )

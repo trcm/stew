@@ -1,51 +1,5 @@
 <ng-include src=" 'static/js/views/navbar.html'"></ng-include>
 <div class="table-responsive">
-	<!-- <input ng-model="search" name="" type="text" value=""/>
-        <table class="table table-striped">
-	<thead>
-	<tr>
-	<th>ID</th>
-	<th>first_name</th>
-	<th>last_name</th>
-	<th>dob</th>
-	<th>university</th>
-	<th>student_num</th>
-	<th>degree</th>
-	<th>phone_num</th>
-	<th>student_email</th>
-	<th>city</th>
-	<th>state</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr ng-repeat="stewdent in stewdents | filter:search">
-	<td>{{stewdent.pk}}</td>
-	<td>{{stewdent.first_name }}</td>
-	<td>{{stewdent.last_name }}</td>
-	<td>{{stewdent.dob  | date:'dd-MM-yyyy'}}</td>
-	<td>{#{stewdent.university }#}</td>
-	<td>{{stewdent.student_num }}</td>
-	<td>{{stewdent.degree }}</td>
-	<td>{{stewdent.phone_num }}</td>
-	<td>{{stewdent.student_email }}</td>
-	<td>{{stewdent.city }}</td>
-	<td>{{stewdent.state }}</td>
-
-	<td>
-	<button type="submit"
-	ng-click="update(stewdent)"
-	class="btn">
-	<span class="glyphicon glyphicon-pencil"></span> Edit
-	</button>
-	<button type="submit"
-	ng-click="delete(stewdent)"
-	class="btn btn-danger">
-	<span class="glyphicon glyphicon-remove-circle"></span> Delete
-	</button>
-	</td>
-	</tr>
-	</tbody>
-	</table> -->
 	<table st-table="combined" st-safe-src="combinedSf" class="table table-striped">
 		<thead>
 			<tr>
@@ -54,20 +8,20 @@
 			<tr>
 				<th>View</th>
 				<th st-sort="pk">ID</th>
-				<th st-sort="first_name">first_name</th>
-				<th st-sort="last_name">last_name</th>
-				<th st-sort="dob">dob</th>
-				<th st-sort="university">university</th>
-				<th st-sort="degree">degree</th>
-				<th st-sort="student_email">student_email</th>
-				<th st-sort="city">city</th>
-				<th st-sort="state">state</th>
+				<th st-sort="first_name">First Name</th>
+				<th st-sort="last_name">Last Name</th>
+				<th st-sort="dob">DOB</th>
+				<th st-sort="university">University</th>
+				<th st-sort="degree">Degree</th>
+				<th st-sort="email">Email</th>
+				<th st-sort="city">City</th>
+				<th st-sort="state">State</th>
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="row in stewdents">
+			<tr ng-repeat="row in combined">
 				<td>
 					<button id="viewBtn" type="button" ng-click="view(row)" class="btn btn-sm btn-primary viewUser">
 						<i class="glyphicon glyphicon-zoom-in">
@@ -80,7 +34,7 @@
 				<td>{{row.dob  | date:'dd-MM-yyyy'}}</td>
 				<td>{{row.university }}</td>
 				<td>{{row.degree }}</td>
-				<td>{{row.student_email }}</td>
+				<td>{{row.email}}</td>
 				<td>{{row.city }}</td>
 				<td>{{row.state }}</td>
 				<td>
