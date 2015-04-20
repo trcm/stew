@@ -183,7 +183,9 @@ class StewdentDetail(APIView):
         return Response(status=204)
 
 class SkillList(APIView):
-
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+    
     def get(self, requet, format=None):
         try:
             skills = Skill.objects.all()
