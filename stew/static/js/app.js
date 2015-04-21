@@ -266,7 +266,7 @@ angular.module('stew',
   .factory('authInterceptor', function ($rootScope, $q, $window) {
     return {
       request: function (config) {
-	config.headers = config.headers || {};
+        config.headers = config.headers || {};
 	if ($window.sessionStorage.token) {
           config.headers.Authorization = 'Token ' + $window.sessionStorage.token;
 	}

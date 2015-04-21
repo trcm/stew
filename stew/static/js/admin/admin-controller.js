@@ -2,10 +2,9 @@
 
 angular.module('stew')
   .controller('AdminController',
-	      ['$scope', '$http', '$location', '$modal', 'lodash', 'Stewdent', 'Skill', 'Combined', 'stewdents', 'skills', 'token',
-	       function($scope, $http, $location, $modal, lodash, Stewdent, Skill, Combined, stewdents, skills, token) {
+	      ['$scope', '$http', '$location','$q', '$modal', 'lodash', 'Stewdent', 'Skill', 'Combined', 'stewdents', 'skills', 'token',
+	       function($scope, $http, $location, $q, $modal, lodash, Stewdent, Skill, Combined, stewdents, skills, token) {
 		 $scope.test = "test";
-		 // $scope.stewdents = stewdents.data;
 		 $scope.user = token.getUser();
 
 		 $scope.stewdents = [];
@@ -18,28 +17,83 @@ angular.module('stew')
 		 $scope.skills = skills.data;
 		 
 		 $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
-		 console.log($scope.zipped);
+
+		 $scope.combined = [];
+		 lodash.forEach($scope.zipped, function(i) {
+		   $scope.combined.push(lodash.merge(i[0], i[1]));
+		 });
+		 $scope.combinedSf = $scope.combined;
+
+		 var updateCombined = function() {
+		   $scope.combined = [];
+		   $scope.zipped = lodash.zip($scope.stewdents, $scope.skills);
+		   lodash.forEach($scope.zipped, function(i) {
+		     $scope.combined.push(lodash.merge(i[0], i[1]));
+		   });
+		   $scope.combinedSf = $scope.combined;
+		 };
+
+		 $scope.update = function() {
+		   Stewdent.query().$promise.then(function(data) {
+		     $scope.stewdents = data;
+		     $scope.stewdentsSfc = data;
+		   }); 
+		   Skill.query().$promise.then(function(data) {
+		     $scope.skills = data;
+		   });
+		   $scope.combined = [];
+		   for (var i = 0; i < $scope.stewdents.length; i++) {
+		     console.log(i);
+		     $scope.combined.push(lodash.merge($scope.stewdents[i], $scope.skills[i]));
+		   }
+		   $scope.combinedSf = $scope.combined;
+		   
+		 };
 		 
 		 $scope.delete = function (id) {
-		   console.log(id.pk);
 		   Stewdent.delete({id: id.pk}).$promise
 		     .then(function(data) {
-		       $scope.stewdents = Stewdent.query();
-		       $scope.skills = Skill.query();
+		       console.log(data);
+		       $scope.stewdents = data[0];
+		       $scope.skills = data[1];
+		       
+		       $scope.combined = [];
+
+		       var s = [];
+		       var s2 = [];
+		       lodash.forEach(data[0], function(n) {
+			 s.push(n);
+		       });
+		       lodash.forEach(data[1], function(n) {
+			 s2.push(n);
+		       });
+
+		       lodash.forEach(lodash.zip(s, s2), function(n) {
+			 $scope.combined.push(lodash.merge(n[0], n[1]));
+		       });
+		       $scope.combinedSf = $scope.combined;
+		       
+		       // $q.all([
+		       // 	 Stewdent.query(),
+		       // 	 Skill.query()
+		       // ]).then(function(data) {
+		       // 	 console.log(data);
+		       // 	 // $scope.stewdents = data[0];
+		       // 	 // $scope.skills = data[1];
+		       // });
+		       // updateCombined();
 		     });
 		 };
 
 		 $scope.edit = function(stewdent) {
-		   var id = stewdent.pk;
+		   var id = stewdent.stewdent;
 		   var stewdentEdit = lodash.find($scope.stewdents, function(s) {
-		     // console.log(s);
 		     return s.stewdent == id;
 		   });
 		   var skillEdit = lodash.find($scope.skills, function(s) {
-		     // console.log(s);
 		     return s.stewdent == id;
 		   });
-		   
+		   console.log(stewdentEdit, skillEdit);
 		   var stewEdit = $modal.open({
 		     templateUrl: 'static/js/views/admin/stewdentEdit-modal.html',
 		     controller: 'StewdentEditController',
