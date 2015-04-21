@@ -60,7 +60,7 @@
 </div>
 
 <div class="table-responsive">
-	<table st-table="skills" st-safe-src="stewdentsSfc" class="table table-striped">
+	<table st-table="combined" st-safe-src="combinedSf" class="table table-striped">
 		<thead>
 			<tr>
 				<th colspan="5"><input st-search="" class="form-control" placeholder="Search..." type="search"/></th>
@@ -82,7 +82,7 @@
 		</thead>
 
 		<tbody>
-			<tr ng-repeat="row in stewdents">
+			<tr ng-repeat="row in combined">
 				<td>
 					<button id="viewBtn" type="button" ng-click="view(row)" class="btn btn-sm btn-primary viewUser">
 						<i class="glyphicon glyphicon-zoom-in">

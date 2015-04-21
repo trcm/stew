@@ -22,7 +22,7 @@ angular.module('stew')
 		 lodash.forEach($scope.zipped, function(i) {
 		   $scope.combined.push(lodash.merge(i[0], i[1]));
 		 });
-
+		 $scope.combinedSf = $scope.combined;
 
 		 var updateCombined = function() {
 		   $scope.combined = [];
@@ -30,13 +30,20 @@ angular.module('stew')
 		   lodash.forEach($scope.zipped, function(i) {
 		     $scope.combined.push(lodash.merge(i[0], i[1]));
 		   });
+		   $scope.combinedSf = $scope.combined;
 		 };
 
 		 $scope.update = function() {
-		   $scope.stewdents = Stewdent.query(); 
-		   $scope.skills = Skill.query();
+		   Stewdent.query().$promise.then(function(data) {
+		     $scope.stewdents = data;
+		     $scope.stewdentsSfc = data;
+		   }); 
+		   Skill.query().$promise.then(function(data) {
+		     $scope.skills = data;
+		   });
 		   $scope.combined = [];
 		   for (var i = 0; i < $scope.stewdents.length; i++) {
+		     console.log(i);
 		     $scope.combined.push(lodash.merge($scope.stewdents[i], $scope.skills[i]));
 		   }
 		   $scope.combinedSf = $scope.combined;
@@ -60,17 +67,12 @@ angular.module('stew')
 		       lodash.forEach(data[1], function(n) {
 			 s2.push(n);
 		       });
-		       console.log(s);
-		       console.log(s2);
 
 		       lodash.forEach(lodash.zip(s, s2), function(n) {
 			 $scope.combined.push(lodash.merge(n[0], n[1]));
 		       });
-		       console.log($scope.combined);
 		       $scope.combinedSf = $scope.combined;
-		       // console.log($scope.stewdents);
-		       // console.log($scope.skills);
-		       // console.log($scope.combined);
+		       
 		       // $q.all([
 		       // 	 Stewdent.query(),
 		       // 	 Skill.query()
@@ -84,16 +86,14 @@ angular.module('stew')
 		 };
 
 		 $scope.edit = function(stewdent) {
-		   var id = stewdent.pk;
+		   var id = stewdent.stewdent;
 		   var stewdentEdit = lodash.find($scope.stewdents, function(s) {
-		     // console.log(s);
 		     return s.stewdent == id;
 		   });
 		   var skillEdit = lodash.find($scope.skills, function(s) {
-		     // console.log(s);
 		     return s.stewdent == id;
 		   });
-		   
+		   console.log(stewdentEdit, skillEdit);
 		   var stewEdit = $modal.open({
 		     templateUrl: 'static/js/views/admin/stewdentEdit-modal.html',
 		     controller: 'StewdentEditController',

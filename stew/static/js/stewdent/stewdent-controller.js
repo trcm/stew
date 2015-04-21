@@ -128,19 +128,18 @@ angular.module('stew')
 		   $location.path('/login');
 		 };
 
-		 $scope.toolTipOne = "<p>" +
-		   " This includes any computer based skills (from home) you feel may be useful professionally.<br/>" +
-		   "Examples include but aren't limited to:" +
-		   "</p>" +
+		 $scope.toolTipOne = 
 		   "<p>" +
-		   "<strong>Design</strong> - Graphic design, Photoshop editing, Web & App UI design, 2D & 3D modelling, Infographics, Drafting <br />" +
-		   "<strong>Programming/Tech</strong> - Wordpress, Website dev, Mobile Apps, Software dev, Database dev <br/>" +
-		   "<strong>Online Marketing</strong> - Analytics, Social Media, SEO, Traffic generation, Blog mentions, Web PR <br/> " +
-		   "<strong>Writing/Translation</strong> - Creative writing, Speeches, Reports, Translation, Web content, Proofing/Editing<br/>" +
-		   "<strong>Video/Animation</strong> - Video Ads, Video editing, Production, Animation<br/>" +
-		   "<strong>Music/Audio</strong> - Audio Editing, Mastering, Songwriting, Jingles<br/>" +
-		   "<strong>Financial</strong> - Tax Returns, Accounting<br/>" +
-		   "<strong>Research/Analysis</strong> - Market Research, User testing, General Research, Database analysis, Data collection<br/>" +
+		   "Examples for each skill category include but aren’t limited to:" +
+		   "<p><strong>Creative Design</strong> - Graphic design, Photoshop editing, Web & App UI design, Infographics, Posters/Flyers</p>" +
+		   "<p><strong>Tech Design</strong> - 2D & 3D modelling, Architecture, CAD, Drafting, Industrial design </p>" +
+		   "<p><strong>Programming/IT</strong> - Wordpress, Website dev, Mobile Apps, Software dev, Database dev </p>" +
+		   "<p><strong>Online Marketing</strong> - Analytics, Social Media, SEO, Traffic generation, Blogging, Web PR</p>" +
+		   "<p><strong>Writing</strong> - Creative writing, Speeches, Reports, Translation, Web content, Proofing/Editing</p>" +
+		   "<p><strong>Video/Music</strong> – Video/Audio editing, Production, Animation, Mastering, Song writing </p>" +
+		   "<p><strong>Financial</strong> - Tax Returns, Accounting </p>" +
+		   "<p><strong>Research/Analysis</strong> - Market Research, User testing, General Research, Database analysis, Data collection </p>" +
+		   "<p><strong>In-Person</strong> – Sales, User testing, Face-to-face marketing, Customer service, Tutoring, Event management</p>" +
 		   "</p>";
 		 $scope.toolTipTwo = "<p>Please also provide any releveant software you feel competent with, for each skill category.</p>" +
 		   "Eg. <p><strong>Creative Design</strong> - Adobe Photoshop, Illustrator</p>" +
