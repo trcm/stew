@@ -11,7 +11,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.dob')).click();
     element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
-    element(by.model('stewdent.university')).sendKeys('university');
+    // element(by.model('stewdent.university')).sendKeys('university');
     element(by.model('stewdent.degree')).sendKeys('degree');
     element(by.model('stewdent.start_year')).sendKeys("2013");
     element(by.model('stewdent.end_year')).sendKeys("2015");
@@ -32,7 +32,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.dob')).click();
     element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
-    element(by.model('stewdent.university')).sendKeys('university');
+    // element(by.model('stewdent.university')).sendKeys('university');
     element(by.model('stewdent.degree')).sendKeys('degree');
     element(by.model('stewdent.start_year')).sendKeys("2013");
     element(by.model('stewdent.end_year')).sendKeys("2015");
@@ -53,7 +53,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.dob')).click();
     element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
-    element(by.model('stewdent.university')).sendKeys('university');
+    // element(by.model('stewdent.university')).sendKeys('university');
     element(by.model('stewdent.degree')).sendKeys('degree');
     element(by.model('stewdent.start_year')).sendKeys("2013");
     element(by.model('stewdent.end_year')).sendKeys("2015");
@@ -74,7 +74,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.dob')).click();
     element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
-    element(by.model('stewdent.university')).sendKeys('university');
+    // element(by.model('stewdent.university')).sendKeys('university');
     element(by.model('stewdent.degree')).sendKeys('degree');
     element(by.model('stewdent.start_year')).sendKeys("2013");
     element(by.model('stewdent.end_year')).sendKeys("2015");
@@ -96,7 +96,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.gender')).click();
     element(by.model('stewdent.dob')).click();
     element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
-    element(by.model('stewdent.university')).sendKeys('UQ');
+    // element(by.model('stewdent.university')).sendKeys('UQ');
     element(by.model('stewdent.degree')).sendKeys('IT');
     element(by.model('stewdent.start_year')).sendKeys("2013");
     element(by.model('stewdent.end_year')).sendKeys("2015");
@@ -125,7 +125,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.gender')).click();
     element(by.model('stewdent.dob')).click();
     element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
-    element(by.model('stewdent.university')).sendKeys('university');
+    // element(by.model('stewdent.university')).sendKeys('university');
     element(by.model('stewdent.degree')).sendKeys('degree');
     element(by.model('stewdent.start_year')).sendKeys("2013");
     element(by.model('stewdent.end_year')).sendKeys("2015");
@@ -189,7 +189,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.gender')).click();
     element(by.model('stewdent.dob')).click();
     element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
-    element(by.model('stewdent.university')).sendKeys('UQ');
+    // element(by.model('stewdent.university')).sendKeys('UQ');
     element(by.model('stewdent.degree')).sendKeys('IT');
     element(by.model('stewdent.start_year')).sendKeys("2013");
     element(by.model('stewdent.end_year')).sendKeys("2015");
@@ -212,7 +212,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.gender')).click();
     element(by.model('stewdent.dob')).click();
     element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
-    element(by.model('stewdent.university')).sendKeys('university');
+    // element(by.model('stewdent.university')).sendKeys('university');
     element(by.model('stewdent.degree')).sendKeys('degree');
     element(by.model('stewdent.start_year')).sendKeys("2013");
     element(by.model('stewdent.end_year')).sendKeys("2015");
@@ -239,7 +239,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.gender')).click();
     element(by.model('stewdent.dob')).click();
     element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
-    element(by.model('stewdent.university')).sendKeys('university');
+    // element(by.model('stewdent.university')).sendKeys('university');
     element(by.model('stewdent.degree')).sendKeys('degree');
     element(by.model('stewdent.start_year')).sendKeys("2013");
     element(by.model('stewdent.end_year')).sendKeys("2015");
@@ -264,7 +264,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.dob')).click();
     element(by.xpath("//div[@id='ui-datepicker-div']/table[@class='ui-datepicker-calendar']/tbody/tr[1]/td[4]/a[@class='ui-state-default']")).click();
-    element(by.model('stewdent.university')).sendKeys('university');
+    // element(by.model('stewdent.university')).sendKeys('university');
     element(by.model('stewdent.degree')).sendKeys('degree');
     element(by.model('stewdent.start_year')).sendKeys("2015");
     element(by.model('stewdent.end_year')).sendKeys("2013");

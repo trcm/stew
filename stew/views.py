@@ -83,7 +83,7 @@ class StewdentCreate(APIView):
             u = User.objects.create(username=request.data['email'])
         except Exception as e:
             print e
-            prob = {'error' : 'An account for this email as already been created.'}
+            prob = {'error': 'An account for this email as already been created.'}
             return Response(prob, status=status.HTTP_400_BAD_REQUEST)
         ret = request.data
         ret['user'] = u.id
