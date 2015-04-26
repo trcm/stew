@@ -2,8 +2,8 @@
 
 angular.module('stew')
   .controller('StewdentController',
-	      ['$scope', '$http', '$modal', '$location', 'Stewdent', 'token', 'StewdentCreate', 'usSpinnerService', 'lodash',
-	       function ($scope, $http, $modal, $location, Stewdent, token, StewdentCreate, usSpinnerService, lodash) {
+	      ['$scope', '$http', '$modal', '$location', '$window', 'Stewdent', 'token', 'StewdentCreate', 'usSpinnerService', 'lodash',
+	       function ($scope, $http, $modal, $location, $window, Stewdent, token, StewdentCreate, usSpinnerService, lodash) {
 		 
 		 $scope.user = token.getUser();
 		 // Grab stewdents and skills from database, just for testing. Will comment out in deployment
@@ -23,7 +23,48 @@ angular.module('stew')
 		 
 		 $scope.genders = ['Male', 'Female', 'Not specified'];
 		 $scope.states = ['QLD', 'NSW', 'VIC', 'TAS', 'SA', 'WA', 'NT', 'ACT'];
-		 
+		 $scope.unis = [
+		   'Australian Catholic University',
+		   'Australian National University',
+		   'Bond University',
+		   'Central Queensland University',
+		   'Charles Darwin University', 
+		   'Charles Sturt University',  
+		   'Curtin University',  
+		   'Deakin University',  
+		   'Edith Cowan University',  
+		   'Federation University',  
+		   'Flinders University',  
+		   'Griffith University',  
+		   'James Cook University',  
+		   'La Trobe University',  
+		   'Macquarie University',  
+		   'Monash University',  
+		   'Murdoch University',  
+		   'Queensland University of Technology',  
+		   'RMIT University',  
+		   'Southern Cross University',  
+		   'Swinburne University of Technology',  
+		   'University of Adelaide',  
+		   'University of Canberra',  
+		   'University of Melbourne',  
+		   'University of New England',  
+		   'University of New South Wales',  
+		   'University of Newcastle',  
+		   'University of Notre Dame',  
+		   'University of Queensland',  
+		   'University of South Australia',  
+		   'University of Southern Queensland',  
+		   'University of Sydney',  
+		   'University of Tasmania',  
+		   'University of Technology Sydney',  
+		   'University of the Sunshine Coast',  
+		   'University of Western Australia',  
+		   'University of Western Sydney',  
+		   'University of Wollongong',  
+		   'Victoria University'
+		 ];
+
 		 $scope.create = function () {
 
 		   // combine skill inputs into one input
@@ -31,7 +72,8 @@ angular.module('stew')
 		   usSpinnerService.spin('spinner-1');
 		   $scope.errors = [];
 
-		   
+		   $window.scrollTo(0,0);
+
 		   $http.post('/newStew/', $scope.stewdent).
 		     success(function(data) {
 		       $http.post('/skill/' + data.pk, $scope.skills).
@@ -50,11 +92,11 @@ angular.module('stew')
 		       // The error here should be an Integrity error, as thats the only error that should be
 		       // caused from model created.  Only if there is a duplicate email in the databse.
 		       usSpinnerService.stop('spinner-1');
-		       alert("Oooops, something is broken.  We're still in beta, please contact stewhelp@gmail.com");
 		       for (var key in data) {
-			 $scope.errors.push(data[key][0]);
-			 
+			 $scope.errors.push(data[key]);
 		       }
+		       $scope.errors.push("Something broke! We\'re still in beta so please contact help@stew.com");
+		       // alert("Oooops, something is broken.  We're still in beta, please contact stewhelp@gmail.com");
 		     });
 		 };
 

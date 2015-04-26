@@ -25,6 +25,48 @@ class Stewdent(models.Model):
         ('NT', 'NT'),
     )
 
+    UNI = (
+        ('Australian Catholic University', 'Australian Catholic University'),
+        ('Australian National University',  'Australian National University'),
+        ('Bond University', 'Bond University'),
+        ('Central Queensland University',  'Central Queensland University'),
+        ('Charles Darwin University',  'Charles Darwin University'),
+        ('Charles Sturt University',  'Charles Sturt University'),
+        ('Curtin University', 'Curtin University'),
+        ('Deakin University', 'Deakin University'),
+        ('Edith Cowan University', 'Edith Cowan University'),
+        ('Federation University', 'Federation University'),
+        ('Flinders University', 'Flinders University'),
+        ('Griffith University', 'Griffith University'),
+        ('James Cook University', 'James Cook University'),
+        ('La Trobe University', 'La Trobe University'),
+        ('Macquarie University', 'Macquarie University'),
+        ('Monash University', 'Monash University'),
+        ('Murdoch University', 'Murdoch University'),
+        ('Queensland University of Technology', 'Queensland University of Technology'),
+        ('RMIT University', 'RMIT University'),
+        ('Southern Cross University', 'Southern Cross University'),
+        ('Swinburne University of Technology', 'Swinburne University of Technology'),
+        ('University of Adelaide', 'University of Adelaide'),
+        ('University of Canberra', 'University of Canberra'),
+        ('University of Melbourne', 'University of Melbourne'),
+        ('University of New England', 'University of New England'),
+        ('University of New South Wales', 'University of New South Wales'),
+        ('University of Newcastle', 'University of Newcastle'),
+        ('University of Notre Dame', 'University of Notre Dame'),
+        ('University of Queensland', 'University of Queensland'),
+        ('University of South Australia', 'University of South Australia'),
+        ('University of Southern Queensland', 'University of Southern Queensland'),
+        ('University of Sydney', 'University of Sydney'),
+        ('University of Tasmania', 'University of Tasmania'),
+        ('University of Technology Sydney', 'University of Technology Sydney'),
+        ('University of the Sunshine Coast', 'University of the Sunshine Coast'),
+        ('University of Western Australia', 'University of Western Australia'),
+        ('University of Western Sydney', 'University of Western Sydney'),
+        ('University of Wollongong', 'University of Wollongong'),
+        ('Victoria University', 'Victoria University'),
+    )
+    
     GENDERS = (
         ('Male', 'Male'),
         ('Female', 'Female'),
@@ -38,7 +80,7 @@ class Stewdent(models.Model):
     last_name     = models.CharField(max_length=100, blank=False)
     gender        = models.CharField(max_length=30, choices=GENDERS, null=True)
     dob           = models.DateField(blank=False)
-    university    = models.CharField(max_length=300, blank=False)
+    university    = models.CharField(max_length=300, choices=UNI, blank=False)
     student_num   = models.CharField(max_length=50, blank=True, null=True)
     degree        = models.CharField(max_length=500, blank=True, null=True)
     # start_year    = models.DateField(blank=False)

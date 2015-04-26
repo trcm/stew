@@ -2,6 +2,8 @@
 
 <button ng-click="update()">Update</button>
 
+<h4>Stewdent Search</h4>
+
 <div class="table-responsive">
 	<table st-table="stewdents" st-safe-src="stewdentsSfc" class="table table-striped">
 		<thead>
@@ -59,6 +61,8 @@
 	
 </div>
 
+<h4>Skill search</h4>
+
 <div class="table-responsive">
 	<table st-table="combined" st-safe-src="combinedSf" class="table table-striped">
 		<thead>
@@ -67,17 +71,12 @@
 			</tr>
 			<tr>
 				<th>View</th>
-				<th st-sort="pk">ID</th>
-				<th st-sort="first_name">First Name</th>
-				<th st-sort="last_name">Last Name</th>
-				<th st-sort="dob">DOB</th>
-				<th st-sort="university">University</th>
-				<th st-sort="degree">Degree</th>
-				<th st-sort="email">Email</th>
-				<th st-sort="city">City</th>
-				<th st-sort="state">State</th>
-				<th>Edit</th>
-				<th>Delete</th>
+				<th>Name</th>
+				<th>University</th>
+				<th>Degree</th>
+				<th>Email</th>
+				<th>Spoken Languages</th>
+				<th>Programming Languages</th>
 			</tr>
 		</thead>
 
@@ -89,28 +88,12 @@
 						</i>
 					</button>
 				</td>
-				<td>{{row.pk}}</td>
-				<td>{{row.first_name }}</td>
-				<td>{{row.last_name }}</td>
-				<td>{{row.dob  | date:'dd-MM-yyyy'}}</td>
-				<td>{{row.university }}</td>
-				<td>{{row.degree }}</td>
-				<td>{{row.email}}</td>
-				<td>{{row.city }}</td>
-				<td>{{row.state }}</td>
-				<td>{{row.languages_spoken }}</td>
-				<td>
-					<button id="editBtn" type="button" ng-click="edit(row)" class="btn btn-sm btn-primary editUser">
-						<i class="glyphicon glyphicon-pencil">
-						</i>
-					</button>
-				</td>
-				<td>
-					<button id="deleteBtn" type="button" ng-click="delete(row)" class="btn btn-sm btn-danger deleteUser">
-						<i class="glyphicon glyphicon-remove-circle">
-						</i>
-					</button>
-				</td>
+				<td>{{ row.first_name }} {{ row.last_name }}</td>
+				<td>{{ row.university }}</td>
+				<td>{{ row.degree }}</td>
+				<td>{{ row.email }}</td>
+				<td>{{ row.languages_spoken }}</td>
+				<td>{{ row.languages_coding }}</td>
 			</tr>
 		</tbody>
 	</table>       
