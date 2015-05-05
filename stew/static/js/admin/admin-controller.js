@@ -115,6 +115,7 @@ angular.module('stew')
 		     }
 		   });
 
+		   // This currently has a bug in it.  When the data is edited the table isn't updated properly
 		   stewEdit.result.then(function(data) {
 		     // makes sure that the stewdent serialier isn't
 		     // trying to serialize anything it shouldn't
@@ -139,6 +140,11 @@ angular.module('stew')
 			     $scope.stewdents = dents;
 			     $scope.skills = skill;
 			     $scope.stewdentsSf = dents;
+
+			     lodash.forEach(lodash.zip(dents, skill), function(n) {
+			       $scope.combined.push(lodash.merge(n[0], n[1]));
+			     });
+			     $scope.combinedSf = $scope.combined;
 			   })
 			   .error(function(data) {
 			     alert("Oooops, something is broken.  We're still in beta, please contact stewhelp@gmail.com");
