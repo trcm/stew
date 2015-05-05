@@ -6,10 +6,7 @@ angular.module('stew')
 	       function ($scope, $http, $modal, $location, $window, Stewdent, token, StewdentCreate, usSpinnerService, lodash) {
 		 
 		 $scope.user = token.getUser();
-		 // Grab stewdents and skills from database, just for testing. Will comment out in deployment
-		 // $scope.stewdents = resolvedStewdent.data;
-		 // $scope.skills_resolve = resolvedSkill.data;
-		 
+
 		 $scope.dobDateOptions = {
 		   dateFormat: 'dd/mm/yy',
 		   maxDate: -1
@@ -100,37 +97,7 @@ angular.module('stew')
 		     });
 		 };
 
-		 // TBD
-		 $scope.update = function (id) {
-		   $scope.stewdent = Stewdent.get({id: id});
-		   $scope.open(id);
-		 };
-		 
-		 // TBD
-		 $scope.delete = function (id) {
-		   Stewdent.delete({id: id},
-				   function () {
-				     $scope.stewdents = Stewdent.query();
-				   });
-		 };
-
-		 // TBD
-		 $scope.save = function (id) {
-		   if (id) {
-		     Stewdent.update({id: id}, $scope.stewdent,
-				     function () {
-				       $scope.stewdents = Stewdent.query();
-				       $scope.clear();
-				     });
-		   } else {
-		     Stewdent.save($scope.stewdent,
-				   function () {
-				     $scope.stewdents = Stewdent.query();
-				     $scope.clear();
-				   });
-		   }
-		 };
-
+		 // clear the form
 		 $scope.clear = function () {
 		   $scope.stewdent = {
 		     "first_name": "",
@@ -157,6 +124,7 @@ angular.module('stew')
 		   };
 		 };
 
+		 // open the thank you modal, this might soon be removed
 		 $scope.open = function () {
 		   var stewdentSave = $modal.open({
 		     templateUrl: 'thankyou-modal.html',
@@ -164,6 +132,7 @@ angular.module('stew')
 		   });
 		 };
 
+		 // logout the user
 		 $scope.logout = function() {
 		   console.log("logout");
 		   token.logout();
