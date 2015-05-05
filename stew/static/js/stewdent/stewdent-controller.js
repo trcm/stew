@@ -6,10 +6,7 @@ angular.module('stew')
 	       function ($scope, $http, $modal, $location, $window, Stewdent, token, StewdentCreate, usSpinnerService, lodash) {
 		 
 		 $scope.user = token.getUser();
-		 // Grab stewdents and skills from database, just for testing. Will comment out in deployment
-		 // $scope.stewdents = resolvedStewdent.data;
-		 // $scope.skills_resolve = resolvedSkill.data;
-		 
+
 		 $scope.dobDateOptions = {
 		   dateFormat: 'dd/mm/yy',
 		   maxDate: -1
@@ -67,70 +64,45 @@ angular.module('stew')
 
 		 $scope.create = function () {
 
-		   // combine skill inputs into one input
+		   // open a modal for confimation
+		   var confirmModal = $modal.open({
+		     templateUrl: 'static/js/views/stewdent/confirm-Modal.html',
+		     controller: 'ConfirmationController'
+		   });
+		   // if the modal is confirmed then continue 
+		   confirmModal.result.then(function() {
+		     
+		     usSpinnerService.spin('spinner-1');
+		     $scope.errors = [];
+
+		     $window.scrollTo(0,0);
+
+		     // send data to backend
+		     $http.post('/newStew/', $scope.stewdent).
+		       success(function(data) {
+			 $http.post('/skill/' + data.pk, $scope.skills).
+			   success(function(data) {
+			     $scope.clear();
+			     usSpinnerService.stop('spinner-1');
+			     $scope.open();
+			   })
+			   .error(function(data) {
+			     alert("Oooops, something is broken.  We're still in beta, please contact stewhelp@gmail.com");
+			     console.log(data);
+			   });
+		       })
+		       .error(function(data) {
+			 usSpinnerService.stop('spinner-1');
+			 for (var key in data) {
+			   $scope.errors.push(data[key]);
+			 }
+			 $scope.errors.push("Something broke! We\'re still in beta so please contact help@stew.com");
+		       });
+		   });
 		   
-		   usSpinnerService.spin('spinner-1');
-		   $scope.errors = [];
-
-		   $window.scrollTo(0,0);
-
-		   $http.post('/newStew/', $scope.stewdent).
-		     success(function(data) {
-		       $http.post('/skill/' + data.pk, $scope.skills).
-			 success(function(data) {
-			   $scope.clear();
-			   usSpinnerService.stop('spinner-1');
-			   $scope.open();
-			 })
-			 .error(function(data) {
-			   alert("Oooops, something is broken.  We're still in beta, please contact stewhelp@gmail.com");
-			   console.log(data);
-			 });
-		     })
-		     .error(function(data) {
-		       // this is the only time actual errors should be recieved
-		       // The error here should be an Integrity error, as thats the only error that should be
-		       // caused from model created.  Only if there is a duplicate email in the databse.
-		       usSpinnerService.stop('spinner-1');
-		       for (var key in data) {
-			 $scope.errors.push(data[key]);
-		       }
-		       $scope.errors.push("Something broke! We\'re still in beta so please contact help@stew.com");
-		       // alert("Oooops, something is broken.  We're still in beta, please contact stewhelp@gmail.com");
-		     });
 		 };
 
-		 // TBD
-		 $scope.update = function (id) {
-		   $scope.stewdent = Stewdent.get({id: id});
-		   $scope.open(id);
-		 };
-		 
-		 // TBD
-		 $scope.delete = function (id) {
-		   Stewdent.delete({id: id},
-				   function () {
-				     $scope.stewdents = Stewdent.query();
-				   });
-		 };
-
-		 // TBD
-		 $scope.save = function (id) {
-		   if (id) {
-		     Stewdent.update({id: id}, $scope.stewdent,
-				     function () {
-				       $scope.stewdents = Stewdent.query();
-				       $scope.clear();
-				     });
-		   } else {
-		     Stewdent.save($scope.stewdent,
-				   function () {
-				     $scope.stewdents = Stewdent.query();
-				     $scope.clear();
-				   });
-		   }
-		 };
-
+		 // clear the form
 		 $scope.clear = function () {
 		   $scope.stewdent = {
 		     "first_name": "",
@@ -157,6 +129,7 @@ angular.module('stew')
 		   };
 		 };
 
+		 // open the thank you modal, this might soon be removed
 		 $scope.open = function () {
 		   var stewdentSave = $modal.open({
 		     templateUrl: 'thankyou-modal.html',
@@ -164,6 +137,7 @@ angular.module('stew')
 		   });
 		 };
 
+		 // logout the user
 		 $scope.logout = function() {
 		   console.log("logout");
 		   token.logout();
@@ -193,4 +167,13 @@ angular.module('stew')
 					    $scope.ok = function() {
 					      $modalInstance.close();
 					    };
-					  }]);
+					  }])
+  .controller('ConfirmationController', ['$scope', '$modalInstance', function($scope, $modalInstance)  {
+    $scope.yes = function() {
+      $modalInstance.close();
+    };
+
+    $scope.no = function() {
+      $modalInstance.dismiss();
+    };
+  }]);
