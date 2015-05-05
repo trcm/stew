@@ -20,6 +20,9 @@ exports.config = {
   // Tests for browsers other than chrome will not run.
   chromeOnly: true,
 
+  onPrepare: function() {
+    global.EC = protractor.ExpectedConditions;
+  },
   // list of files / patterns to load in the browser
   specs: [
     'e2e/**/*.spec.js',

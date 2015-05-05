@@ -23,6 +23,10 @@ describe('angularjs homepage', function() {
     
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
+
+    var confirmed = element(by.id('confirmYes'));
+    browser.wait(EC.visibilityOf(confirmed), 5000);
+    confirmed.click();
   });
   
   it("Should only need the required fields to create the objects", function() {
@@ -43,6 +47,9 @@ describe('angularjs homepage', function() {
     
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
+    var confirmed = element(by.id('confirmYes'));
+    browser.wait(EC.visibilityOf(confirmed), 5000);
+    confirmed.click();
   });
   
   it("Should only need the required fields to create the objects", function() {
@@ -64,6 +71,9 @@ describe('angularjs homepage', function() {
     
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
+    var confirmed = element(by.id('confirmYes'));
+    browser.wait(EC.visibilityOf(confirmed), 5000);
+    confirmed.click();
   });
 
   it("Should only need the required fields to create the objects", function() {
@@ -85,6 +95,9 @@ describe('angularjs homepage', function() {
     
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
+    var confirmed = element(by.id('confirmYes'));
+    browser.wait(EC.visibilityOf(confirmed), 5000);
+    confirmed.click();
   });
 
   it('should create a stewdent with one skill field', function() {
@@ -113,7 +126,10 @@ describe('angularjs homepage', function() {
     
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
-
+    
+    var confirmed = element(by.id('confirmYes'));
+    browser.wait(EC.visibilityOf(confirmed), 5000);
+    confirmed.click();
   });
   
   it('should create a stewdent object with all skill fields', function() {
@@ -177,6 +193,9 @@ describe('angularjs homepage', function() {
     element(by.model('skills.languages_coding')).sendKeys("Programming languages");
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
+    var confirmed = element(by.id('confirmYes'));
+    browser.wait(EC.visibilityOf(confirmed), 5000);
+    confirmed.click();
   });
   
   it('should create a long stewdent object 1', function() {
@@ -200,6 +219,9 @@ describe('angularjs homepage', function() {
     element(by.model('skills.languages_spoken')).sendKeys("English");
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
+    var confirmed = element(by.id('confirmYes'));
+    browser.wait(EC.visibilityOf(confirmed), 5000);
+    confirmed.click();
   });
 
   it("should cause the form to be invalid with an invalid email adress", function() {

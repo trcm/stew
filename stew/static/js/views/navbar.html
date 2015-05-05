@@ -1,27 +1,56 @@
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation" ng-controller="navbarController">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="http://www.thestew.com.au">Home</a>
-		</div>
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div collapse="isCollapsed" class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<!-- <li ng-show="user"><a href="/#/Form">Admin</a></li> -->
-				<li ng-show="user"><a href="/#/">Form</a></li>
-				<li ng-show="user"><a href="/#/admin">Admin</a></li>
-				<li ng-show="user"><a id="logoutBtn" ng-click="logout()">Logout</a></li>
-				<li ng-hide="user"><a href="/#/login">Admin</a></li>
-			</ul>
+<div ng-controller="navbarController" class="navbar" id="nav-wrap">
+	<div class="nav-container">
+		<ul class="wsite-menu-default">
+			<li class="wsite-menu-item-wrap">
+				<a href="http://www.thestew.com.au" class="wsite-menu-item">
+					Home
+				</a>
+				
+			</li>
+			<li id="pg635821494192261140" class="wsite-menu-item-wrap">
+				<a href="http://www.thestew.com.au/students.html" data-membership-required="0" class="wsite-menu-item">
+					Students
+				</a>
+				
+			</li>
+			<li id="pg347136579498522421" class="wsite-menu-item-wrap">
+				<a href="http://www.thestew.com.au/organisations.html" data-membership-required="0" class="wsite-menu-item">
+					Organisations
+				</a>
+				
+			</li>
+			<li id="pg891344213137621782" class="wsite-menu-item-wrap">
+				<a href="http://www.thestew.com.au/about.html" data-membership-required="0" class="wsite-menu-item">
+					About
+				</a>
+				
+			</li>
+			<li id="pg125722972148769870" class="wsite-menu-item-wrap">
+				<a href="http://www.thestew.com.au/contact.html" data-membership-required="0" class="wsite-menu-item">
+					Contact
+				</a>
+			</li>
+			<li id="active" id="pg125722972148769870" class="wsite-menu-item-wrap">
+				<a href="/#/ data-membership-required="0" class="wsite-menu-item">
+					Sign Up
+				</a>
+			</li>
+			<li ng-hide="user" id="pg125722972148769870" class="wsite-menu-item-wrap">
+				<a href="/#/login" data-membership-required="0" class="wsite-menu-item">
+					Admin
+				</a>
+			</li>
+			<li ng-show="user" id="pg125722972148769870" class="wsite-menu-item-wrap">
+				<a href="/#/admin" data-membership-required="0" class="wsite-menu-item">
+					Admin
+				</a>
+			</li>
+			<li ng-show="user"> 
+				<a href="" ng-click="logout()" class="wsite-menu-item">
+					Logout
+				</a>
+			</li>
 
-		</div>
-
-		<!-- /.navbar-collapse -->
+		</ul>
 	</div>
-	<!-- /.container -->
-</nav>
+</div>

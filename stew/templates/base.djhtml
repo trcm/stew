@@ -10,10 +10,11 @@
 		<title>Stew</title>
 		<link href="{{ STATIC_URL }}js/libs/bootstrap-css/css/bootstrap.css" rel="stylesheet">
 		<link href="{{ STATIC_URL }}js/libs/jquery-ui/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 		<link href="{{ STATIC_URL }}css/app.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="container" ng-view></div>
+		<div id="base" class="container" ng-view></div>
 
 		<script src="{{ STATIC_URL }}js/libs/jquery/dist/jquery.js"></script>
 		<script src="{{ STATIC_URL }}js/libs/jquery-ui/jquery-ui.js"></script>
