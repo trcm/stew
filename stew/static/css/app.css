@@ -104,7 +104,7 @@ div {
 
 #nav-wrap .nav-container a{
 	text-decoration:none;
-	font:600 17px 'Josefin Sans', sans-serif;
+	font:600 16px 'Josefin Sans', sans-serif;
 	text-transform:uppercase;
 	margin:10px 15px;
 	float:left;
@@ -118,3 +118,7 @@ div {
 #nav-wrap .nav-container a:hover{border-top:8px solid #6ca29b;}
 #nav-wrap .nav-container li#active a {border-top:8px solid #3fba8d;}
 #nav-wrap {overflow:hidden}/* hide horizontal scrollbar*/
+
+.glyphicon {
+	font-size: 25px;
+}
