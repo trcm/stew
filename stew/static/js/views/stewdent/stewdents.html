@@ -46,7 +46,58 @@
 	<div class="row">
 		<div class="form-group col-xs-3 col-sm-3 col-md-3">
 			<label for="gender">Gender</label>
-			<select class="form-control" ng-init="stewdent.gender = genders[0]" id="" name="gear" ui-date="uniYearDateOptions" ui-date-format="yyyy" 
+			<select class="form-control" ng-init="stewdent.gender = genders[0]" id="" name="gender" ng-model="stewdent.gender" ng-options="opt for opt in genders" required>
+			</select>
+			
+		</div>
+		
+		<div class="form-group col-xs-3 col-sm-3 col-md-3">
+			<label for="dob">DOB</label><span class="form-required">*</span>
+			<input type="text" placeholder="DD/MM/YYYY" class="form-control" name="dob" ui-date="dobDateOptions" ui-date-format="yy-mm-dd" 
+				ng-model="stewdent.dob" ng-required="true" />
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="form-group col-xs-7 col-sm-7 col-md-7">
+			<label>University</label><span class="form-required">*</span>
+			<select class="form-control" ng-init="stewdent.university = unis[28]" id="" name="university" ng-model="stewdent.university" ng-options="opt for opt in unis" required>
+			</select>
+			<!-- 			<input type="text" class="form-control" name="university"
+			ng-model="stewdent.university" ng-required="true"
+			ng-maxlength=300 ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/"
+			/>
+			<span class="error" ng-show="form.university.$error.minlength">Must be at least  characters.</span>
+			<span class="error" ng-show="form.university.$error.maxlength">Must be at most 300 characters.</span>
+			<span class="error" ng-show="form.university.$error.pattern">Must only contain alphanumeric characters.</span> -->
+		</div>
+		
+		<!-- <div class="form-group col-xs-5 col-sm-5 col-md-5">
+		<label>Student Number</label>
+		<input type="text" class="form-control" name="student_num"
+		ng-model="stewdent.student_num" ng-required="false"
+		ng-minlength=0 ng-maxlength=50/>
+		<span class="error" ng-show="form.student_num.$error.minlength">Must be at least 0 characters.</span>
+		<span class="error" ng-show="form.student_num.$error.maxlength">Must be at most 50 characters.</span>
+		</div> -->
+		
+	</div>
+        
+	<div class="form-group">
+		<label>Degree/s (including Majors)</label><span class="form-required">*</span>
+		
+		<input type="text" class="form-control" name="degree"
+			ng-model="stewdent.degree" ng-required="true" ng-pattern="/^[a-zA-Z0-9.,(){}\- ]*$/"
+			ng-maxlength=500 placeholder="eg. B Design (Interactive and Visual)"/>
+		<span class="error" ng-show="form.degree.$error.minlength">Must be at least  characters.</span>
+		<span class="error" ng-show="form.degree.$error.maxlength">Must be at most 500 characters.</span>
+		<span class="error" ng-show="form.degree.$error.pattern">Must only contain alphanumeric characters.</span>
+	</div>
+        
+	<div class="row">
+		<!-- <div class="form-group col-xs-6 col-sm-6 col-md-6">
+		<label>Date of Commencement</label><span class="form-required">*</span>
+		<input type="text" class="form-control" placeholder="YYYY" name="start_year" ui-date="uniYearDateOptions" ui-date-format="yyyy" 
 		ng-model="stewdent.start_year" ng-required="true"/>
 		</div> -->
 		
