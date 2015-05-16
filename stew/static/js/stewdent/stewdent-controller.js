@@ -87,7 +87,7 @@ angular.module('stew')
 			     $scope.open();
 			   })
 			   .error(function(data) {
-			     alert("Oooops, something is broken.  We're still in beta, please contact thestewau@gmail.com");
+			     alert("Oooops, something is broken.  We're still in beta, please contact info@thestew.com.au");
 			     console.log(data);
 			   });
 		       })
@@ -96,7 +96,7 @@ angular.module('stew')
 			 for (var key in data) {
 			   $scope.errors.push(data[key]);
 			 }
-			 $scope.errors.push("Something broke! We\'re still in beta so please contact thestewau@gmail.com");
+			 $scope.errors.push("Something broke! We\'re still in beta so please contact info@thestew.com.au");
 		       });
 		   });
 		   
