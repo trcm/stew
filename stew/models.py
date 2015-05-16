@@ -95,7 +95,7 @@ class Stewdent(models.Model):
     state         = models.CharField(max_length=3, choices=STATES, blank=False)
     post_code     = models.CharField(max_length=5, blank=True, null=True)
     country       = models.CharField(max_length=100, blank=False)
-
+    agreed        = models.BooleanField(default=True)
 
     def __unicode__(self):
         return "%s %s" % (self.first_name, self.last_name)

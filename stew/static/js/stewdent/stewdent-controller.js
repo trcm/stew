@@ -158,9 +158,12 @@ angular.module('stew')
 		   "<p><strong>In-Person</strong> – Sales, User testing, Face-to-face marketing, Customer service, Tutoring, Event management</p>" +
 		   "</p>";
 		 $scope.toolTipTwo = "<p>Please also provide any releveant software you feel competent with, for each skill category.</p>" +
-		   "Eg. <p><strong>Creative Design</strong> - Adobe Photoshop, Illustrator</p>" +
-		   "<p><strong>Tech Design</strong> - Autocad, Revit</p>";
-		 
+		   "Eg. <p><strong>Creative Design</strong> - Adobe Photoshop, Illustrator, InDesign, QuarkXpress, Dreamweaver</p>" +
+		   "<p><strong>Tech Design</strong> - Autocad, Revit, SolidWorks, Solid Edge</p>" +
+		   "<p><strong>Programming/IT</strong> - Visual Studio, Git, SVN, phpMyAdmin</p>" +
+		   "<p><strong>Video/Music</strong> - Adobe Premiere pro, Sony Vegas Pro, Apple Logic Pro, Avid Pro Tooles</p>" +
+		   "<p><strong>Financial</strong> - MYOB, QuickBooks, Xero</p>" +
+		   "<p><strong>Other</strong> - MS Office</p>";
 	       }])
   .controller('ThankyouModalController', ['$scope', '$modalInstance',
 					  function($scope, $modalInstance) {

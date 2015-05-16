@@ -7,11 +7,12 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Stew</title>
+		<title>The Stew</title>
 		<link href="{{ STATIC_URL }}js/libs/bootstrap-css/css/bootstrap.css" rel="stylesheet">
 		<link href="{{ STATIC_URL }}js/libs/jquery-ui/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 		<link href="{{ STATIC_URL }}css/app.css" rel="stylesheet">
+		<link href="{{ STATIC_URL }}img/stew-favicon.png" rel="icon"/>
 	</head>
 	<body>
 		<div id="base" class="container" ng-view></div>
