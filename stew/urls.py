@@ -4,9 +4,11 @@ from django.contrib import admin
 # from rest_framework.urlpatterns import for
 from stew import views
 from rest_framework.authtoken.views import obtain_auth_token
+from django.views.generic.base import RedirectView
 
 
 urlpatterns = patterns('',
+                       url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/stew-favicon.png')),
                        url(r'^login/$', views.LoginView.as_view()),
                        url(r'^api-token-auth', obtain_auth_token),
                        url(r'^auth/$', views.AuthView.as_view(), name='auth'),
