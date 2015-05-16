@@ -3,7 +3,7 @@
 angular.module('stew')
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
-      .when('/stewdents', {
+      .when('/', {
         templateUrl: '/static/js/views/stewdent/stewdents.html',
         controller: 'StewdentController',
         resolve:{

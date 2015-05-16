@@ -1,12 +1,12 @@
 describe('angularjs homepage', function() {
-  
+
   it('should have a title', function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     expect(browser.getTitle()).toEqual('Stew');
   });
-  
+
   it("Should only need the required fields to create the objects", function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     element(by.model('stewdent.first_name')).sendKeys('tom');
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.dob')).click();
@@ -18,9 +18,9 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.city')).sendKeys('city');
     element(by.model('stewdent.state')).click();
     element(by.model('stewdent.country')).sendKeys('country');
-    
+
     element(by.model('skills.languages_spoken')).sendKeys("English");
-    
+
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
 
@@ -28,9 +28,9 @@ describe('angularjs homepage', function() {
     browser.wait(EC.visibilityOf(confirmed), 5000);
     confirmed.click();
   });
-  
+
   it("Should only need the required fields to create the objects", function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     element(by.model('stewdent.first_name')).sendKeys('tom');
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.dob')).click();
@@ -42,18 +42,18 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.city')).sendKeys('city');
     element(by.model('stewdent.state')).click();
     element(by.model('stewdent.country')).sendKeys('country');
-    
+
     element(by.model('skills.languages_spoken')).sendKeys("English");
-    
+
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
     var confirmed = element(by.id('confirmYes'));
     browser.wait(EC.visibilityOf(confirmed), 5000);
     confirmed.click();
   });
-  
+
   it("Should only need the required fields to create the objects", function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     element(by.model('stewdent.first_name')).sendKeys('tom');
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.dob')).click();
@@ -66,9 +66,9 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.city')).sendKeys('city');
     element(by.model('stewdent.state')).click();
     element(by.model('stewdent.country')).sendKeys('country');
-    
+
     element(by.model('skills.languages_spoken')).sendKeys("English");
-    
+
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
     var confirmed = element(by.id('confirmYes'));
@@ -77,7 +77,7 @@ describe('angularjs homepage', function() {
   });
 
   it("Should only need the required fields to create the objects", function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     element(by.model('stewdent.first_name')).sendKeys('tom');
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.dob')).click();
@@ -90,9 +90,9 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.city')).sendKeys('city');
     element(by.model('stewdent.state')).click();
     element(by.model('stewdent.country')).sendKeys('country');
-    
+
     element(by.model('skills.languages_spoken')).sendKeys("English");
-    
+
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
     var confirmed = element(by.id('confirmYes'));
@@ -101,7 +101,7 @@ describe('angularjs homepage', function() {
   });
 
   it('should create a stewdent with one skill field', function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     element(by.model('stewdent.first_name')).sendKeys('tom');
     element(by.model('stewdent.last_name')).sendKeys('stew');
     element(by.model('stewdent.gender')).click();
@@ -121,19 +121,19 @@ describe('angularjs homepage', function() {
     element(by.model('creativeCheck')).click();
     element(by.model('skills.creativeDesignSkill')).sendKeys("creative design skillz");
     element(by.model('skills.creativeDesignSoft')).sendKeys("creative design softz");
-    
+
     element(by.model('skills.languages_spoken')).sendKeys("English");
-    
+
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
-    
+
     var confirmed = element(by.id('confirmYes'));
     browser.wait(EC.visibilityOf(confirmed), 5000);
     confirmed.click();
   });
-  
+
   it('should create a stewdent object with all skill fields', function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     element(by.model('stewdent.first_name')).sendKeys('sam');
     element(by.model('stewdent.last_name')).sendKeys('stew');
     element(by.model('stewdent.gender')).click();
@@ -148,47 +148,47 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.state')).click();
     element(by.model('stewdent.post_code')).sendKeys('city');
     element(by.model('stewdent.country')).sendKeys('country');
-    
+
     element(by.model('creativeCheck')).click();
     element(by.model('skills.creativeDesignSkill')).sendKeys("creative design skillz");
     element(by.model('skills.creativeDesignSoft')).sendKeys("creative design softz");
-    
+
     element(by.model('techCheck')).click();
     element(by.model('skills.techDesignSkill')).sendKeys("tech design skillz");
     element(by.model('skills.techDesignSoft')).sendKeys("tech design softz");
-    
+
     element(by.model('progCheck')).click();
     element(by.model('skills.itSkill')).sendKeys("prog skills");
     element(by.model('skills.itSoft')).sendKeys("prog softs");
-    
+
     element(by.model('marketCheck')).click();
     element(by.model('skills.marketSkill')).sendKeys("market skills");
     element(by.model('skills.marketSoft')).sendKeys("market softs");
-    
+
     element(by.model('writeCheck')).click();
     element(by.model('skills.writingSkill')).sendKeys("write skills");
     element(by.model('skills.writingSoft')).sendKeys("write softs");
-    
+
     element(by.model('mediaCheck')).click();
     element(by.model('skills.mediaSkill')).sendKeys("media skills");
     element(by.model('skills.mediaSoft')).sendKeys("media softs");
-    
+
     element(by.model('financeCheck')).click();
     element(by.model('skills.financeSkill')).sendKeys("finance skills");
     element(by.model('skills.financeSoft')).sendKeys("finance softs");
-    
+
     element(by.model('researchCheck')).click();
     element(by.model('skills.researchSkill')).sendKeys("research skills");
     element(by.model('skills.researchSoft')).sendKeys("finance softs");
-    
+
     element(by.model('personCheck')).click();
     element(by.model('skills.personalSkill')).sendKeys("person skills");
     element(by.model('skills.personalSoft')).sendKeys("person softs");
-    
+
     element(by.model('otherCheck')).click();
     element(by.model('skills.otherSkill')).sendKeys("other skills");
     element(by.model('skills.otherSoft')).sendKeys("other softs");
-    
+
     element(by.model('skills.languages_spoken')).sendKeys("English");
     element(by.model('skills.languages_coding')).sendKeys("Programming languages");
     element(by.model('agreeCheck')).click();
@@ -197,9 +197,9 @@ describe('angularjs homepage', function() {
     browser.wait(EC.visibilityOf(confirmed), 5000);
     confirmed.click();
   });
-  
+
   it('should create a long stewdent object 1', function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     element(by.model('stewdent.first_name')).sendKeys('Long');
     element(by.model('stewdent.last_name')).sendKeys('stew');
     element(by.model('stewdent.gender')).click();
@@ -215,7 +215,7 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.state')).click();
     element(by.model('stewdent.post_code')).sendKeys('4000');
     element(by.model('stewdent.country')).sendKeys('Australia');
-    
+
     element(by.model('skills.languages_spoken')).sendKeys("English");
     element(by.model('agreeCheck')).click();
     element(by.id('stewdentSubmit')).click();
@@ -225,7 +225,7 @@ describe('angularjs homepage', function() {
   });
 
   it("should cause the form to be invalid with an invalid email adress", function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     element(by.model('stewdent.first_name')).sendKeys('tom');
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.gender')).click();
@@ -241,18 +241,18 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.state')).click();
     element(by.model('stewdent.post_code')).sendKeys('city');
     element(by.model('stewdent.country')).sendKeys('country');
-    
+
     element(by.model('skills.languages_spoken')).sendKeys("English");
-    
+
     element(by.model('agreeCheck')).click();
     var clickable = false;
     var submit = element(by.id('stewdentSubmit'));
     expect(submit.isEnabled()).toBe(false);
-    
+
   });
-  
+
   it("should cause the form to be invalid with alphanumeric cheracters", function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     element(by.model('stewdent.first_name')).sendKeys('ƒ∂ƒ∂ß˚¬∆');
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.gender')).click();
@@ -268,17 +268,17 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.state')).click();
     element(by.model('stewdent.post_code')).sendKeys('city');
     element(by.model('stewdent.country')).sendKeys('country');
-    
+
     element(by.model('skills.languages_spoken')).sendKeys("English");
-    
+
     element(by.model('agreeCheck')).click();
     var clickable = false;
     var submit = element(by.id('stewdentSubmit'));
     expect(submit.isEnabled()).toBe(false);
   });
-  
+
   it("Should not accent a grad date before a date year", function() {
-    browser.get('/#/stewdents');
+    browser.get('/#/');
     element(by.model('stewdent.first_name')).sendKeys('tom');
     element(by.model('stewdent.last_name')).sendKeys('tom');
     element(by.model('stewdent.dob')).click();
@@ -292,9 +292,9 @@ describe('angularjs homepage', function() {
     element(by.model('stewdent.city')).sendKeys('city');
     element(by.model('stewdent.state')).click();
     element(by.model('stewdent.country')).sendKeys('country');
-    
+
     element(by.model('skills.languages_spoken')).sendKeys("English");
-    
+
     element(by.model('agreeCheck')).click();
     var clickable = false;
     var submit = element(by.id('stewdentSubmit'));
@@ -313,5 +313,5 @@ describe('angularjs homepage', function() {
     expect(browser.getCurrentUrl()).toEqual('http://localhost:8000/#/admin');
     element(by.id('logoutBtn')).click();
   });
-  
+
 });

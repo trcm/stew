@@ -16,7 +16,7 @@ angular.module('stew',
       .when('/login', {
 	templateUrl: 'static/js/views/login.html',
 	controller: 'authController'})
-      .otherwise({redirectTo: '/stewdents'});
+      .otherwise({redirectTo: '/'});
   }])
   .config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
